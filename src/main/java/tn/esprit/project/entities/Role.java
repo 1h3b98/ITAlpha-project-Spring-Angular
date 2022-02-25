@@ -1,4 +1,4 @@
-package tn.esprit.project.entities;
+package tn.esprit.project.Entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
