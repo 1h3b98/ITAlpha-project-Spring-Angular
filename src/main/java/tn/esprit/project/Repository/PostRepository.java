@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import tn.esprit.project.Entities.Post;
 
-public interface PostRepository extends JpaRepository<Post,Long> {
+public interface PostRepository extends CrudRepository<Post,Long> {
 }
