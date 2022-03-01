@@ -12,7 +12,8 @@ import tn.esprit.project.Repository.ActionRepository;
 public class ActionServiceImpl implements IActionService {
 	@Autowired
 	ActionRepository ar;
-
+	@Autowired
+	
 	public Action addAction(Action a){
 		ar.save(a);
 		return a;
