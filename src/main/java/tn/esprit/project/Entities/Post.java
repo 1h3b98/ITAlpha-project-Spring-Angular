@@ -2,22 +2,13 @@ package tn.esprit.project.Entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 @Entity
 @Getter
@@ -34,15 +25,18 @@ public class Post implements Serializable{/**
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long IdPost;
 	String Content;
-	Timestamp UpdateAt;
-	Timestamp CreateAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "UpdateAt", nullable = true)
+	Date UpdateAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CreateAt", nullable = true)
+	Date CreateAt;
 	int signaler;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	User userP;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="postLike")
-	 private List<LikePost> Likes;
+
 	
 	@ManyToOne
 	Categorie categorie;

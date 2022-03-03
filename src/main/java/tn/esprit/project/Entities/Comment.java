@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,13 +40,13 @@ public class Comment implements Serializable {/**
 	Long NbLike;
 	Boolean statut ;
 	int signaler;
-	
+	@JsonIgnore
 	@ManyToOne
 	User userComment;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="commentLiked")
 	 List<LikeComment> likeComments;
-	
+
 	@ManyToOne
 	Post post;
 	

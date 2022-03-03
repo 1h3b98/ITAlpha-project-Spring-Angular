@@ -63,9 +63,6 @@ public class User implements Serializable {
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userP")
 	 private List<Post> Posts;
 	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userLike")
-	 private List<LikePost> likePosts;
-	 
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userComment")
 	 private List<Comment> Comments;
 	 
