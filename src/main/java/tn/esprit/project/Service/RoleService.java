@@ -1,10 +1,8 @@
 package tn.esprit.project.Service;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.project.Entities.Role;
-import tn.esprit.project.Entities.User;
 import tn.esprit.project.Repository.RoleRepo;
 
 import java.util.List;

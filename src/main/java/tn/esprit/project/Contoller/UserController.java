@@ -1,7 +1,6 @@
 package tn.esprit.project.Contoller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.project.Entities.Role;
 import tn.esprit.project.Service.RoleService;

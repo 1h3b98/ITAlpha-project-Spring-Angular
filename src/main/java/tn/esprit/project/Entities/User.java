@@ -2,12 +2,16 @@ package tn.esprit.project.Entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,13 +46,16 @@ public class User  {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="userP")
     private List<Post> Posts;
+    
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy="userL")
+    private List<Event> Events;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="userLike")
     private List<LikePost> likePosts;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="userComment")
     private List<Comment> Comments;
-
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy="userAction")
     private List<Action> actions;
 

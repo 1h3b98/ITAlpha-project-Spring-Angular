@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.project.Entities.Action;
+import tn.esprit.project.Entities.Event;
 import tn.esprit.project.Service.IActionService;
 @RestController
 @RequestMapping("/Action")
@@ -21,10 +22,10 @@ public class ActionController {
 	@Autowired 
 	IActionService ar;
 	
-	@PostMapping("/add")
+	@PostMapping("/add/{user_id}/{event_id}")
 	@ResponseBody
-	public Action addAction(@RequestBody Action a){
-		return ar.addAction(a);
+	public Action addAction(@RequestBody Action a,@PathVariable("user_id") long userId,@PathVariable("event_id") long eventId){
+		return ar.addAction(a,userId,eventId);
 	}
 	@PutMapping("/update")
 	public Action updateAction(@RequestBody Action a){

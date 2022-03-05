@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

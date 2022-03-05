@@ -1,8 +1,7 @@
 package tn.esprit.project.Entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

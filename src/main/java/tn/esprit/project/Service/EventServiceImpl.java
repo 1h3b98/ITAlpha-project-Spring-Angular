@@ -4,16 +4,40 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.project.Entities.Event;
 
+import tn.esprit.project.Entities.Action;
+import tn.esprit.project.Entities.Event;
+import tn.esprit.project.Entities.User;
+import tn.esprit.project.Repository.ActionRepository;
 import tn.esprit.project.Repository.EventRepository;
+import tn.esprit.project.Repository.UserRepo;
 
 @Service
 public class EventServiceImpl implements IEventService {
 	@Autowired
 	EventRepository er;
+	@Autowired
+	UserRepo ur;
+	@Autowired
+	ActionRepository ar;
 
+	@Override
+	public Event join(Event e,User u){
+		User userInevent=ur.findById(u.getUserId()).orElse(null);
+		Event eventToupdate=er.findById(e.getEventId()).orElse(null);
+		eventToupdate.getUserL().add(userInevent);
+		return er.save(eventToupdate);
+	}
+	public Event updateActionEvent(Event e,long actionId){
+		Action actionList= ar.findById(actionId).orElse(null);
+		Event eventToupdate=er.findById(e.getEventId()).orElse(null);
+		eventToupdate.getActions().add(actionList);
+		return er.save(eventToupdate);
+	}
+	
+	@Override
 	public Event addEvent(Event e){
+		
 		er.save(e);
 		return e;
 	}
@@ -26,7 +50,6 @@ public class EventServiceImpl implements IEventService {
 		eventToupdate.setTitle(e.getTitle());
 		eventToupdate.setImg(e.getImg());
 		eventToupdate.setOffers(e.getOffers());
-		eventToupdate.setLikenbr(e.getLikenbr());
 		eventToupdate.setEventReward(e.getEventReward());
 		return er.save(eventToupdate);
 	}
