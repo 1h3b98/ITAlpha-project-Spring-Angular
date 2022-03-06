@@ -59,7 +59,7 @@ public class Event implements Serializable{
 	
 	@ManyToMany
 	private List<User> userL;	
-	@OneToMany
+	@OneToMany(mappedBy ="event")
 	List<Action> actions;
 	
 	@OneToMany(mappedBy ="event")

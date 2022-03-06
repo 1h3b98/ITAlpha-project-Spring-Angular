@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,8 +15,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AccessLevel;
@@ -47,7 +51,9 @@ public class Action implements Serializable{
 	boolean likeStatus;
 	String comment;
 	boolean joinStatus;
-	LocalDateTime time;
+	List<User> userInviteL;
+	@Temporal(TemporalType.TIMESTAMP)
+	Date time;
 	
 	@JsonBackReference
 	@ManyToOne

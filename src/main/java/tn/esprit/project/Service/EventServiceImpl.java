@@ -22,18 +22,13 @@ public class EventServiceImpl implements IEventService {
 	ActionRepository ar;
 
 	@Override
-	public Event join(Event e,User u){
-		User userInevent=ur.findById(u.getUserId()).orElse(null);
-		Event eventToupdate=er.findById(e.getEventId()).orElse(null);
+	public Event join(long eventId,long userId){
+		User userInevent=ur.findById(userId).orElse(null);
+		Event eventToupdate=er.findById(eventId).orElse(null);
 		eventToupdate.getUserL().add(userInevent);
 		return er.save(eventToupdate);
 	}
-	public Event updateActionEvent(Event e,long actionId){
-		Action actionList= ar.findById(actionId).orElse(null);
-		Event eventToupdate=er.findById(e.getEventId()).orElse(null);
-		eventToupdate.getActions().add(actionList);
-		return er.save(eventToupdate);
-	}
+	
 	
 	@Override
 	public Event addEvent(Event e){
