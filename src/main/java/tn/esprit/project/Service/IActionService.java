@@ -11,6 +11,7 @@ public interface IActionService {
 	 void refuseInvite(Action a ,long actionId,long receiverId,long eventId);
 	 void deleteLikeOrJoin(long actionId,long eventId,long userId);
 	 void deleteAction(long actionId);
+	 void deleteOther(long actionId);
 	 List<Action> getAllAction();
 	 Action findAction(long actionId);
 	 

@@ -36,6 +36,8 @@ public class ActionServiceImpl implements IActionService {
 			a.setJoinStatus(false);	
 			a.setRecieverId(null);
 			a.setAccepted(false);
+			es.addLike(eventId);
+			
 
 		}
 		else if (a.getActionType()==ActionType.JOIN){
@@ -67,7 +69,7 @@ public class ActionServiceImpl implements IActionService {
 			a.setLikeStatus(false);
 			a.setJoinStatus(true);
 			a.setRecieverId(null);
-			a.setAccepted(a.isAccepted());;
+			a.setAccepted(a.isAccepted());
 			
 		}
 		ar.save(a);
@@ -118,11 +120,18 @@ public class ActionServiceImpl implements IActionService {
 	}
 	
 	@Override
-	public void deleteAction(long actionId){
+	public void deleteOther(long actionId){
 		Action actionToupdate=ar.findById(actionId).orElse(null);
 		if(actionToupdate.getActionType()==ActionType.COMMENT||actionToupdate.getActionType()==ActionType.REPONSE){
-		ar.deleteById(actionId);
+	    deleteAction(actionId);
 		}
+		
+	}
+	@Override
+	public void deleteAction(long actionId){
+		
+		ar.deleteById(actionId);
+		
 		
 	}
 	@Override

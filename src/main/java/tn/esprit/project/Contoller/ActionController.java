@@ -34,13 +34,13 @@ public class ActionController {
 	public void refuseInvite(@RequestBody Action a ,@PathVariable("action_id") long actionId,@PathVariable("reciever_id") long receiverId,@PathVariable("event_id") long eventId){
 		ar.refuseInvite(a, actionId, receiverId, eventId);
 	}
-	@DeleteMapping("/delete/{action_id}/{reciever_id}/{event_id}")
+	@DeleteMapping("/delete/{action_id}/{event_id}/{user_id}")
 	public void deleteLikeOrJoin(@PathVariable("action_id") long actionId,@PathVariable("event_id") long eventId,@PathVariable("user_id") long userId){
 		ar.deleteLikeOrJoin(actionId, eventId, userId);;
 	}
 	@DeleteMapping("/delete/{action_id}")
-	public void deleteAction(@PathVariable("action_id") long actionId){
-		ar.deleteAction(actionId);
+	public void deleteOther(@PathVariable("action_id") long actionId){
+		ar.deleteOther(actionId);
 	}
 	@GetMapping("/getallAction")
 	public List<Action> getActions(){
