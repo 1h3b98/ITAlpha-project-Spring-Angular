@@ -1,9 +1,6 @@
 package tn.esprit.project.Entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +16,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AccessLevel;
@@ -51,7 +47,8 @@ public class Action implements Serializable{
 	boolean likeStatus;
 	String comment;
 	boolean joinStatus;
-	List<User> userInviteL;
+	Long recieverId;
+	boolean accepted;
 	@Temporal(TemporalType.TIMESTAMP)
 	Date time;
 	

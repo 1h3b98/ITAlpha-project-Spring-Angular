@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.project.Entities.Action;
 import tn.esprit.project.Entities.Event;
 import tn.esprit.project.Entities.User;
 import tn.esprit.project.Repository.ActionRepository;
@@ -26,13 +25,35 @@ public class EventServiceImpl implements IEventService {
 		User userInevent=ur.findById(userId).orElse(null);
 		Event eventToupdate=er.findById(eventId).orElse(null);
 		eventToupdate.getUserL().add(userInevent);
+		eventToupdate.setJoinnbr(eventToupdate.getJoinnbr()+1);		
+		return er.save(eventToupdate);
+	}
+	@Override
+	public Event removeJoin(long eventId,long userId){
+		User userInevent=ur.findById(userId).orElse(null);
+		Event eventToupdate=er.findById(eventId).orElse(null);
+		eventToupdate.getUserL().remove(userInevent);
+		eventToupdate.setJoinnbr(eventToupdate.getJoinnbr()-1);		
+		return er.save(eventToupdate);
+	}
+	@Override
+	public Event addLike(long eventId){
+		Event eventToupdate=er.findById(eventId).orElse(null);
+		eventToupdate.setLikenbr(eventToupdate.getLikenbr()+1);
 		return er.save(eventToupdate);
 	}
 	
+	@Override
+	public Event removeLike(long eventId){
+		Event eventToupdate=er.findById(eventId).orElse(null);
+		eventToupdate.setLikenbr(eventToupdate.getLikenbr()-1);
+		return er.save(eventToupdate);
+	}
 	
 	@Override
 	public Event addEvent(Event e){
-		
+		e.setJoinnbr(0);
+		e.setLikenbr(0);
 		er.save(e);
 		return e;
 	}
@@ -44,7 +65,6 @@ public class EventServiceImpl implements IEventService {
 		eventToupdate.setEndTime(e.getEndTime());
 		eventToupdate.setTitle(e.getTitle());
 		eventToupdate.setImg(e.getImg());
-		eventToupdate.setOffers(e.getOffers());
 		eventToupdate.setEventReward(e.getEventReward());
 		return er.save(eventToupdate);
 	}

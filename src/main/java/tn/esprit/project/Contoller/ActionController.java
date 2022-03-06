@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.project.Entities.Action;
-import tn.esprit.project.Entities.Event;
 import tn.esprit.project.Service.IActionService;
 @RestController
 @RequestMapping("/Action")
@@ -27,11 +26,18 @@ public class ActionController {
 	public Action addAction(@RequestBody Action a,@PathVariable("user_id") long userId,@PathVariable("event_id") long eventId){
 		return ar.addAction(a,userId,eventId);
 	}
-	@PutMapping("/update")
-	public Action updateAction(@RequestBody Action a){
-		return ar.updateAction(a);
+	@PutMapping("/accept/{action_id}/{reciever_id}/{event_id}")
+	public Action acceptInvite(@RequestBody Action a,@PathVariable("action_id") long actionId,@PathVariable("reciever_id") long recieverId,@PathVariable("event_id") long eventId){
+		return ar.acceptInvite(a, actionId, recieverId, eventId);
 	}
-	
+	@DeleteMapping("/refuse/{action_id}/{reciever_id}/{event_id}")
+	public void refuseInvite(@RequestBody Action a ,@PathVariable("action_id") long actionId,@PathVariable("reciever_id") long receiverId,@PathVariable("event_id") long eventId){
+		ar.refuseInvite(a, actionId, receiverId, eventId);
+	}
+	@DeleteMapping("/delete/{action_id}/{reciever_id}/{event_id}")
+	public void deleteLikeOrJoin(@PathVariable("action_id") long actionId,@PathVariable("event_id") long eventId,@PathVariable("user_id") long userId){
+		ar.deleteLikeOrJoin(actionId, eventId, userId);;
+	}
 	@DeleteMapping("/delete/{action_id}")
 	public void deleteAction(@PathVariable("action_id") long actionId){
 		ar.deleteAction(actionId);
