@@ -2,6 +2,8 @@ package tn.esprit.project.Service;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
+
 import tn.esprit.project.Entities.Action;
 
 
@@ -14,5 +16,7 @@ public interface IActionService {
 	 void deleteOther(long actionId);
 	 List<Action> getAllAction();
 	 Action findAction(long actionId);
+	 Action getInvite(Long recieverId,long userId);
+	
 	 
 }

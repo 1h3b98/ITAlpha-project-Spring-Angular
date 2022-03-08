@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.project.Entities.Action;
 import tn.esprit.project.Entities.ActionType;
+import tn.esprit.project.Entities.User;
 import tn.esprit.project.Service.IEventService;
 import tn.esprit.project.Repository.ActionRepository;
 import tn.esprit.project.Repository.EventRepository;
@@ -25,54 +26,99 @@ public class ActionServiceImpl implements IActionService {
 	EventRepository er;
 	@Autowired
 	IEventService es;
+	
+	
+	
 	@Override
 	public Action addAction(Action a,long userId,long eventId){
-		a.setUserAction(ur.findById(userId).get());
-		a.setEvent(er.findById(eventId).get());
-		a.setTime(new Timestamp(System.currentTimeMillis()));
+		List<Action> actionList=getAllAction();
+		boolean foundLike = actionList.stream().anyMatch(p -> p.getEvent().equals(er.findById(eventId).get())&& 
+				p.getUserAction().equals(ur.findById(userId).get())&& 
+				p.getActionType().equals(ActionType.LIKE));
+		boolean foundJoin = actionList.stream().anyMatch(p -> p.getEvent().equals(er.findById(eventId).get())&& 
+				p.getUserAction().equals(ur.findById(userId).get())&& 
+				p.getActionType().equals(ActionType.JOIN));
+		boolean foundInvite = actionList.stream().anyMatch(p -> p.getEvent().equals(er.findById(eventId).get())&& 
+				p.getUserAction().equals(ur.findById(userId).get())&& p.getRecieverId().equals(a.getRecieverId())&&
+				p.getActionType().equals(ActionType.INVITE));
+		
+		
 		if (a.getActionType()==ActionType.LIKE){
+			if (foundLike==false){
+				
+			a.setUserAction(ur.findById(userId).get());
+			a.setEvent(er.findById(eventId).get());
+			a.setTime(new Timestamp(System.currentTimeMillis()));
 			a.setComment(null);
 			a.setLikeStatus(true);
 			a.setJoinStatus(false);	
 			a.setRecieverId(null);
 			a.setAccepted(false);
 			es.addLike(eventId);
-			
+			ar.save(a);
+			}
+			else{
+				a.setActionType(null);
+			}
 
 		}
 		else if (a.getActionType()==ActionType.JOIN){
+			if (foundJoin==false){
+			a.setUserAction(ur.findById(userId).get());
+			a.setEvent(er.findById(eventId).get());
+			a.setTime(new Timestamp(System.currentTimeMillis()));
 			a.setComment(null);
 			a.setLikeStatus(false);
 			a.setJoinStatus(true);
 			a.setRecieverId(null);
 			a.setAccepted(true);
 			es.join(eventId,userId);
-			
+			ar.save(a);
+			}
+			else{
+				a.setActionType(null);
+			}
 		}
 		else if (a.getActionType()==ActionType.INVITE){
+			if (foundInvite==false){
+			a.setUserAction(ur.findById(userId).get());
+			a.setEvent(er.findById(eventId).get());
+			a.setTime(new Timestamp(System.currentTimeMillis()));
 			a.setComment(null);
 			a.setLikeStatus(false);
 			a.setJoinStatus(false);
 			a.setRecieverId(a.getRecieverId());
 			a.setAccepted(false);
-
+			ar.save(a);
+			}
+			else{
+				a.setActionType(null);
+			}
 		}
 		else if (a.getActionType()==ActionType.COMMENT){
+			a.setUserAction(ur.findById(userId).get());
+			a.setEvent(er.findById(eventId).get());
+			a.setTime(new Timestamp(System.currentTimeMillis()));
 			a.setComment(a.getComment());
 			a.setLikeStatus(false);
 			a.setJoinStatus(false);
 			a.setRecieverId(null);
 			a.setAccepted(false);
+			ar.save(a);
 		}
 		else if (a.getActionType()==ActionType.REPONSE){
+			a.setUserAction(ur.findById(userId).get());
+			a.setEvent(er.findById(eventId).get());
+			a.setTime(new Timestamp(System.currentTimeMillis()));
 			a.setComment(null);
 			a.setLikeStatus(false);
 			a.setJoinStatus(true);
 			a.setRecieverId(null);
 			a.setAccepted(a.isAccepted());
+			ar.save(a);
 			
 		}
-		ar.save(a);
+		
 		//es.updateActionEvent(a.getEvent(),a.getActionId());
 		return a;
 	}
@@ -142,4 +188,15 @@ public class ActionServiceImpl implements IActionService {
 	public Action findAction(long actionId){
 		return ar.findById(actionId).get();
 	}
+	
+	@Override
+	public Action getInvite(Long recieverId,long userId){
+		ActionType invite=ActionType.INVITE;
+		User u=ur.findById(userId).get();
+		Action inviteAction=ar.findByInviteAndRecieverAndSender(invite,recieverId,u);
+		return inviteAction;
+	}
+	
+	
+	
 }

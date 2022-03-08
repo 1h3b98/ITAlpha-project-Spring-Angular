@@ -52,4 +52,9 @@ public class ActionController {
 	public Action getOneAction(@PathVariable("action_id") long actionId){
 		return ar.findAction(actionId);
 	}
+	
+	@GetMapping("/getInvite/{reciever_id}/{user_id}")
+	public Action getReceiverInvite(@PathVariable("reciever_id") Long recieverId,@PathVariable("user_id") long userId){
+		return ar.getInvite(recieverId, userId);
+	}
 }
