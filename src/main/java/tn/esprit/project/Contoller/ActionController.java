@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.project.Entities.Action;
+import tn.esprit.project.Entities.Event;
 import tn.esprit.project.Service.IActionService;
 @RestController
 @RequestMapping("/Action")
 public class ActionController {
 	@Autowired 
 	IActionService ar;
+	
 	
 	@PostMapping("/add/{user_id}/{event_id}")
 	@ResponseBody
@@ -46,6 +48,11 @@ public class ActionController {
 	public List<Action> getActions(){
 		List<Action> listAction=ar.getAllAction();
 		return listAction;
+	}
+	@GetMapping("/getallFavAction/{user_id}")
+	public List<Event> getAllFActions(@PathVariable("user_id") long userId){
+		List<Event> listFavEvent=ar.getAllFavAction(userId);
+		return listFavEvent;
 	}
 	
 	@GetMapping("/getOneAction/{action_id}")

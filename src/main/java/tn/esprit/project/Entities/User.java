@@ -11,13 +11,14 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","FavEvents"})
+
 public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +40,7 @@ public class User  {
     String adresse;
     String bio;
     int points;
+    
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Role> roles;
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
@@ -47,6 +49,9 @@ public class User  {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="userP")
     private List<Post> Posts;
     
+    @ManyToMany
+    @JsonIgnore
+    private List<Event> FavEvents;
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="userL")
     private List<Event> Events;
 

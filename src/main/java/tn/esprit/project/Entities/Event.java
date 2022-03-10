@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AccessLevel;
@@ -31,6 +33,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","userL"})
 
+
 public class Event implements Serializable{
 	/**
 	 * 
@@ -49,10 +52,15 @@ public class Event implements Serializable{
 	int likenbr;
 	int eventReward;
 	
+    
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="FavEvents")
+	@JsonIgnore
+	private List<User> userf;
 	
 	@ManyToMany
 	private List<User> userL;	
 	@OneToMany(mappedBy ="event")
+	@JsonIgnore
 	List<Action> actions;
 	
 	@OneToMany(mappedBy ="event")

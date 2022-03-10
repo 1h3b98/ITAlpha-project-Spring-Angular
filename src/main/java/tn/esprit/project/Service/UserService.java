@@ -1,22 +1,24 @@
 package tn.esprit.project.Service;
 
 import lombok.AllArgsConstructor;
-import lombok.val;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.project.Entities.PubliciteOffre;
+
+import tn.esprit.project.Entities.Event;
 import tn.esprit.project.Entities.Role;
+import tn.esprit.project.Repository.EventRepository;
 import tn.esprit.project.Repository.RoleRepo;
 import tn.esprit.project.Repository.UserRepo;
 import tn.esprit.project.Entities.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class UserService {
+@Autowired
+EventRepository er;
 
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;
@@ -64,5 +66,22 @@ public class UserService {
         user1.getRoles().add(role1);
         return userRepo.save(user1);
      }
+     public User addFav(long eventId,long userId){
+ 		User userToupdate;
+ 		Event eventInuser;
+ 		userToupdate=userRepo.findById(userId).orElse(null);
+ 		eventInuser=er.findById(eventId).orElse(null);
+ 		assert userToupdate != null;
+ 		userToupdate.getFavEvents().add(eventInuser);
+ 		return userRepo.save(userToupdate);
+ 	}
+     
+ 	public User removeFav(long eventId,long userId){
+ 		User userToupdate=userRepo.findById(userId).orElse(null);
+ 		Event eventInuser=er.findById(eventId).orElse(null);
+ 		assert userToupdate != null;
+ 		userToupdate.getFavEvents().remove(eventInuser);
+ 		return userRepo.save(userToupdate);
+ 	}
 
 }

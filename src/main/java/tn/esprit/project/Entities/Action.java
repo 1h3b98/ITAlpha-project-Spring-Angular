@@ -45,12 +45,14 @@ public class Action implements Serializable{
 	@Enumerated(EnumType.STRING)
 	ActionType actionType;
 	boolean likeStatus;
+	boolean favStatus;
 	String comment;
 	boolean joinStatus;
 	Long recieverId;
 	boolean accepted;
 	@Temporal(TemporalType.TIMESTAMP)
 	Date time;
+	
 	
 	@JsonBackReference
 	@ManyToOne
