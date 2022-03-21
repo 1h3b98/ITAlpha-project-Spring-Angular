@@ -2,14 +2,14 @@ package tn.esprit.project.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.project.Entities.Forum;
-import tn.esprit.project.Entities.Opinion;
-import tn.esprit.project.Entities.Post;
-import tn.esprit.project.Entities.User;
+import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.ForumRepository;
 import tn.esprit.project.Repository.OpinionRepository;
+import tn.esprit.project.Repository.RatingRepository;
 import tn.esprit.project.Repository.UserRepository;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +20,7 @@ public class OpinionService implements IOpinionService {
     OpinionRepository op ;
     @Autowired
     UserRepository ur ;
+
 
     @Override
     public List<Opinion> getOpinionByPost(Long idPost) {
@@ -43,7 +44,12 @@ public class OpinionService implements IOpinionService {
     }
 
     @Override
-    public Opinion update(Long idOpinion) {
-        return null;
+    public Opinion update(Opinion o ,Long idOpinion) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Opinion opinin = op.findById(idOpinion).get();
+        opinin.setUpdateAt(timestamp);
+        opinin.setContent(o.getContent());
+        return op.save(opinin);
     }
+
 }

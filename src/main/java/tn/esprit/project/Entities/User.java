@@ -60,7 +60,7 @@ public class User implements Serializable {
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
 	 private List<QvtAnswer> QVTAnswers;
 	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userP")
+	 @OneToMany( mappedBy="userP")
 	 private List<Post> Posts;
 	 
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userComment")

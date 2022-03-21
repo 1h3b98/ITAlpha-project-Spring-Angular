@@ -9,4 +9,5 @@ public interface IForumService {
     public void deleteForum(Long id);
     public Forum update(Long idforum);
     public List<Forum> getAll();
+    public List<Forum> getArticles();
 }

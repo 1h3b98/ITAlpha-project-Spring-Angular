@@ -2,15 +2,10 @@ package tn.esprit.project.Entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
@@ -35,8 +30,12 @@ public class Comment implements Serializable {/**
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long IdComment;
 	String Content;
-	Timestamp UpdateAt;
-	Timestamp CreateAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "UpdateAt", nullable = true)
+	Date UpdateAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CreateAt", nullable = true)
+	Date CreateAt;
 	Long NbLike;
 	Boolean statut ;
 	int signaler;
@@ -47,6 +46,7 @@ public class Comment implements Serializable {/**
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="commentLiked")
 	 List<LikeComment> likeComments;
 
+	@JsonIgnore
 	@ManyToOne
 	Post post;
 	

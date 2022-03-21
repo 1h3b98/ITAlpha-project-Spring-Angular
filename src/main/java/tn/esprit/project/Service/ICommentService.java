@@ -8,6 +8,6 @@ import java.util.List;
 public interface ICommentService {
     public List<Comment> getCommentsPost(Long idpost);
     public Comment addComment(Comment c,Long idu,Long idp);
-    public Comment updateComment(Comment c);
+    public Comment updateComment(Comment c, Long idCommment);
     public void deleteComment(Long id);
 }

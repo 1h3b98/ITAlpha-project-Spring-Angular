@@ -1,8 +1,5 @@
 package tn.esprit.project.Entities;
-
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-
 @Entity
 @Getter
 @Setter
@@ -21,15 +17,12 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ForumTag implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long TagId;
-	String Name;
-	
-	@ManyToMany
-	List<Forum> forum;
-
-
+public class Rating implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @EmbeddedId
+   RatingId ratingId;
+    int value;
 }

@@ -31,7 +31,8 @@ public class Post implements Serializable{/**
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "CreateAt", nullable = true)
 	Date CreateAt;
-	int signaler;
+
+	float note;
 
 	@JsonIgnore
 	@ManyToOne
@@ -43,4 +44,5 @@ public class Post implements Serializable{/**
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="post")
 	 List<Comment> comments;
+
 }

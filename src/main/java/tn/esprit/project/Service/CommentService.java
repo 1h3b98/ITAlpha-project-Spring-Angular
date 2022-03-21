@@ -9,6 +9,7 @@ import tn.esprit.project.Repository.CommentRepository;
 import tn.esprit.project.Repository.PostRepository;
 import tn.esprit.project.Repository.UserRepository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -30,16 +31,22 @@ public class CommentService implements ICommentService{
 
     @Override
     public Comment addComment(Comment c, Long idu, Long idp) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         User user = ur.findById(idu).get();
         Post post = pr.findById(idp).get();
         c.setUserComment(user);
         c.setPost(post);
+        c.setCreateAt(timestamp);
         return cr.save(c);
     }
 
     @Override
-    public Comment updateComment(Comment c) {
-        return cr.save(c);
+    public Comment updateComment(Comment c, Long idCommment) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Comment comment = cr.findById(idCommment).get();
+        comment.setUpdateAt(timestamp);
+        comment.setContent(c.getContent());
+        return cr.save(comment);
     }
 
     @Override
