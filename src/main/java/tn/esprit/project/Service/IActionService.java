@@ -4,7 +4,6 @@ import java.util.List;
 
 import tn.esprit.project.Entities.Action;
 import tn.esprit.project.Entities.Event;
-import tn.esprit.project.Entities.User;
 
 
 public interface IActionService {

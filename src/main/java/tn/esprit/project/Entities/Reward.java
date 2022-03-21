@@ -36,7 +36,7 @@ public class Reward implements Serializable {
 	int val;
 	
 	@ManyToOne
-	Event event;
+    Event event;
 	
 	@OneToMany (mappedBy ="reward")
 	List<Vote> eventVotes;

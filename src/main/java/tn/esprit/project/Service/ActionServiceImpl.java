@@ -27,7 +27,7 @@ public class ActionServiceImpl implements IActionService {
 	@Autowired
 	EventRepository er;
 	@Autowired
-	IEventService es;
+    IEventService es;
 	@Autowired
 	UserService us;
 	

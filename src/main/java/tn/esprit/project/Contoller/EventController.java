@@ -18,9 +18,9 @@ import tn.esprit.project.Service.IEventService;
 
 @RestController
 @RequestMapping("/Event")
-public class EventController {
-	@Autowired 
-	IEventService er; 
+public class rEventController {
+	@Autowired
+    IEventService er;
 	
 	@PostMapping("/add")
 	@ResponseBody

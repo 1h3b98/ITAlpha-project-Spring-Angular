@@ -53,7 +53,7 @@ public class User  {
     @JsonIgnore
     private List<Event> FavEvents;
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="userL")
-    private List<Event> Events;
+    private List<Event> rEvents;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="userLike")
     private List<LikePost> likePosts;
