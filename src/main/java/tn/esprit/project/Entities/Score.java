@@ -30,6 +30,7 @@ public class Score implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long IdScore ;
 	int userscore;
+	long iduser;
 	
 	@ManyToOne 
 	Action action;

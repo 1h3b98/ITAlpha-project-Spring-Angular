@@ -32,9 +32,13 @@ public class Qquestion implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	long Qid;
 	String content;
-	String choice;
+	String choiceA;
+	String choiceB;
+	String choiceC;
 	int correctNumbr;
 	int pointNumbr;
+	int chose;
+
 	
 	@ManyToOne 
 	Quiz quiz;

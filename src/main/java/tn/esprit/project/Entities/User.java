@@ -95,7 +95,8 @@ public class User implements Serializable {
 	 
 	 @OneToMany(mappedBy ="reciever")
 	 List<Message> msgRecieved;
-	 
+	 @ManyToMany(cascade = CascadeType.ALL, mappedBy="user")
+	 List<Quiz> quizs;
 	 
 	 
 	 
