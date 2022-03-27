@@ -1,5 +1,6 @@
 package tn.esprit.project.Contoller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,13 @@ import tn.esprit.project.Service.IEventService;
 
 @RestController
 @RequestMapping("/Event")
-public class rEventController {
+public class EventController {
 	@Autowired
     IEventService er;
 	
 	@PostMapping("/add")
 	@ResponseBody
-	public Event addEvent(@RequestBody Event e){
+	public Event addEvent(@RequestBody Event e) throws IOException {
 		return er.addEvent(e);
 	}
 	@PutMapping("/update")

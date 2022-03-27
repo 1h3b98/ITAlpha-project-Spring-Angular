@@ -1,4 +1,5 @@
 package tn.esprit.project.Config;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -29,8 +30,10 @@ public class GoogleApiClientConfig {
      * @return An unmodifiable {@link Set<String>}
      */
     private Set<String> googleOAuth2Scopes() {
+
         Set<String> googleOAuth2Scopes = new HashSet<>();
         googleOAuth2Scopes.add(CalendarScopes.CALENDAR_READONLY);
+        googleOAuth2Scopes.add(CalendarScopes.CALENDAR);
         return Collections.unmodifiableSet(googleOAuth2Scopes);
     }
 

@@ -1,5 +1,6 @@
 package tn.esprit.project.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class EventServiceImpl implements IEventService {
 	UserRepo ur;
 	@Autowired
 	ActionRepository ar;
+	@Autowired
+	GoogleCalendarService gcs;
 
 	@Override
 	public Event join(long eventId, long userId){
@@ -55,10 +58,11 @@ public class EventServiceImpl implements IEventService {
 	}
 	
 	@Override
-	public Event addEvent(Event e){
+	public Event addEvent(Event e) throws IOException {
 		e.setJoinnbr(0);
 		e.setLikenbr(0);
 		er.save(e);
+		gcs.addEventToCalendar(e);
 		return e;
 	}
 	@Override

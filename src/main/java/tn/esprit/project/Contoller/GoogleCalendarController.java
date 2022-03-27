@@ -4,12 +4,9 @@ import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.services.calendar.model.Calendar;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
+import org.springframework.web.bind.annotation.*;
 import tn.esprit.project.Advice.GoogleApiClientExceptionHandler;
 import tn.esprit.project.Service.GoogleCalendarService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
@@ -61,5 +58,9 @@ public class GoogleCalendarController {
     public Event getEventsForCalendar(@PathVariable String calendarId, @PathVariable String eventId)
             throws IOException {
         return googleCalendarService.getEventInfoFromCalendar(calendarId, eventId);
+    }
+    @PostMapping("/event/{calendarId}")
+    public Event NewEvent(@PathVariable String calendarId) throws IOException {
+        return googleCalendarService.addEventManual(calendarId);
     }
 }
