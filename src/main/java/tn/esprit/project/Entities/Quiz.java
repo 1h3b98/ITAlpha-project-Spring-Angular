@@ -43,7 +43,7 @@ public class Quiz implements Serializable {
 	@OneToMany (mappedBy = "quiz")
 	List<Score> scores;
 	
-	@OneToMany (mappedBy ="quiz")
+	@OneToMany (cascade = CascadeType.ALL)
 	List<Qquestion> Questions;
 	@ManyToMany(cascade = CascadeType.ALL)
 	List<User> user;

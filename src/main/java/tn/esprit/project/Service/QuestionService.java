@@ -34,11 +34,40 @@ public class QuestionService implements IQuestionServise {
 	@Override
 	
 	public void AjouterQuestionAndaffect(Qquestion Q, long idQuiz) {
-		 qquestionRepository.save(Q);
 		 Quiz qz = quizRepository.findById(idQuiz).orElse(null);
-		 Q.setQuiz(qz);
+		 //Q.setQuiz(qz);
+		 qz.getQuestions().add(Q);
+		 qquestionRepository.save(Q);
 
 	}
+
+	@Override
+	public void answerquestion(long idquestion, long iduser, int chose) {
+		Qquestion question=qquestionRepository.findById(idquestion).get();
+		if(chose==question.getCorrectNumbr()){
+			Score score = new Score();
+			//score=question.getQuiz().getScores();
+			
+		}		
+	}
+
+	
+
+	@Override
+	public List<Qquestion> retrieveallQuestionsForQuiz(Long idquiz) {
+		Quiz q=quizRepository.findById(idquiz).get();
+		
+		
+		
+		return q.getQuestions();
+	}
+
+	@Override
+	public Qquestion showquestion(long idq) {
+		Qquestion q = qquestionRepository.findById(idq).get();
+ return q;
+	}
+	
 
 
 	

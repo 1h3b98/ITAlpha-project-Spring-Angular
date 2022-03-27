@@ -3,7 +3,7 @@ package tn.esprit.project.Contoller;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.project.Entities.*;
-import tn.esprit.project.Service.QuizService;
+import tn.esprit.project.Service.*;
 
 import java.util.List;
 
@@ -26,9 +26,9 @@ public class QuizController {
 		List<Quiz> listQuiz = quizservice.ShowQuizs();
 		return listQuiz;
 	}
-	@PostMapping("/add-Quiz")
-	public Quiz addQuiz(@RequestBody Quiz p) {
-		return quizservice.AjouterQuiz(p);
+	@PostMapping("/add-Quiz/{event_id}")
+	public Quiz addQuiz(@RequestBody Quiz p,@PathVariable("event-id") Long eventid) {
+		return quizservice.AjouterQuiz(p,eventid);
 	}
 	@PutMapping("/modify-Quiz")
 	public Quiz modifyQuiz(@RequestBody Quiz quiz) {
@@ -56,14 +56,17 @@ public class QuizController {
 		List<Score> sList = quizservice.getTopScore();
 		return sList;
 		}
-
+	@GetMapping("/retrieve-quizs/{user-id}")
+	public List<Quiz>getquizss(@PathVariable("user-id") Long iduser) {
+		List<Quiz> listQuiz = quizservice.ShowQuizuser(iduser);
+		return listQuiz;
+	}
 	
-	
-	
-	
-	
-	
-	
+	@GetMapping("/retrieve-Quiz/{quiz-id}")
+	public Quiz getQuiz(@PathVariable("quiz-id") Long idQz) {
+		Quiz qQuiz=quizservice.ShowQuiz(idQz);
+		return qQuiz;
+	}
 	
 	
 	

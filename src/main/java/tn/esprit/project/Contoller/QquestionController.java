@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/questions")
 
 public class QquestionController {
 	@Autowired
@@ -35,5 +35,15 @@ public class QquestionController {
 	@DeleteMapping("/remove-Qquestion/{question-id}")
 	public void removeQuestion(@PathVariable("question-id") Long idquestion) {
 		questionService.DeleteQestion(idquestion);
-	}}
-	
+	}
+		@GetMapping("/retrieve-all-questions-for-questionnaire/{id}")
+	public List<Qquestion> retrieveallQuestionsForQuizz(@PathVariable("id") Long id) {
+	List<Qquestion> listQuestions = questionService.retrieveallQuestionsForQuiz(id);
+	return listQuestions;
+	}
+		@GetMapping("/retrievequestion/{id}")
+		public Qquestion retrieveaQuestion(@PathVariable("id") Long id) {
+		Qquestion question = questionService.showquestion(id);
+		return question;
+		}
+}

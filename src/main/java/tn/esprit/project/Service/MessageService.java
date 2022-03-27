@@ -1,6 +1,8 @@
 package tn.esprit.project.Service;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,15 @@ public class MessageService implements IMessageService {
 	MessageRepository messageRepository;
 	@Override
 	public Message AjouterMessage(Message Messagee) {
+		Date date = new Date();
+		  Timestamp timestamp2 = new Timestamp(date.getTime());
+Messagee.setMDate(timestamp2);
 		return messageRepository.save(Messagee);
 	}
 
 	@Override
 	public Message updateMessage(Message Messagee) {
+		
 		return messageRepository.save(Messagee);
 
 	}

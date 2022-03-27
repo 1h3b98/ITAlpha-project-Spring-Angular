@@ -97,7 +97,10 @@ public class User implements Serializable {
 	 List<Message> msgRecieved;
 	 @ManyToMany(cascade = CascadeType.ALL, mappedBy="user")
 	 List<Quiz> quizs;
-	 
-	 
+	    @ManyToMany(cascade = CascadeType.ALL, mappedBy="userL")
+	    private List<Event> rEvents;
+	    @OneToMany (mappedBy ="user")
+		 List<Score> scoree;
+		 
 	 
 }

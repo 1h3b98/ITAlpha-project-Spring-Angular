@@ -30,7 +30,7 @@ public class Qquestion implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id 
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long Qid;
+	long questionId;
 	String content;
 	String choiceA;
 	String choiceB;
@@ -40,6 +40,5 @@ public class Qquestion implements Serializable {
 	int chose;
 
 	
-	@ManyToOne 
-	Quiz quiz;
+	
 }

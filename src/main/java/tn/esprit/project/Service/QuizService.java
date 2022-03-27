@@ -17,9 +17,31 @@ public class QuizService implements IQuizService {
 	QuizRepository quizRepository;
 	@Autowired
 	ScoreRepository scoreRep;
+	@Autowired
+	EventRepository eventrepo;
+	@Autowired
+	UserRepository userrepo;
+	@Autowired
+	ScoreRepository scorerepo;
 	
 	@Override
-	public Quiz AjouterQuiz(Quiz Qz) {
+	public Quiz AjouterQuiz(Quiz Qz,long idevent) {
+		
+		/*Event event =new Event();
+		event=eventrepo.findById(idevent).get();
+		List<User> Users = event.getUserL();
+		for (User userr : Users) {
+			Score score=new Score();
+			score.setUserscore(0);
+			score.setUser(userr);
+			score.setQuiz(Qz);
+			
+			scorerepo.save(score);	
+			
+			Qz.getScores().add(score);
+		}
+	
+		*/
 		return quizRepository.save(Qz);
 
 	}
@@ -32,7 +54,64 @@ public class QuizService implements IQuizService {
 		quizRepository.deleteById(idQz);
 		
 	}
+	
 	@Override
+	public Quiz ShowQuiz(long idQz) {
+		Quiz quize = quizRepository.findById(idQz).get();
+
+		return quize;
+	}
+
+	public int calculescore(long idQz) {
+		int correct = 0;
+		/*Quiz quize = quizRepository.findById(idQz).get();
+
+		for(Qquestion q: quize.getQuestions())
+			if(q.getCorrectNumbr() == q.getChose())
+				correct++;
+		*/
+		return correct;
+	}
+	
+	public Score saveScore(long idQuiz,long Iduser) {
+	/*	Quiz quize = quizRepository.findById(idQuiz).get();
+
+		Score saveScore = new Score();
+		int score=calculescore(idQuiz);
+		saveScore.setUserscore(score);
+		//saveScore.setIduser(Iduser);
+		saveScore.setQuiz(quize);
+	
+		return scoreRep.save(saveScore);
+	}
+
+	public List<Score> getTopScore() {
+		List<Score> sList = scoreRep.findAll(Sort.by(Sort.Direction.DESC, "totalCorrect"));
+		*/
+		return null;
+	}
+	@Override
+	public List<Quiz> ShowQuizuser(long iduser) {
+		User user = new User();
+		user=userrepo.findById(iduser).get();
+		List<Score> scores = null;
+		List<Quiz> Quizs = null;
+		
+		
+			scores = (List<Score>)scorerepo.findAll();
+		for (Score score : scores) {
+			user=userrepo.findById(iduser).get();
+			User u = new User();
+		u=score.getUser();
+			if(u.equals(user)){
+				Quiz quiz = new Quiz();
+				 quiz=score.getQuiz();
+				Quizs.add(quiz);
+		}}
+				
+		
+	return Quizs;
+	}
 	public List<Quiz> ShowQuizs() {
 		List<Quiz> Quizs = null;
 		try {
@@ -45,44 +124,13 @@ public class QuizService implements IQuizService {
 		catch (Exception e) {log.error("Error in retrieveProject : " + e);}
 		
 		
-	return Quizs;
+	return (List<Quiz>)quizRepository.findAll();
 	}
 	@Override
-	public Quiz ShowQuiz(long idQz) {
-		Quiz quize = quizRepository.findById(idQz).get();
-
-		return quize;
-	}
-
-	public int calculescore(long idQz) {
-		int correct = 0;
-		Quiz quize = quizRepository.findById(idQz).get();
-
-		for(Qquestion q: quize.getQuestions())
-			if(q.getCorrectNumbr() == q.getChose())
-				correct++;
-		
-		return correct;
-	}
-	
-	public Score saveScore(long idQuiz,long Iduser) {
-		Quiz quize = quizRepository.findById(idQuiz).get();
-
-		Score saveScore = new Score();
-		int score=calculescore(idQuiz);
-		saveScore.setUserscore(score);
-		saveScore.setIduser(Iduser);
-		saveScore.setQuiz(quize);
-	
-		return scoreRep.save(saveScore);
-	}
-
 	public List<Score> getTopScore() {
-		List<Score> sList = scoreRep.findAll(Sort.by(Sort.Direction.DESC, "totalCorrect"));
-		
-		return sList;
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
 	
 	
 	
