@@ -42,9 +42,7 @@ public class Comment implements Serializable {/**
 	@JsonIgnore
 	@ManyToOne
 	User userComment;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="commentLiked")
-	 List<LikeComment> likeComments;
+
 
 	@JsonIgnore
 	@ManyToOne

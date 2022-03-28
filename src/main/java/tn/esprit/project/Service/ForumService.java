@@ -3,8 +3,11 @@ package tn.esprit.project.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.project.Entities.Favoritesarticle;
 import tn.esprit.project.Entities.Forum;
+import tn.esprit.project.Entities.Post;
 import tn.esprit.project.Entities.User;
+import tn.esprit.project.Repository.FavoritesArticleRepository;
 import tn.esprit.project.Repository.ForumRepository;
 import tn.esprit.project.Repository.RatingRepository;
 import tn.esprit.project.Repository.UserRepository;
@@ -21,6 +24,8 @@ public class ForumService implements IForumService{
     UserRepository ur;
     @Autowired
     RatingRepository rr;
+    @Autowired
+    FavoritesArticleRepository ftr;
 
     @Override
     public Forum addArticle(@RequestBody Forum f,@PathVariable("id") Long idUser) {
@@ -51,9 +56,29 @@ public class ForumService implements IForumService{
         List<Forum> aticlesf= new ArrayList<>();
         for (Forum p:aticles) {
             p.setRating(rr.sommeDenoteByPost(p)/rr.nbrPosts(p));
+            p.setNbComment((long) p.getOpinions().size());
             aticlesf.add(p);
             fr.save(p);
         }
         return aticlesf;
+    }
+    public void addTofavorites(Long idarticle, Long idUser){
+        User user = ur.findById(idUser).get();
+        Forum forum = fr.findById(idarticle).get();
+        Favoritesarticle favoritesarticle = new Favoritesarticle();
+        favoritesarticle.setForum(forum);
+        favoritesarticle.setUser(user);
+        ftr.save(favoritesarticle);
+    }
+
+    public List<Forum> getFavorites(Long iduser){
+        List<Forum> forums = new ArrayList<>();
+        List<Favoritesarticle> forumList= (List<Favoritesarticle>) ftr.findAll();
+        for (Favoritesarticle fa: forumList) {
+            if(fa.getUser().getUserId()==iduser){
+                forums.add(fa.getForum());
+            }
+        }
+        return forums;
     }
 }

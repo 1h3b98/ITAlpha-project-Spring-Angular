@@ -1,5 +1,5 @@
 package tn.esprit.project.Entities;
 
 public enum ActionType {
-LIKE,JOIN,INVITE,COMMENT
+    LIKE,JOIN,INVITE,COMMENT,REPONSE,FAVORITE
 }

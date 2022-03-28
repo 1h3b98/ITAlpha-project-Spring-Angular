@@ -1,18 +1,15 @@
 package tn.esprit.project.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.project.Entities.Comment;
-import tn.esprit.project.Entities.Post;
-import tn.esprit.project.Entities.User;
-import tn.esprit.project.Repository.CommentRepository;
-import tn.esprit.project.Repository.PostRepository;
-import tn.esprit.project.Repository.UserRepository;
+import tn.esprit.project.Entities.*;
+import tn.esprit.project.Repository.*;
 
 import java.sql.Timestamp;
 import java.util.List;
 
-
+@Slf4j
 @Service
 public class CommentService implements ICommentService{
 
@@ -22,6 +19,11 @@ public class CommentService implements ICommentService{
     UserRepository ur;
     @Autowired
     PostRepository pr ;
+    @Autowired
+    NotificationRepository nr;
+    @Autowired
+    LikeCommentRepository lcr;
+
 
     @Override
     public List<Comment> getCommentsPost(Long idpost) {
@@ -34,10 +36,13 @@ public class CommentService implements ICommentService{
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         User user = ur.findById(idu).get();
         Post post = pr.findById(idp).get();
+        post.setNbrComment(post.getNbrComment()+1);
         c.setUserComment(user);
         c.setPost(post);
         c.setCreateAt(timestamp);
-        return cr.save(c);
+        cr.save(c);
+        notifyall( post , c);
+        return c;
     }
 
     @Override
@@ -53,5 +58,46 @@ public class CommentService implements ICommentService{
     public void deleteComment(Long id) {
     Comment comment = cr.findById(id).get();
     cr.delete(comment);
+    }
+
+    public void notifyall(Post post , Comment comment){
+        List<Comment> comments = post.getComments();
+        for (Comment c: comments) {
+            Notification nt = new Notification();
+            nt.setUser(c.getUserComment());
+            nt.setContent(comment.getUserComment().getFName()+" add new comment");
+            nr.save(nt);
+           log.info("");
+        }
+    }
+    /***************************** LIKE *******************************/
+    @Override
+    public LikeComment makelikecomment(Long idcomment, Long idUser) {
+        LikeComment likeComment = new LikeComment();
+        LikeCommentId likeCommentId = new LikeCommentId();
+        likeCommentId.setUser1(ur.findById(idUser).orElse(null));
+        likeCommentId.setComment1(cr.findById(idcomment).orElse(null));
+        likeComment.setLikeCommentId(likeCommentId);
+        likeComment.setValue(false);
+        return lcr.save(likeComment);
+    }
+
+    @Override
+    public LikeComment makedislikecomment(Long idcomment, Long idUser) {
+        LikeComment likeComment = new LikeComment();
+        LikeCommentId likeCommentId = new LikeCommentId();
+        likeCommentId.setUser1(ur.findById(idUser).orElse(null));
+        likeCommentId.setComment1(cr.findById(idcomment).orElse(null));
+        likeComment.setLikeCommentId(likeCommentId);
+        likeComment.setValue(true);
+        return lcr.save(likeComment);
+    }
+
+    @Override
+    public void removeLike(Long idcomment, Long idUser) {
+        LikeCommentId likeCommentId = new LikeCommentId();
+        likeCommentId.setUser1(ur.findById(idUser).orElse(null));
+        likeCommentId.setComment1(cr.findById(idcomment).orElse(null));
+        lcr.deleteById(likeCommentId);
     }
 }

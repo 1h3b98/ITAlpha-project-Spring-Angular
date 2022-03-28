@@ -3,6 +3,7 @@ package tn.esprit.project.Contoller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.project.Entities.Comment;
+import tn.esprit.project.Entities.LikeComment;
 import tn.esprit.project.Entities.Post;
 import tn.esprit.project.Service.CommentService;
 
@@ -39,5 +40,24 @@ public class CommentController {
     @ResponseBody
     public Comment updateComment(@RequestBody Comment c, @PathVariable("id")Long idCommment){
         return  cs.updateComment(c,idCommment);
+    };
+    /**********************************    like    *****************************/
+
+
+    @GetMapping("/makelikecomment/{id}/{idu}")
+    @ResponseBody
+    public LikeComment makelikecomment(@PathVariable("id")Long idcomment,@PathVariable("idu") Long idUser){
+       return cs.makelikecomment(idcomment, idUser);
+    };
+
+    @GetMapping("/makedislikecomment/{id}/{idu}")
+    @ResponseBody
+    public LikeComment  makedislikecomment(@PathVariable("id")Long idcomment,@PathVariable("idu") Long idUser){
+        return cs.makedislikecomment(idcomment, idUser);
+    };
+
+    @DeleteMapping("/deleteLike/{id}/{idu}")
+    public void removeLike(@PathVariable("id") Long idcomment,@PathVariable("idu") Long idUser){
+        cs.removeLike(idcomment,idUser);
     };
 }

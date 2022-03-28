@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "well-being-2022",
+  "private_key_id": "e5c98296e8d71be1afdfc05be723bda5f2ad35e9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDX749UuD1WjsRW\nYpE58uSiEjUwg0OS6DJnZfYvu0duyfiC3KLr3jBLG+mMnWp3VihR4bfH+tAScDd9\nPPTz+19hIoT6lJ81gtCE3WjNiPVaCJcVWE4pBTYOKU3khpuAksc+m7SYQX6dhKQ6\nIOAnaZvA3IMbSJomSQC6leTrvEtMZ2UMJTjM3ybe1fyOq7uTuZYKn0NWCpysjgjS\nxu8pzozgMAGhaqU9p8OZOl5ZITnaZjO9GuG1YU7K4Rg4knBD49vLdj605IAlx8P7\n03XquuncLj/1uQnHJgP/GLACekYm8VNgtRYUuiPRrJao2n47+riJMLDXJRnbDbbB\nsSYA01QPAgMBAAECggEAGG0vfAhpW+DDgfgdcH4y8ch4ftfibXxZs0ub6TNYtcYg\nGAGIZoEYWm66YR8ve3diET0k0njjT6qlBERAe1b8p5rFiykDx4RYPSdkoxdylbAy\nEwaNtOMzha+TcZ3uekFgS4tGhxCll4D5KOAuKxctuMfZBt2UHm+UpwaswiPnKqm0\nK+0E5IeHLagmCeZbRayz5iZ3+GzgSMhMANp0Uu86A3a3C5LzskQxeNZY9ATssTm0\nCrYyBD8ExE2HXQZVjefytRf9kqAvEe4Fl5Rdh6n8HKC+cOQZTIn9DkY5DLdWzAfY\nIObdq752o5ibPFRwX9PI2HM5quBX0LAIO6kt4GwwEQKBgQD/LHvrS2gyUIyV3yJ2\ngN9yJzcC3Svr3vbqhY7cW0g95ldbOtLE4xtgjGedNQoTP9TuFTblXThdmzk2IfJN\n24hTGo81bc4bMV/xG7s2wfWP0O6IZETgfcaY4+O+qdL81Vh9dJMILH0evJcDVGSA\niWkTYwKjLz198MRkravk7fV83wKBgQDYoo0UVkS0Y8Rcg7O0Bchjbnh107693imk\nsYR8Wz05YxukGCwPNJ6GaM3tYWw6tpftbjbwo+LyNgRERvIXqPdRv/OQwiYz/Cec\niVF6o5CT8xTuFsL5HDrhdEno1hxQQ5tZ14SSCd4USp32v6QVaVtAez78rhpP5I83\nHp/v68He0QKBgE/CktVgU6hufxMVlQsfizh+Q3a0tVbb8agqqRX9vl4C0slkYJ9E\nMbmDCZwdCRItQJxOq0MUWVsA+ugNwlRNy5XWVm8n7GWZkFioB2O9SslyUCz30oOt\nLNd7XCOrp5R6B1fniVHjvhROdJGI3oVC7kIuD5P8Xycvi+PAWVuMedBXAoGAdvnn\nU4kBmLTGTi0Cz9bxNDKis8uEEVDnPA1Gfum5GUBmGNwxrnQusBD1L+72etR3Yi3K\nvKS1amLiOwFfykDA+8PZJ+KJCrnso1sDRcB5EdhJ4WzczeWELPgp81dMG4TV2CS2\nKWKD9k74rGCZ5CyFskc905Zm2wPi59nI6wJm6lECgYBNYs0m5lfb4FlLfJKCmRhS\nF1pxg/0IppNbFNEhbFOQY8b7WpXQCLkJHUnsqsB0xKcki2CbDoij2Qho/RhrOAYV\n05N6eiGv85/7KmqE5wsXaLTRzkbFkmLhwnY6ADYiH7HAFdkXdpV/xw8cxvdvaMKf\nnIVl/WNh/I0NLNjcRp/jnw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "pi-spring-calender@well-being-2022.iam.gserviceaccount.com",
+  "client_id": "117366756200887434521",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pi-spring-calender%40well-being-2022.iam.gserviceaccount.com"
+}

@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -75,8 +76,7 @@ public class User implements Serializable {
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userOpinion")
 	 private List<Opinion> Opinions;
 	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userLike")
-	 private List<LikeComment> likeComments;
+
 	 
 	 @ManyToOne
 	 private Vote vote;
@@ -95,6 +95,13 @@ public class User implements Serializable {
 	 
 	 @OneToMany(mappedBy ="reciever")
 	 List<Message> msgRecieved;
+	@ManyToMany
+	@JsonIgnore
+	private List<Event> FavEvents;
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="userL")
+	private List<Event> rEvents;
+
+
 	 
 	 
 	 

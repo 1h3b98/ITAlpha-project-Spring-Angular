@@ -19,5 +19,5 @@ public class SignalerId implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     User user;
     @ManyToOne(fetch = FetchType.EAGER)
-    Forum form;
+    Post post;
 }

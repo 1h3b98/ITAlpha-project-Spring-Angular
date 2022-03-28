@@ -36,7 +36,7 @@ public class Forum implements Serializable {
 	Timestamp CreateAt;
 	Long NbLike;
 	Long NbComment;
-	int Rating ;
+	float Rating ;
 	int signaler;
 
 	@JsonIgnore

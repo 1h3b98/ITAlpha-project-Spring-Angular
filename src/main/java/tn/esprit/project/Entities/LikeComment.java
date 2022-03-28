@@ -2,11 +2,7 @@ package tn.esprit.project.Entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -23,17 +19,10 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LikeComment implements Serializable {/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long IdLike ;
-	boolean statut;
-	@ManyToOne
-	User userLike;
-	
-	@ManyToOne
-	Comment commentLiked ;
-
+ *
+ */
+private static final long serialVersionUID = 1L;
+	@EmbeddedId
+	LikeCommentId likeCommentId;
+	Boolean value;
 }

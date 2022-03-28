@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,10 +27,9 @@ public class QvtAnswer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long AnswerId;
 	private String Content;
-	
+	@JsonIgnore
 	@ManyToOne
 	User user;
-	
 	@ManyToOne
 	Qvt question;
 }

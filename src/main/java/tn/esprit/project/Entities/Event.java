@@ -4,12 +4,17 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,26 +31,39 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","userL"})
+
+
 public class Event implements Serializable{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id 
+	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	long eventId;
 	String title;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	Timestamp startTime;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	Timestamp endTime;
 	String img;
-	String offers;
+	int joinnbr;
 	int likenbr;
-	String eventReward;
-	
-	@OneToMany
+	int eventReward;
+
+
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="FavEvents")
+	@JsonIgnore
+	private List<User> userf;
+
+	@ManyToMany
+	private List<User> userL;
+	@OneToMany(mappedBy ="event")
+	@JsonIgnore
 	List<Action> actions;
-	
+
 	@OneToMany(mappedBy ="event")
 	List<Reward> eventrewards;
-	
+
 }
