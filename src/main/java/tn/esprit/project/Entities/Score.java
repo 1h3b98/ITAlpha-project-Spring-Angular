@@ -1,13 +1,10 @@
 package tn.esprit.project.Entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,9 +27,10 @@ public class Score implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long IdScore ;
 	int userscore;
-	
+	@Temporal(TemporalType.DATE)
+	Date date;
 	@ManyToOne 
-	Action action;
+	User user;
 	
 	@ManyToOne 
 	Quiz quiz;

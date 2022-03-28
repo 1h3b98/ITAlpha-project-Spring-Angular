@@ -43,4 +43,5 @@ public class Quiz implements Serializable {
 	
 	@OneToMany (mappedBy ="quiz")
 	List<Qquestion> Questions;
+
 }
