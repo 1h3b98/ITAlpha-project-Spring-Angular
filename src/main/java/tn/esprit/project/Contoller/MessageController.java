@@ -21,14 +21,15 @@ public class MessageController {
 
 	@Autowired
 	MessageService messageService;
-	@GetMapping("/retrieve-all-Message")
-	public List<Message> getAllMessage() {
-		List<Message> listMessage = messageService.ShowMessages();
+	@GetMapping("/retrieveallMessagebetween12/{id1}/{id2}")
+	public List<Message> getAllMessagebetween2users(@PathVariable("id1") Long id1,@PathVariable("id2") Long id2) {
+		List<Message> listMessage =null;
+		listMessage=messageService.ShowMessagesbetween2user(id1,id2);
 		return listMessage;
 	}
-	@PostMapping("/add-Message")
-	public Message addMessage(@RequestBody Message p) {
-		return messageService.AjouterMessage(p);
+	@PostMapping("/add-Message/{idsender}/{idreceiver}")
+	public Message addMessage(@RequestBody Message p,@PathVariable("idsender") Long idsender,@PathVariable("idreceiver") Long idreceiver) {
+		return messageService.AjouterMessage(p,idsender,idreceiver);
 	}
 	@PutMapping("/modify-Message")
 	public Message modifyMessage(@RequestBody Message message) {

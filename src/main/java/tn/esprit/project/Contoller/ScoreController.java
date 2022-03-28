@@ -44,9 +44,33 @@ public class ScoreController {
 		String usermail=userRepository.findById(userid).get().getEmail();
 		emailService.sendEmailWithAttachment(usermail, body, subject,certif);
 	}
-	
+	@GetMapping("/triscore/{idqz}")
+	public List<Score> retrieveallQuestionsForQuizz(@PathVariable("idqz") Long idqz) {
+	List<Score> listScore = scoreService.triscore(idqz);
+			return listScore;
+	}
+	@GetMapping("/showuserscore/{idqz}/{iduser}")
+	public int retrieveallQuestionsForQuizz(@PathVariable("idqz") Long idqz,@PathVariable("iduser") Long iduser) {
+	int score=scoreService.ShowuserScoreQuiz(idqz, iduser);
+	return score;
+	}
 
+	@PutMapping("/modify-score")
+	public Score modifyQuiz(@RequestBody Score score) {
+		return scoreService.updateScore(score);
+		
+	}
 	
+	@DeleteMapping("/remove-score/{score-id}")
+	public void removeQuiz(@PathVariable("score-id") Long scoreid) {
+		scoreService.DeleteScore(scoreid);
+	}
+
+	@GetMapping("/show-score/{score-id}")
+	public Score getQuiz(@PathVariable("score-id") Long idscore) {
+		Score score=scoreService.ShowScore(idscore);
+		return score;
+	}
 	
 	
 }

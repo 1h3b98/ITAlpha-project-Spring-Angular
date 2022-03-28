@@ -1,7 +1,17 @@
 package tn.esprit.project.Service;
 
 import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import tn.esprit.project.Entities.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,8 +24,12 @@ import tn.esprit.project.Repository.*;
 public class NotificationService implements INotificationService  {
 	@Autowired
 	NotificationRepository ntrepo;
+	@Autowired
+	UserRepository userrepo;
 	@Override
 	public Notification AjouterNotification(Notification Qz) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+Qz.setNotDate(timestamp);
 		return ntrepo.save(Qz);
 
 	}
@@ -48,4 +62,22 @@ public class NotificationService implements INotificationService  {
 	return notification;
 	}
 
+	@Override
+	public Notification sendnotif(Notification notif, long iduser) {
+User user=userrepo.findById(iduser).get();
+notif.setUser(user);
+Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+notif.setNotDate(timestamp);
+
+return ntrepo.save(notif);
+	}
+
+	@Override
+	public List<Notification> usernotifs(long iduser) {
+		List<Notification> notifs=ntrepo.shownotif(iduser);
+		return notifs;
+	}
+
 }
+
+

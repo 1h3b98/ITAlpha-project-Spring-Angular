@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -95,10 +97,10 @@ public class User implements Serializable {
 	 
 	 @OneToMany(mappedBy ="reciever")
 	 List<Message> msgRecieved;
-	 @ManyToMany(cascade = CascadeType.ALL, mappedBy="user")
-	 List<Quiz> quizs;
+	
 	    @ManyToMany(cascade = CascadeType.ALL, mappedBy="userL")
 	    private List<Event> rEvents;
+	    @JsonIgnore
 	    @OneToMany (mappedBy ="user")
 		 List<Score> scoree;
 		 

@@ -5,6 +5,9 @@ public interface INotificationService {
 	 Notification AjouterNotification(Notification Qz);
 	 Notification updateNotification (Notification Qz);
 	  void DeleteNotification(long nt );
-	  
 	  List<Notification> ShowNotification();
+	  Notification sendnotif(Notification noif,long iduser);
+	  List<Notification> usernotifs(long iduser);
+	  
+
 }

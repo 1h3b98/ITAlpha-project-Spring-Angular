@@ -1,6 +1,8 @@
 package tn.esprit.project.Service;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,9 @@ public class QuizService implements IQuizService {
 	
 	@Override
 	public Quiz AjouterQuiz(Quiz Qz,long idevent) {
-		
+		Date date = new Date();
+		  Timestamp timestamp2 = new Timestamp(date.getTime());
+		  Qz.setQDate(timestamp2);
 		/*Event event =new Event();
 		event=eventrepo.findById(idevent).get();
 		List<User> Users = event.getUserL();
@@ -42,6 +46,7 @@ public class QuizService implements IQuizService {
 		}
 	
 		*/
+		
 		return quizRepository.save(Qz);
 
 	}
@@ -62,34 +67,6 @@ public class QuizService implements IQuizService {
 		return quize;
 	}
 
-	public int calculescore(long idQz) {
-		int correct = 0;
-		/*Quiz quize = quizRepository.findById(idQz).get();
-
-		for(Qquestion q: quize.getQuestions())
-			if(q.getCorrectNumbr() == q.getChose())
-				correct++;
-		*/
-		return correct;
-	}
-	
-	public Score saveScore(long idQuiz,long Iduser) {
-	/*	Quiz quize = quizRepository.findById(idQuiz).get();
-
-		Score saveScore = new Score();
-		int score=calculescore(idQuiz);
-		saveScore.setUserscore(score);
-		//saveScore.setIduser(Iduser);
-		saveScore.setQuiz(quize);
-	
-		return scoreRep.save(saveScore);
-	}
-
-	public List<Score> getTopScore() {
-		List<Score> sList = scoreRep.findAll(Sort.by(Sort.Direction.DESC, "totalCorrect"));
-		*/
-		return null;
-	}
 	@Override
 	public List<Quiz> ShowQuizuser(long iduser) {
 		User user = new User();
@@ -126,12 +103,50 @@ public class QuizService implements IQuizService {
 		
 	return (List<Quiz>)quizRepository.findAll();
 	}
-	@Override
-	public List<Score> getTopScore() {
-		// TODO Auto-generated method stub
-		return null;
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	public int calculescore(long idQz) {
+		int correct = 0;
+		/*Quiz quize = quizRepository.findById(idQz).get();
+
+		for(Qquestion q: quize.getQuestions())
+			if(q.getCorrectNumbr() == q.getChose())
+				correct++;
+		*/
+		return correct;
 	}
 	
+	public Score saveScore(long idQuiz,long Iduser) {
+	/*	Quiz quize = quizRepository.findById(idQuiz).get();
+
+		Score saveScore = new Score();
+		int score=calculescore(idQuiz);
+		saveScore.setUserscore(score);
+		//saveScore.setIduser(Iduser);
+		saveScore.setQuiz(quize);
+	
+		return scoreRep.save(saveScore);
+	}
+
+	public List<Score> getTopScore() {
+		List<Score> sList = scoreRep.findAll(Sort.by(Sort.Direction.DESC, "totalCorrect"));
+		*/
+		return null;
+	}
 	
 	
 	

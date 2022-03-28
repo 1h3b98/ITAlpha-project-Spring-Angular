@@ -26,9 +26,9 @@ public class QuizController {
 		List<Quiz> listQuiz = quizservice.ShowQuizs();
 		return listQuiz;
 	}
-	@PostMapping("/add-Quiz/{event_id}")
-	public Quiz addQuiz(@RequestBody Quiz p,@PathVariable("event-id") Long eventid) {
-		return quizservice.AjouterQuiz(p,eventid);
+	@PostMapping("/add-Quiz/{idevent}")
+	public Quiz addQuiz(@RequestBody Quiz p,@PathVariable("idevent") Long idevent) {
+		return quizservice.AjouterQuiz(p,idevent);
 	}
 	@PutMapping("/modify-Quiz")
 	public Quiz modifyQuiz(@RequestBody Quiz quiz) {
@@ -38,35 +38,30 @@ public class QuizController {
 	public void removeQuiz(@PathVariable("Quiz-id") Long quizid) {
 		quizservice.DeleteQuiz(quizid);
 	}
-	@GetMapping("/retrieve-result")
-	public int getscore(@PathVariable("Quiz-id") Long quizid) {
-		int score =quizservice.calculescore(quizid);
-		return score;
-	}
-	@PostMapping("/add-Score")
-
-	public Score addscore(@PathVariable("Quiz-id") Long quizid,@PathVariable("User-id") Long userid) {
-		return quizservice.saveScore(quizid, userid);
-	}
-	
-	@GetMapping("/retrieve-best-score")
-	public List<Score> getTopScores() {
-		
-		
-		List<Score> sList = quizservice.getTopScore();
-		return sList;
-		}
 	@GetMapping("/retrieve-quizs/{user-id}")
 	public List<Quiz>getquizss(@PathVariable("user-id") Long iduser) {
 		List<Quiz> listQuiz = quizservice.ShowQuizuser(iduser);
 		return listQuiz;
 	}
 	
-	@GetMapping("/retrieve-Quiz/{quiz-id}")
+	@GetMapping("/show-Quiz/{quiz-id}")
 	public Quiz getQuiz(@PathVariable("quiz-id") Long idQz) {
 		Quiz qQuiz=quizservice.ShowQuiz(idQz);
 		return qQuiz;
 	}
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping("/retrieve-result")
+	public int getscore(@PathVariable("Quiz-id") Long quizid) {
+		int score =quizservice.calculescore(quizid);
+		return score;
+	}
+
 	
 	
 	

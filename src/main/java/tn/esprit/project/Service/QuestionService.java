@@ -35,7 +35,7 @@ public class QuestionService implements IQuestionServise {
 	
 	public void AjouterQuestionAndaffect(Qquestion Q, long idQuiz) {
 		 Quiz qz = quizRepository.findById(idQuiz).orElse(null);
-		 //Q.setQuiz(qz);
+		// Q.setQuizs(qz);
 		 qz.getQuestions().add(Q);
 		 qquestionRepository.save(Q);
 

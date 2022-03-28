@@ -26,20 +26,27 @@ public class NotificationController {
 		return listNotification;
 	}
 	@PostMapping("/add-Notification")
-	public Notification addQuiz(@RequestBody Notification p) {
+	public Notification addnotif(@RequestBody Notification p) {
 		return notificationS.AjouterNotification(p);
 	}
 	@PutMapping("/modify-Notification")
 	public Notification modifyNotification(@RequestBody Notification notif) {
 		return notificationS.updateNotification(notif);
 	}
-	@DeleteMapping("/remove-Quiz/{Notification-id}")
-	public void DeleteNotification(@PathVariable("/Notification-id") Long quizid) {
-		notificationS.DeleteNotification(quizid);
+	@DeleteMapping("/remove-notif/{Notification-id}")
+	public void DeleteNotification(@PathVariable("/Notification-id") Long notifid) {
+		notificationS.DeleteNotification(notifid);
+	}
+	@PostMapping("/send-Notification/{iduser}")
+	public Notification sendnotif(@RequestBody Notification p,@PathVariable("iduser") Long iduser) {
+		return notificationS.sendnotif(p,iduser);
 	}
 	
-	
-	
+	@GetMapping("/retrieve-user-Notification/{iduser}")
+	public List<Notification> getusernotif(@PathVariable("iduser") Long iduser) {
+		List<Notification> listNotification = notificationS.usernotifs(iduser);
+		return listNotification;
+	}
 	
 	
 	
