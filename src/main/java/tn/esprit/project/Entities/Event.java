@@ -40,9 +40,9 @@ public class Event implements Serializable{
 	String img;
 	String offers;
 	int likenbr;
-	String eventReward;
+	int eventReward;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "event")
 	List<Action> actions;
 	
 	@OneToMany(mappedBy ="event")

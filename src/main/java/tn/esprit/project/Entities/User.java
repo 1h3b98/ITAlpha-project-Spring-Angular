@@ -5,16 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -84,9 +75,7 @@ public class User implements Serializable {
 	 @OneToMany (mappedBy ="user")
 	 List<Notification> notifications;
 	 
-	 @OneToMany (mappedBy="user")
-	 List<ClassBadge> badges;
-	 
+
 	 @ManyToOne 
 	 Departement department;
 	 
@@ -96,7 +85,16 @@ public class User implements Serializable {
 	 @OneToMany(mappedBy ="reciever")
 	 List<Message> msgRecieved;
 	 
-	 
-	 
-	 
+	 @OneToMany(mappedBy = "sender")
+	  List<FeedBack> feedBacksent;
+
+	 @OneToMany(mappedBy = "reciever")
+	List<FeedBack> feedbackrecieved;
+
+	 @OneToOne(mappedBy = "user")
+	private Evaluation evaluation;
+
+
+	 @OneToMany(mappedBy = "user")
+	List<Score> scores;
 }
