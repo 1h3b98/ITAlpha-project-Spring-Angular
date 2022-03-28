@@ -24,23 +24,23 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Message implements Serializable {/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long messageId;
-	String text;
-	Timestamp mDate;
-	boolean viewed;
-	
-	@ManyToOne
-	User sender;
-	
-	@ManyToOne
-	User reciever;
-	
-	
-	
+public class Message implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long messageId;
+    String text;
+    Timestamp mDate;
+    boolean viewed;
+
+    @ManyToOne
+    User sender;
+
+    @ManyToOne
+    User reciever;
+
+
 }

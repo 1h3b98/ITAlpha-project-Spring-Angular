@@ -19,6 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+
 @Entity
 @Getter
 @Setter
@@ -28,19 +29,19 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Quiz implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long quizId;
-	String qTitle;
-	Timestamp qDate;
-	
-	@OneToMany (mappedBy = "quiz")
-	List<Score> scores;
-	
-	@OneToMany (mappedBy ="quiz")
-	List<Qquestion> Questions;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long quizId;
+    String qTitle;
+    Timestamp qDate;
+
+    @OneToMany(mappedBy = "quiz")
+    List<Score> scores;
+
+    @OneToMany(mappedBy = "quiz")
+    List<Qquestion> Questions;
 }

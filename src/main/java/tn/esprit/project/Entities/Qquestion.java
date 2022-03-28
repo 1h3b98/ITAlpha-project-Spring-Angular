@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+
 @Entity
 @Getter
 @Setter
@@ -24,18 +25,18 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Qquestion implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long Qid;
-	String content;
-	String choice;
-	int correctNumbr;
-	int pointNumbr;
-	
-	@ManyToOne 
-	Quiz quiz;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long Qid;
+    String content;
+    String choice;
+    int correctNumbr;
+    int pointNumbr;
+
+    @ManyToOne
+    Quiz quiz;
 }

@@ -17,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+
 @Entity
 @Getter
 @Setter
@@ -25,20 +26,20 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Reward implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long rewardId;
-	String type;
-	int val;
-	
-	@ManyToOne
-	Event event;
-	
-	@OneToMany (mappedBy ="reward")
-	List<Vote> eventVotes;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long rewardId;
+    String type;
+    int val;
+
+    @ManyToOne
+    Event event;
+
+    @OneToMany(mappedBy = "reward")
+    List<Vote> eventVotes;
 
 }

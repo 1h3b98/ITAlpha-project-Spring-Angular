@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -23,14 +24,16 @@ public class PubliciteOffre {
     private String titre;
     @Enumerated(EnumType.STRING)
     private Cible cible;
-    private Timestamp datedebut;
-    private Timestamp datefin;
+    private LocalDateTime datedebut;
+    private LocalDateTime createdat;
+    private LocalDateTime dateexpir;
     private int nbrevue;
     private String image;
     private String mail;
     private String num;
     private Date happyDay;
     private Boolean status;
+    private int  rating;
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     private User user;

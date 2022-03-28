@@ -29,30 +29,30 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Forum implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long IdForum;
-	String Content;
-	String Title;
-	Timestamp UpdateAt;
-	Timestamp CreateAt;
-	Long NbLike;
-	Long NbComment;
-	int Rating ;
-	int signaler;
-	
-	@ManyToOne
-	User userForum;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="forumOpinion")
-	 private List<tn.esprit.project.Entities.Opinion> Opinions;
-	
-	@OneToMany(mappedBy = "forum")
-	List<tn.esprit.project.Entities.ForumTag> forumtags;
-	
-	
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long IdForum;
+    String Content;
+    String Title;
+    Timestamp UpdateAt;
+    Timestamp CreateAt;
+    Long NbLike;
+    Long NbComment;
+    int Rating;
+    int signaler;
+
+    @ManyToOne
+    User userForum;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "forumOpinion")
+    private List<tn.esprit.project.Entities.Opinion> Opinions;
+
+    @OneToMany(mappedBy = "forum")
+    List<tn.esprit.project.Entities.ForumTag> forumtags;
+
+
 }

@@ -25,19 +25,19 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Opinion implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long IdOpinion;
-	String Content;
-	int signaler;
-	
-	@ManyToOne
-	User userOpinion;
-	
-	@ManyToOne
-	tn.esprit.project.Entities.Forum forumOpinion;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long IdOpinion;
+    String Content;
+    int signaler;
+
+    @ManyToOne
+    User userOpinion;
+
+    @ManyToOne
+    tn.esprit.project.Entities.Forum forumOpinion;
 }

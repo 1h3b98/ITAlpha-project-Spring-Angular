@@ -19,27 +19,25 @@ public class ReservationService {
     private final UserRepo userRepo;
     private final PubliciteRepo publiciteRepo;
 
-    public Reservation addReservation(Reservation reservation,Long idu,Long idp){
-        User user=userRepo.findById(idu).get();
-        PubliciteOffre publiciteOffre =  publiciteRepo.findById(idp).get();
+    public Reservation addReservation(Reservation reservation, Long idu, Long idp) {
+        User user = userRepo.findById(idu).get();
+        PubliciteOffre publiciteOffre = publiciteRepo.findById(idp).get();
         reservation.setUser(user);
         reservation.setPubliciteOffre(publiciteOffre);
         return reservationRepo.save(reservation);
     }
-    public void DeleteReservation(Long id){
-
+    public void DeleteReservation(Long id) {
         reservationRepo.deleteById(id);
     }
-    public List<Reservation> getALL(){
-        List<Reservation> reservationList=reservationRepo.findAll();
-        return  reservationList;
+    public List<Reservation> getALL() {
+        List<Reservation> reservationList = reservationRepo.findAll();
+        return reservationList;
     }
-    public List<Reservation> findbydate(Date date){
-
+    public List<Reservation> findbydate(Date date) {
         return reservationRepo.findReservationByDate(date);
     }
-    public  Reservation Update(Reservation reservation){
-        Reservation reservation1=reservationRepo.findById(reservation.getId()).get();
+    public Reservation Update(Reservation reservation) {
+        Reservation reservation1 = reservationRepo.findById(reservation.getId()).get();
         reservation1.setDate(reservation.getDate());
         return reservationRepo.save(reservation);
     }

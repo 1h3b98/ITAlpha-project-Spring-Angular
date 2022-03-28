@@ -8,6 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface ReservationRepo extends JpaRepository<Reservation,Long> {
+public interface ReservationRepo extends JpaRepository<Reservation, Long> {
     List<Reservation> findReservationByDate(Date date);
 }

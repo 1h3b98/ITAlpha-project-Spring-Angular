@@ -27,28 +27,28 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Action implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long actionId;
-	@Enumerated(EnumType.STRING)
-	ActionType actionType;
-	boolean likeStatus;
-	String comment;
-	boolean joinStatus;
-	
-	@ManyToOne
-	User userAction;
-	
-	@ManyToOne
-	Event event;
-	
-	@OneToMany(mappedBy = "action")
-	List<Score> scores;
-	
+public class Action implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long actionId;
+    @Enumerated(EnumType.STRING)
+    ActionType actionType;
+    boolean likeStatus;
+    String comment;
+    boolean joinStatus;
+
+    @ManyToOne
+    User userAction;
+
+    @ManyToOne
+    Event event;
+
+    @OneToMany(mappedBy = "action")
+    List<Score> scores;
+
 
 }

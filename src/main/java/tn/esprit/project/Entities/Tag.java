@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+
 @Entity
 @Getter
 @Setter
@@ -23,17 +24,18 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Tag implements Serializable{/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long IdTag ;
-	String Name;
-	String Description;
-	
-	@OneToMany(mappedBy ="tag") 
-	List<ForumTag> forumtags;
+public class Tag implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long IdTag;
+    String Name;
+    String Description;
+
+    @OneToMany(mappedBy = "tag")
+    List<ForumTag> forumtags;
 
 }

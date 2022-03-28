@@ -22,17 +22,17 @@ import javax.persistence.OneToMany;
 @NoArgsConstructor
 public class Evaluation implements Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Description;
     private Badge badge;
-   
-    
-    @OneToMany (mappedBy ="evaluation")
+
+
+    @OneToMany(mappedBy = "evaluation")
     List<ClassBadge> badges;
 
 }

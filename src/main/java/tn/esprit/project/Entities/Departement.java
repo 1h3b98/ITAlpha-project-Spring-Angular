@@ -17,17 +17,17 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Departement implements Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String Description;
     private String adresse;
-    
-    @OneToMany(mappedBy ="department")
+
+    @OneToMany(mappedBy = "department")
     List<User> users;
 
 

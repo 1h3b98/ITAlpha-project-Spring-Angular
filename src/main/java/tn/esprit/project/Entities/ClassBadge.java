@@ -23,19 +23,19 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ClassBadge  implements Serializable {
-	 
-		private static final long serialVersionUID = 1L;
-		@Id 
-		@GeneratedValue (strategy = GenerationType.IDENTITY)
-		Long Id;
-		String description;
-		tn.esprit.project.Entities.Badge badge;
-		
-		@ManyToOne
-		User user;
-		
-		@ManyToOne
-		tn.esprit.project.Entities.Evaluation evaluation;
+public class ClassBadge implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long Id;
+    String description;
+    tn.esprit.project.Entities.Badge badge;
+
+    @ManyToOne
+    User user;
+
+    @ManyToOne
+    tn.esprit.project.Entities.Evaluation evaluation;
 
 }

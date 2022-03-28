@@ -21,19 +21,19 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Vote implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long voteId;
-	boolean status;
-	
-	@ManyToOne
-	tn.esprit.project.Entities.Reward reward;
-	
-	@OneToMany(mappedBy = "vote")
-	List<User> userVotes;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long voteId;
+    boolean status;
+
+    @ManyToOne
+    tn.esprit.project.Entities.Reward reward;
+
+    @OneToMany(mappedBy = "vote")
+    List<User> userVotes;
 
 }

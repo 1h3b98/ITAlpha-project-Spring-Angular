@@ -25,16 +25,16 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Score implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long IdScore ;
-	int userscore;
-	
-	@ManyToOne 
-	Action action;
-	
-	@ManyToOne 
-	Quiz quiz;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long IdScore;
+    int userscore;
+
+    @ManyToOne
+    Action action;
+
+    @ManyToOne
+    Quiz quiz;
 
 }

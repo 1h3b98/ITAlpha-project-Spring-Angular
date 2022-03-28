@@ -26,26 +26,26 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Event implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long eventId;
-	String title;
-	Timestamp startTime;
-	Timestamp endTime;
-	String img;
-	Timestamp Day;
-	int likenbr;
-	String eventReward;
-	
-	@OneToMany
-	List<Action> actions;
-	
-	@OneToMany(mappedBy ="event")
-	List<Reward> eventrewards;
-	
+public class Event implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long eventId;
+    String title;
+    Timestamp startTime;
+    Timestamp endTime;
+    String img;
+    Timestamp Day;
+    int likenbr;
+    String eventReward;
+
+    @OneToMany
+    List<Action> actions;
+
+    @OneToMany(mappedBy = "event")
+    List<Reward> eventrewards;
+
 }

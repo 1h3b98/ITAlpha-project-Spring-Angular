@@ -27,27 +27,28 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Post implements Serializable{/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long IdPost;
-	String Content;
-	Timestamp UpdateAt;
-	Timestamp CreateAt;
-	int signaler;
-	
-	@ManyToOne
-	User userP;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="postLike")
-	 private List<tn.esprit.project.Entities.LikePost> Likes;
-	
-	@ManyToOne
-	tn.esprit.project.Entities.Categorie categorie;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="post")
-	 List<tn.esprit.project.Entities.Comment> comments;
+public class Post implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long IdPost;
+    String Content;
+    Timestamp UpdateAt;
+    Timestamp CreateAt;
+    int signaler;
+
+    @ManyToOne
+    User userP;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postLike")
+    private List<tn.esprit.project.Entities.LikePost> Likes;
+
+    @ManyToOne
+    tn.esprit.project.Entities.Categorie categorie;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    List<tn.esprit.project.Entities.Comment> comments;
 }

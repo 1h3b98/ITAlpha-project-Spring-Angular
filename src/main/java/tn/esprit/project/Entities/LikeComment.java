@@ -23,18 +23,19 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LikeComment implements Serializable {/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long IdLike ;
-	boolean statut;
-	@ManyToOne
-	User userLike;
-	
-	@ManyToOne
-	tn.esprit.project.Entities.Comment commentLiked ;
+public class LikeComment implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long IdLike;
+    boolean statut;
+    @ManyToOne
+    User userLike;
+
+    @ManyToOne
+    tn.esprit.project.Entities.Comment commentLiked;
 
 }

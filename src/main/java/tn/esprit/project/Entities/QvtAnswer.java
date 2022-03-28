@@ -19,18 +19,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QvtAnswer implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long AnswerId;
-	private String Content;
-	
-	@ManyToOne
-	User user;
-	
-	@ManyToOne
-	tn.esprit.project.Entities.Qvt question;
+    private String Content;
+
+    @ManyToOne
+    User user;
+
+    @ManyToOne
+    tn.esprit.project.Entities.Qvt question;
 }

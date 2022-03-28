@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+
 @Entity
 @Getter
 @Setter
@@ -18,6 +19,8 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private Timestamp date;
+    private Timestamp validateAt;
+    private Boolean stat;
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     PubliciteOffre publiciteOffre;

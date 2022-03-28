@@ -26,21 +26,20 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Notification implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long notId;
-	String type;
-	boolean status;
-	Timestamp notDate;
-	String content;
-	
-	@ManyToOne
-	User user;
-	
-	
-	
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long notId;
+    String type;
+    boolean status;
+    Timestamp notDate;
+    String content;
+
+    @ManyToOne
+    User user;
+
+
 }

@@ -20,15 +20,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Qvt implements Serializable{/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+public class Qvt implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long qvtId;
-	private String content;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="question")
-	 private List<QvtAnswer> QVTAnswers;
+    private String content;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    private List<QvtAnswer> QVTAnswers;
 }

@@ -26,15 +26,15 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ForumTag implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	Long TagId;
-	
-	@ManyToOne
-	Forum forum;
-	
-	@ManyToOne 
-	Tag tag;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long TagId;
+
+    @ManyToOne
+    Forum forum;
+
+    @ManyToOne
+    Tag tag;
 
 }
