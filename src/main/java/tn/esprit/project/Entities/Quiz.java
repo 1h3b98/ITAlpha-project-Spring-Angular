@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -37,11 +40,11 @@ public class Quiz implements Serializable {
 	long quizId;
 	String qTitle;
 	Timestamp qDate;
-	
-	@OneToMany (mappedBy = "quiz")
+	//@JsonIgnore
+	@OneToMany (cascade = CascadeType. ALL,mappedBy = "quiz")
 	List<Score> scores;
 	
-	@OneToMany (mappedBy ="quiz")
+	@OneToMany (cascade = CascadeType.ALL)
 	List<Qquestion> Questions;
 
 }

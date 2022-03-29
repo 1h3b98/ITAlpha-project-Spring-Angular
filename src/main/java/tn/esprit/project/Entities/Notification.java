@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,7 +38,7 @@ public class Notification implements Serializable {
 	boolean status;
 	Timestamp notDate;
 	String content;
-	
+	@JsonIgnore
 	@ManyToOne 
 	User user;
 	

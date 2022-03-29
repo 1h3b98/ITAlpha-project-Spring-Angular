@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,10 +35,10 @@ public class Message implements Serializable {/**
 	String text;
 	Timestamp mDate;
 	boolean viewed;
-	
+	@JsonIgnore
 	@ManyToOne
 	User sender;
-	
+	@JsonIgnore
 	@ManyToOne
 	User reciever;
 	

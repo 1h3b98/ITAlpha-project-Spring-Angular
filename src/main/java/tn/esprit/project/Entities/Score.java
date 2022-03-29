@@ -1,10 +1,17 @@
 package tn.esprit.project.Entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Date;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -29,10 +36,15 @@ public class Score implements Serializable {
 	int userscore;
 	@Temporal(TemporalType.DATE)
 	Date date;
+	@JsonIgnore
+	@ManyToOne 
+	Action action;
+//  @JsonIgnore
+	@ManyToOne 
+	Quiz quiz;	
+	@JsonIgnore
 	@ManyToOne 
 	User user;
 	
-	@ManyToOne 
-	Quiz quiz;
 
 }
