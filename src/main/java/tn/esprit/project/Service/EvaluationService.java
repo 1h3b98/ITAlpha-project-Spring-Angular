@@ -10,6 +10,7 @@ import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.*;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -31,6 +32,8 @@ public class EvaluationService {
     ActionRepository ar;
 
     @Autowired
+    NotificationRepository nr;
+    @Autowired
     EventRepository er;
 
     @Autowired
@@ -46,7 +49,13 @@ public void User_join_quiz(){
             u.setPoints(u.getPoints()+e.getEventReward()+u.getScores().stream().filter(s->s.getDate()
                     .before(new Date()) && s.getDate().after(addDays(new Date(),-7)))
                             .mapToInt(Score::getUserscore).sum());
-
+             Notification n = new Notification();
+             n.setUser(u);
+             n.setContent(u.getPoints()+e.getEventReward()+u.getScores().stream().filter(s->s.getDate()
+                             .before(new Date()) && s.getDate().after(addDays(new Date(),-7)))
+                     .mapToInt(Score::getUserscore).sum()+"are added to your points");
+             n.setNotDate(new Timestamp(new Date().getTime()));
+             nr.save(n);
             ur.save(u);
         });
     });
@@ -63,7 +72,7 @@ public void User_join_quiz(){
 
     //@Scheduled(cron = "@weekly")
     @Transactional
-@Scheduled(fixedRate = 6000)
+//@Scheduled(fixedRate = 6000)
     public void evaluation_like_post_Comment()
     { List<User> users= (List<User>) ur.findAll();
         for(User user : users){
@@ -94,10 +103,15 @@ public void User_join_quiz(){
                 }
                 Float Final = somme / nbrp;
                 System.out.println(Final);
-
                 System.out.println(nb.intValue());
 
                 user.setPoints((int) (points + ((Final * (nb.intValue()/nbrp) ) )));
+                Notification n = new Notification();
+                n.setUser(user);
+                n.setContent((int) (points + ((Final * (nb.intValue()/nbrp) ) ))+"are added to your points");
+                n.setNotDate(new Timestamp(new Date().getTime()));
+                n.setStatus(true);
+                nr.save(n);
                  ur.save(user);
 
             }
@@ -150,21 +164,34 @@ public void User_join_quiz(){
     public void attribute_Badges(){
         int nb=triByPoints().size();
         int index=1;
+        Notification n = new Notification();
         for (Map.Entry entry : triByPoints().entrySet()) {
             if   ((int)((index*100))/nb<=10){
                 Badgebronze(ur.findById((Long) entry.getKey()).get());
                 index++;
-                ur.save( ur.findById((Long) entry.getKey()).get());
+                ur.save(ur.findById((Long) entry.getKey()).get());
+                n.setUser(ur.findById((Long) entry.getKey()).get());
+                n.setContent("you have recieved a Bronze Badge!");
+                n.setNotDate(new Timestamp(new Date().getTime()));
+                    nr.save(n);
             }
 
             else if  (((int)((index*100))/nb>10)&&((int)((index*100))/nb<70)){
                Badgesilver(ur.findById((Long) entry.getKey()).get());
                 index++;
                 ur.save( ur.findById((Long) entry.getKey()).get());
+                n.setUser(ur.findById((Long) entry.getKey()).get());
+                n.setContent("you have recieved a Bronze Badge!");
+                n.setNotDate(new Timestamp(new Date().getTime()));
+                nr.save(n);
             }
             else {
                 Badgegold(ur.findById((Long) entry.getKey()).get());
                 ur.save( ur.findById((Long) entry.getKey()).get());
+                n.setUser(ur.findById((Long) entry.getKey()).get());
+                n.setContent("you have recieved a Bronze Badge!");
+                n.setNotDate(new Timestamp(new Date().getTime()));
+                nr.save(n);
             }
 
         }
@@ -231,13 +258,20 @@ public void User_join_quiz(){
         es.forEach(e->{
             users.add(e.getUser());
         });
-       User u = users.stream().max(Comparator.comparingInt(user -> user.getPoints())).orElse(null);
+
+
+        User u = users.stream().max(Comparator.comparingInt(user -> user.getPoints())).orElse(null);
         Trophy t = new Trophy();
         t.setDateTrophey(new Date());
         t.setTrophytype(TrophyType.Week);
         t.setEvaluation(u.getEvaluation());
         t.setDescription("congratulation "+u.getFName()+"!  you are the employee of the week");
         tr.save(t);
+        Notification n = new Notification();
+        n.setUser(u);
+        n.setContent(t.getDescription());
+        n.setNotDate(new Timestamp(new Date().getTime()));
+        nr.save(n);
 }
 
     //                           *************Employee of the month ************
@@ -271,6 +305,11 @@ public void User_join_quiz(){
             t.setEvaluation(ur.findById(idU).get().getEvaluation());
             t.setDescription("congratulation "+ur.findById(idU).get().getFName()+"!  you are the employee of the month");
             tr.save(t);
+        Notification n = new Notification();
+        n.setUser(ur.findById(idU).get());
+        n.setContent(t.getDescription());
+        n.setNotDate(new Timestamp(new Date().getTime()));
+        nr.save(n);
 
     }
 
@@ -307,6 +346,11 @@ public void User_join_quiz(){
         t.setEvaluation(ur.findById(idU).get().getEvaluation());
         t.setDescription("congratulation "+ur.findById(idU).get().getFName()+"!  you are the employee of the year");
         tr.save(t);
+        Notification n = new Notification();
+        n.setUser(ur.findById(idU).get());
+        n.setContent(t.getDescription());
+        n.setNotDate(new Timestamp(new Date().getTime()));
+        nr.save(n);
     }
 
 

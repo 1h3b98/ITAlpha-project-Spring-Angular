@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -19,6 +20,8 @@ public class FeedBack {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long Id;
     String content;
+    @Temporal(TemporalType.DATE)
+    Date date;
     @JsonIgnore
     @ManyToOne
     private User sender;

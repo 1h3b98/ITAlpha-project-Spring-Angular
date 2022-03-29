@@ -61,8 +61,7 @@ public class Action implements Serializable{
 	@ManyToOne
 	Event event;
 
-	@OneToMany(mappedBy = "action")
-	List<Score> scores;
+
 
 
 
