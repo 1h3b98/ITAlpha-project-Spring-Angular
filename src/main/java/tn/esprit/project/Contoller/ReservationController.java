@@ -1,11 +1,15 @@
 package tn.esprit.project.Contoller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.project.Entities.Reservation;
+import tn.esprit.project.Repository.ReservationRepo;
 import tn.esprit.project.Service.ReservationService;
 
+import javax.validation.GroupSequence;
 import java.util.Date;
 import java.util.List;
 
@@ -13,11 +17,25 @@ import java.util.List;
 @RequestMapping("/api")
 @AllArgsConstructor
 public class ReservationController {
+
+    @GetMapping("getbestparticpte/{titre}")
+    public List<Reservation> getbestparticpte(@PathVariable("titre") String titre) {
+        return reservationService.getbestparticpte(titre);
+    }
+
     private final ReservationService reservationService;
+    @GetMapping("countReservztion/{titre}/{id}")
+
+    public int countReservztion(@PathVariable("id") Long id,@PathVariable("titre") String titre) {
+        return reservationRepo.countReservztion(id,titre);
+    }
+
+
+    private final ReservationRepo reservationRepo;
 
     @PostMapping("/addReservation/{idu}/{idp}")
-    public Reservation addReservation(@RequestBody Reservation reservation, @PathVariable("idu") Long idu, @PathVariable("idp") Long idp) {
-        return reservationService.addReservation(reservation, idu, idp);
+    public Reservation addReservation(@PathVariable("idu") Long idu, @PathVariable("idp") Long idp) {
+        return reservationService.addReservation(idu, idp);
     }
 
     @DeleteMapping("DeleteReservation/{id}")

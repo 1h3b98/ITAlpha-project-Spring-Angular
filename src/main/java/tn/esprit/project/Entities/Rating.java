@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +16,7 @@ import javax.persistence.ManyToOne;
 @Setter
 public class Rating {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long value;
     @ManyToOne(fetch = FetchType.EAGER)

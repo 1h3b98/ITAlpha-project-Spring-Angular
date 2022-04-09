@@ -18,13 +18,10 @@ public class ForgetPasswordService {
     private final ConfirmationTokenService confirmationTokenService;
 
     public void RestPassword(String NewPassword,String username) {
-     //   ConfirmationToken token = confirmationTokenRepository.findByToken(confirmationToken);
-     //   if (token != null) {
             User user=ForgetPassword(username);
             user.setPassword(passwordEncoder.encode(NewPassword));
             userRepo.save(user);
         }
-       // return "resetpassword";
 
 
 
@@ -33,7 +30,6 @@ public class ForgetPasswordService {
              if (user != null) {
                  ConfirmationToken restPwdToken = new ConfirmationToken(user);
                  confirmationTokenRepository.save(restPwdToken);
-                 //       if (user!= null) {
                  String link = "http://localhost:8081/pi-spring/api/resetPassword/{newpass} "+restPwdToken.getConfirmationToken();
                  String token =restPwdToken.getConfirmationToken();
                  emailSender.send(

@@ -4,13 +4,10 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,20 +29,29 @@ public class Event implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     long eventId;
     String title;
     Timestamp startTime;
     Timestamp endTime;
     String img;
-    Timestamp Day;
+    int joinnbr;
     int likenbr;
-    String eventReward;
+    int eventReward;
 
-    @OneToMany
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<User> userf;
+
+    @ManyToMany
+    private List<User> userL;
+    @OneToMany()
+    @JsonIgnore
     List<Action> actions;
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany()
     List<Reward> eventrewards;
+
 
 }

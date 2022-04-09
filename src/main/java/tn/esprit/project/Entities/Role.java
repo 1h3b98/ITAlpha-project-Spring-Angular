@@ -28,4 +28,6 @@ public class Role implements Serializable {
     private String name;
 
 
+    public Role(String name) {
+    }
 }

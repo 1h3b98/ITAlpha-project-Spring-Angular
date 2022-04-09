@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.project.Entities.User;
 
 @RestController
-@RequestMapping(path = "/api/v1/registration")
+@RequestMapping(path = "/api/registration")
 @AllArgsConstructor
 public class RegistrationController {
 

@@ -1,5 +1,6 @@
 package tn.esprit.project.Entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,19 +25,22 @@ public class PubliciteOffre {
     private String titre;
     @Enumerated(EnumType.STRING)
     private Cible cible;
-    private LocalDateTime datedebut;
-    private LocalDateTime createdat;
-    private LocalDateTime dateexpir;
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date datedebut;
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date createdat;
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date dateexpir;
     private int nbrevue;
     private String image;
     private String mail;
     private String num;
-    private Date happyDay;
     private Boolean status;
-    private int  rating;
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     private User user;
     @OneToMany(mappedBy = "publiciteOffre")
     List<Reservation> reservationList;
+    @OneToMany(mappedBy = "publiciteOffre",cascade = CascadeType.ALL)
+    List<Rating> ratingList;
 }

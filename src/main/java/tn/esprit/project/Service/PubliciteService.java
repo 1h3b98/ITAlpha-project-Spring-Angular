@@ -1,6 +1,7 @@
 package tn.esprit.project.Service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,34 +15,28 @@ import tn.esprit.project.Response.ResponseHandler;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class PubliciteService {
+
+
     private final PubliciteRepo publiciteRepo;
     private final UserRepo userRepo;
+
+
+
+
     private final RatingRepository ratingRepository;
-    public ResponseEntity<Object> addOffre(PubliciteOffre publiciteOffre, Long idf) {
-        //   if(publiciteOffre.getTitre().length()<=0 && !publiciteOffre.getDatedebut().isBefore(publiciteOffre.getDateexpir())&&publiciteOffre.getDateexpir().isBefore(LocalDateTime.now()))
-        try {
-            if (publiciteOffre.getTitre().length() <= 0) {
-                return ResponseHandler.generateResponse("You should set offer title!", HttpStatus.MULTI_STATUS, publiciteOffre);
-            }
-            if (!publiciteOffre.getDatedebut().isBefore(publiciteOffre.getDateexpir())) {
-                return ResponseHandler.generateResponse("error : dateexpire is < datedebut!", HttpStatus.MULTI_STATUS, publiciteOffre);
-            }
-            if (publiciteOffre.getDateexpir().isBefore(LocalDateTime.now())) {
-                return ResponseHandler.generateResponse("error : dateexpire must be > dcurrent date!", HttpStatus.MULTI_STATUS, publiciteOffre);
-            }
-            User user = userRepo.findById(idf).get();
-            publiciteOffre.setCreatedat(LocalDateTime.now());
+    public PubliciteOffre addOffre(PubliciteOffre publiciteOffre, Long idu) {
+
+            User user = userRepo.findById(idu).get();
+            publiciteOffre.setCreatedat(new Date());
             publiciteOffre.setUser(user);
-            publiciteRepo.save(publiciteOffre);
-            return ResponseHandler.generateResponse("Successfully added offer!", HttpStatus.OK, publiciteOffre);
-        } catch (Exception e) {
-            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
-        }
+           return publiciteRepo.save(publiciteOffre);
     }
     public void DeletePub(Long id) {
         publiciteRepo.deleteById(id);
@@ -60,14 +55,13 @@ public class PubliciteService {
         PubliciteOffre publicite1 = publiciteRepo.findById(id).get();
         publicite1.setCible(publicite.getCible());
         publicite1.setDatedebut(publicite.getDatedebut());
-        publicite1.setCreatedat(LocalDateTime.now());
+        publicite1.setCreatedat(new Date());
         publicite1.setDateexpir(publicite.getDateexpir());
         publicite1.setImage(publicite.getImage());
         publicite1.setNum(publicite.getNum());
         publicite1.setMail(publicite.getMail());
         publicite1.setStatus(publicite.getStatus());
         publicite1.setUser(publicite.getUser());
-        publicite1.setHappyDay(publicite.getHappyDay());
         return publiciteRepo.save(publicite1);
     }
 
@@ -79,6 +73,10 @@ public class PubliciteService {
         rating.setPubliciteOffre(publiciteOffre);
         rating.setValue(note);
         ratingRepository.save(rating);
+   }
+   public void DeleteRating(Long id){
+        ratingRepository.deleteById(id);
+
    }
 
     public void removeRating(Rating rating) {
@@ -94,4 +92,10 @@ public class PubliciteService {
 //       }
 //       return publiciteOffreList1;
 //    }
+         public Long meiilellll(){
+        List<Rating> list =ratingRepository.findAll();
+       list.sort((u,v)-> (int) (u.getValue()-v.getValue()));
+       return list.get(0).getValue();
+         }
+
 }

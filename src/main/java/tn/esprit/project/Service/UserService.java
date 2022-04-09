@@ -2,6 +2,7 @@ package tn.esprit.project.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,23 +41,15 @@ public class UserService implements UserDetailsService {
     private final static String USER_NOT_FOUND_MSG =
             "user with email %s not found";
 
-    public User addUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepo.save(user);
-    }
-
 
     public List<User> getAll() {
         return userRepo.findAll();
     }
     public void DeleterUser(Long id) {
+
         userRepo.deleteById(id);
     }
 
-//    public List<User> getByName(String name) {
-//        List<User> userList = userRepo.findByFName(name);
-//        return userList;
-//    }
 
     public User Complétiondeprofil(User user) {
         User user1 = userRepo.findById(user.getUserId()).get();
@@ -74,6 +67,8 @@ public class UserService implements UserDetailsService {
         user1.setPoints(user.getPoints());
         user1.setDepartment(user.getDepartment());
         user1.setVote(user.getVote());
+        user1.setPicture(user.getPicture());
+
 
         return userRepo.save(user1);
     }
@@ -86,30 +81,18 @@ public class UserService implements UserDetailsService {
         Role role = (Role) roleRepo.findByName(RoleName);
         user.getRoles().add(role);
     }
-
     public  User findbyemail(String email) {
+
         return userRepo.findUserByEmail(email);
     }
 
     public User findbyusername(String username) {
+
         return userRepo.findByUsername(username);
     }
 
-    //    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user=userRepo.findByUsername(username);
-//        if(user==null){
-//            log.info("user not found in database");
-//            throw new UsernameNotFoundException("user not found in the databse");
-//        }else{
-//            log.info("yuser found in the database",username);
-//        }
-//        Collection<SimpleGrantedAuthority> authorities=new ArrayList<>();
-//        user.getRoles().forEach(role -> {authorities.add(new SimpleGrantedAuthority((role.getName())));
-//        });
-//        return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),authorities);
-//    }
     public Departement Adddpt(Departement departement) {
+
         return departementRepo.save(departement);
     }
 
@@ -143,8 +126,6 @@ public class UserService implements UserDetailsService {
         if (userExists) {
             throw new IllegalStateException("email already taken");
         }
-        //Role role=roleRepo.findByName("user");
-//      System.out.println(role);
         user.setRoles(roleRepo.findByName("user"));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
@@ -165,14 +146,19 @@ public class UserService implements UserDetailsService {
     }
 
     public Role findbyenamme(String name) {
+
         return (Role) roleRepo.findByName(name);
     }
-
     public void blockedUser(String username) {
 
         User user = userRepo.findByUsername(username);
         user.setIsBlocked(true);
         userRepo.save(user);
+    }
+    public User UserConnecte(Authentication authentication){
+        User user= (User) authentication.getPrincipal();
+    return  userRepo.findByUsername(user.getUsername());
+
     }
 
 }

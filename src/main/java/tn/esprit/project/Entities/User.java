@@ -114,6 +114,9 @@ public class User  implements UserDetails {
     public User(OtpStatus delivered, String otpMessage) {
     }
 
+    public User(String userID, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+    }
+
     public String getFName() {
         return firstName;
     }
@@ -126,27 +129,19 @@ public class User  implements UserDetails {
         return email;
     }
 
-    public User(String username, String fName, String email, String password, Long cin, Sexe sexe, String adresse, String bio, Date birthDate, int phonenumbr, String jobTitle, String picture, Hobbies hobbies, String lName) {
-    }
+   // public User(String username, String fName, String email, String password, Long cin, Sexe sexe, String adresse, String bio, Date birthDate, int phonenumbr, String jobTitle, String picture, Hobbies hobbies, String lName) {
+    //}
 
     @Override
     public String getUsername() {
         return username;
     }
-//    public String getUsername(){
-//        return username;
-//    }
+
 
     public void setUsername(String username) {
         this.username = username;
     }
-//
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//       SimpleGrantedAuthority authority= new SimpleGrantedAuthority(new Role().getName());
-//
-//        return Collections.singletonList(authority);
-//    }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -178,13 +173,6 @@ public class User  implements UserDetails {
         return password;
     }
 
-
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        SimpleGrantedAuthority authority= new SimpleGrantedAuthority(new Role().getName());
-//
-//        return Collections.singletonList(authority);
-//    }
 
 
 }

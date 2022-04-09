@@ -24,8 +24,8 @@ import tn.esprit.project.Service.UserService;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class Securityconfig extends WebSecurityConfigurerAdapter {
-   private final UserDetailsService userDetailsService;
-   private final UserService userService;
+    private final UserDetailsService userDetailsService;
+    private final UserService userService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -39,12 +39,16 @@ public class Securityconfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/api/login/**","/api/token/refresh","/api/user/save"
                 ,"/api/role/affectionate/{idu}/{idr}","/api/role/save","/api/role/addtouser/{username}/{RoleName}",
-                "/api/addepartement","/api/affecterdpttouser/{username}/{title}","/api/delete/{id}",
-                "/api/v1/registration/add","/api/v1/registration/confirm","/api/ForgetPassword/{username}","/api/resetPassword/{newpass}/{username}","/router/sendOTP","/api/getuserbyname/{email}","/api/getrolebyen/{name}","/api/completerleprofil","/api/getueserbyusername/{username}").permitAll();
+                "/api/add-dpt","/api/assigndepartmenttouser/{username}/{title}","/api/delete/{id}",
+                "/api/registration/add","/api/registration/confirm","/api/ForgetPassword/{username}","/api/resetPassword/{newpass}/{username}","/router/sendOTP"
+                ,"/api/getuserbyname/{email}","/api/getrolebyen/{name}","/api/completerleprofil","/api/getueserbyusername/{username}"
+                ,"/router/sendOTP","/api/addofre/{idf}","/api/addrating/{note}/{idp}/{idu}","/api/addReservation/{idu}/{idp}","/api/DeleteRating/{id}","/api/GetMeilleurOffre","/api/countReservztion/{titre}/{id}","/api/getbestparticpte/{titre}").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/user/**").hasAnyAuthority("user");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/user/save/**").hasAnyAuthority("admin");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users").hasAnyAuthority("admin");
         http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/blockedusername/{username}").hasAnyAuthority("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/registration/add").hasAnyAuthority("user").and().rememberMe().userDetailsService(userDetailsService);
+
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
