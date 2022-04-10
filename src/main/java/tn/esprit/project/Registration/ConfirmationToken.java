@@ -21,11 +21,7 @@ public class ConfirmationToken {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
 
     private Long id;
-
-
     private String token;
-
-
     private LocalDateTime createdAt;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
