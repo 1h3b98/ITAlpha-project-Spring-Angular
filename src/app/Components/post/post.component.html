@@ -1,0 +1,56 @@
+
+
+        <!--*************midlle**************-->
+        <div class="midlle">
+            <!-------------------storeis--------------->
+          
+             <!-------------------end storeis--------------->
+             
+            <!-------------------POST--------------->
+            <div class="feeds">
+                <div class="feed">
+                    <div class="head">
+                        <div class="user">
+                            <div class="profile-photo">
+                                <img src="assets/images/bessem.jpg">
+                            </div>
+                            <div class="ingo">
+                                <h3>bessem azizi</h3>
+                                <small>{{post.createAt| date: 'dd/MM/yyyy'}}</small>
+                            </div>
+                        </div>
+                        <span class="edit"><i class="uil uil-ellipsis-h"></i></span>
+                    </div>
+                    <div class="caption">
+                        <p>{{post.content}}</p>
+                    </div>
+                    <div class="action-buttons">
+                        <div class="interaction-buttons">
+                            <span><i class="uil uil-heart"></i></span>
+                            <span><i class="uil uil-comment-dots"></i></span>
+                        </div>
+    
+                        <div class="bookmark">
+                            <span><i class="uil uil-bookmark-full"></i></span> 
+                        </div>
+    
+                    </div>
+                    <div class="liked-by">
+                        <span><img src="assets/images/iheb.jpg"></span>
+                        <span><img src="assets/images/iheb.jpg"></span>
+                        <span><img src="assets/images/iheb.jpg"></span>
+                        <p>liked by<b>bessem</b>and<b>20 others</b></p>
+                    </div>
+                    <div class="comments text-muted">
+                        View all 20 comments
+                      
+                    </div>
+    
+                </div>
+            </div>
+
+            <input type="submit" (click)="delete(post)" value="delete" class="btn btn-primary">
+            <!-------------------END POST--------------->
+            <!-------------------FEEDS--------------->
+          
+           
