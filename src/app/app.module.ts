@@ -6,11 +6,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { PostComponent } from './components/post/post.component';
+import { ListPostesComponent } from './components/list-postes/list-postes.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    PostComponent,
+    ListPostesComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
