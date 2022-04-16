@@ -4,5 +4,7 @@ export const env ={
     AddUrl:"/FeedBack/add",
     feedsRecievedUrl:"/FeedBack/show",
     nbrRecievedUrl:"/FeedBack/nbr",
-    getusersurl:"FeedBack/getusers"
+    getusersurl:"FeedBack/getusers",
+    getPosturl :"/post/get",
+    getCommentByPost:"/comment/getComments/"
     }

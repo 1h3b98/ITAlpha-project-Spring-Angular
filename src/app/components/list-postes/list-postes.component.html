@@ -1,0 +1,67 @@
+<div id="content-page" class="content-page">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-8 row m-0 p-0">
+             <div class="col-sm-12">
+                <div id="post-modal-data" class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                   <div class="iq-card-header d-flex justify-content-between">
+                      <div class="iq-header-title">
+                         <h4 class="card-title">Create Post</h4>
+                      </div>
+                   </div>
+                   <div class="iq-card-body" data-toggle="modal" data-target="#post-modal">
+                      <div class="d-flex align-items-center">
+                         <div class="user-img">
+                            <img src="images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle">
+                         </div>
+                            <input  class="form-control rounded" placeholder="Write something here..." style="border:none;" >
+                      </div>
+                      <hr>
+                      <ul class="post-opt-block d-flex align-items-center list-inline m-0 p-0">
+                         <li><a href="#"></a><img src="assets/images/small/07.png" alt="icon" class="img-fluid"> Video</li>
+                         <li class="iq-bg-primary rounded p-2 pointer mr-3"><a href="#"></a><img src="assets/images/small/07.png" alt="icon" class="img-fluid"> Photo</li>
+                         
+                      </ul>
+                   </div>
+                   <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modalLabel" aria-hidden="true" style="display: none;">
+                      <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                            <div class="modal-header">
+                               <h5 class="modal-title" id="post-modalLabel">Create Post</h5>
+                               <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="ri-close-fill m-0"></i></button>
+                            </div>
+                            <div class="modal-body">
+                               <div class="d-flex align-items-center">
+                                  <div class="user-img">
+                                     <img src="assets/images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle img-fluid">
+                                  </div>
+
+                                     <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;" [(ngModel)]="cont">
+
+                               </div>
+                               <hr>
+                               <ul class="d-flex flex-wrap align-items-center list-inline m-0 p-0">
+                                  <li class="col-md-6 mb-3">
+                                    <input type="file" (change)="onFileChanged($event)"  class="btn btn-primary"> 
+                                  </li>                              
+                               </ul>
+                               <hr>
+                              
+                               <button type="submit" (click)="onUpload()" class="btn btn-primary d-block w-100 mt-3">post</button>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <app-post *ngFor="let p of Listposts" [post]="p" (DeletePost)="deletePost($event)">  
+            </app-post>
+          </div>
+          <div class="col-sm-12 text-center">
+             <img src="assets/images/page-img/page-load-loader.gif" alt="loader" style="height: 100px;">
+          </div>
+       </div>
+    </div>
+ </div>
+ 
+ 
