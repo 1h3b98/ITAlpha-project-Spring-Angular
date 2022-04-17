@@ -1,0 +1,86 @@
+
+   <body class="sidebar-main-active right-column-fixed">
+      
+    
+      <!-- Wrapper Start -->
+      <div class="wrapper">
+         
+        
+        
+         <div class="header-for-bg">
+            <div class="background-header position-relative">
+               <img src="assets/images/page-img/profile-bg6.jpg" class="img-fluid w-100 rounded rounded" alt="profile-bg">
+               <div class="title-on-header">
+                  <div class="data-block">
+                     <h2>Your Events</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <div class="container" >
+               <div class="row" >
+                  <!--<li>{{event.title}}</li>
+                   <li></li>
+                   <li>{{event.endTime}}</li>
+                   <li>{{event.joinnbr}}</li>
+                   <li>{{event.likenbr}}</li>
+                   <li>{{event.eventReward}}</li>-->
+                <div class="col-md-6 col-lg-4" *ngFor="let event of eventList">
+                     <div class="iq-card rounded iq-card-block iq-card-stretch iq-card-height">
+                        <div class="event-images">
+                           <a href="#">
+                           <img src="assets/images/page-img/51.jpg" class="img-fluid" alt="Responsive image">
+                           </a>
+                        </div>
+                        <div class="iq-card-body">
+                           <div class="d-flex">
+                              <div class="date-of-event">
+                                 <span>{{event.startTime | date: "MMM"}}</span>
+                                 <h5>{{event.startTime | date: "dd"}}</h5>
+                              </div>
+                              <div class="events-detail ml-3">
+                                 <h5><a href="event-detail.html">{{event.title}}</a></h5>
+                                 <p>Lorem Ipsum is simply dummy text</p>
+                                 
+                                 
+
+                                 <div class="event-member">
+                                    <div class="iq-media-group">
+                                       <a href="#" class="iq-media">
+                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/05.jpg" alt="">
+                                       </a>
+                                       <a href="#" class="iq-media">
+                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/06.jpg" alt="">
+                                       </a>
+                                       <a href="#" class="iq-media">
+                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/07.jpg" alt="">
+                                       </a>
+                                       <a href="#" class="iq-media">
+                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/08.jpg" alt="">
+                                       </a>
+                                       <a href="#" class="iq-media">
+                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/09.jpg" alt="">
+                                       </a>
+                                    </div>
+                                 </div>
+                              </div>
+                              
+                           </div>
+                           <div class="row justify-content-around mb-3">
+                              <button type="button" class="btn btn-outline-primary rounded-pill mb-3">JOIN</button>
+                              <button type="button" class="btn btn-outline-danger rounded-pill mb-3">  LIKE <i class="ion-heart">  </i></button>
+                           </div>
+                        </div>
+                     </div>
+                    
+                </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Wrapper END -->
+    
+
+   </body>
