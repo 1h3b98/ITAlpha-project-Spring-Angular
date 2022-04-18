@@ -4,9 +4,11 @@ export class Post{
     updateAt : Date;
     createAt: Date;
     nbrComment :number;
+    nbrLike : number;
+    nbrdislike : number;
     note : number;
     idimage : number;
     retrievedImage: any;
-    pic_byte:any;
+    data:any;
     comments : any
 }

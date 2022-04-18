@@ -54,7 +54,7 @@
                    </div>
                 </div>
              </div>
-             <app-post *ngFor="let p of Listposts" [post]="p" (DeletePost)="deletePost($event)">  
+             <app-post *ngFor="let p of Listposts" [post]="p" (DeletePost)="deletePost($event)" (updatePost)="getPosts()">  
             </app-post>
           </div>
           <div class="col-sm-12 text-center">

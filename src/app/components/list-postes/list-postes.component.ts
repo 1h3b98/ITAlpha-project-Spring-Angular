@@ -20,11 +20,14 @@ export class ListPostesComponent implements OnInit {
   constructor(private postservice : PostService , private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+   this.getPosts();
+  }
+
+  getPosts(){
     this.postservice.getPosts().subscribe(
       (data:Post[])=>this.Listposts=data
     );
   }
-
   deletePost(u: Post){
     this.Listposts= this.Listposts.filter((e: Post)=>{
       return e.idPost!=u.idPost;   

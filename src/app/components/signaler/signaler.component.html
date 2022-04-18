@@ -1,0 +1,33 @@
+<h1 mat-dialog-title> signaler post</h1>
+<div>Your favorite season is: </div>
+<div mat-dialog-actions>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group" >
+  <mat-radio-button class="example-radio-button"  value="nudity"(change)="Category($event)" >
+    nudity
+  </mat-radio-button>
+  <mat-radio-button class="example-radio-button"  value="violence" (change)="Category($event)">
+    violence
+  </mat-radio-button>
+  <mat-radio-button class="example-radio-button"  value="harassment" (change)="Category($event)" >
+    harassment
+  </mat-radio-button>
+  <mat-radio-button class="example-radio-button"  value="terrorisme" (change)="Category($event)" >
+    terrorisme
+  </mat-radio-button>
+  <mat-radio-button class="example-radio-button"  value="other" (change)="Category($event)" >
+    other
+  </mat-radio-button>
+</mat-radio-group>
+</div>
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <input class="form-control" name="description" class="form-control" [(ngModel)]="signaler.description">
+  </div>
+</form>
+<div mat-dialog-action [align]="'end'">
+<button class="btn btn-warning d-block w-100 mt-3" mat-dialog-close >close</button>
+<button class="btn btn-primary d-block w-100 mt-3" (click)="SignalerPost()" mat-dialog-close >signaler</button>
+</div>

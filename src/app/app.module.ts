@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,15 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { PostComponent } from './components/post/post.component';
 import { ListPostesComponent } from './components/list-postes/list-postes.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MemoriesComponent } from './components/memories/memories.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SignalerComponent } from './components/signaler/signaler.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { UpdateComponent } from './components/update/update.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +25,27 @@ import { CommentComponent } from './components/comment/comment.component';
     FeedbackComponent,
     PostComponent,
     ListPostesComponent,
-    CommentComponent
+    CommentComponent,
+    MemoriesComponent,
+    SignalerComponent,
+    DeleteDialogComponent,
+    UpdateComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
-  ],
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    ReactiveFormsModule
+
+    
+  ], 
   providers: [],
   bootstrap: [AppComponent]
 })
