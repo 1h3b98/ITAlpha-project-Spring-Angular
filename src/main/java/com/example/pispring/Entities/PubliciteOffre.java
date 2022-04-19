@@ -36,7 +36,7 @@ public class PubliciteOffre {
     private String mail;
     private String num;
     private Boolean status;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JsonIgnore
     private User user;
     @OneToMany(mappedBy = "publiciteOffre")

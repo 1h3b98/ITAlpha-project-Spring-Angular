@@ -47,11 +47,8 @@ public class User  implements UserDetails {
     private Boolean enabled =false;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
-
-
     @ManyToOne(cascade = CascadeType.ALL)
     Departement department;
-
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     List<PubliciteOffre> publiciteLis;

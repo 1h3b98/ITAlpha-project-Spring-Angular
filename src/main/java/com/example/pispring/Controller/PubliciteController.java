@@ -50,7 +50,7 @@ public class PubliciteController {
 
 
 
-    @DeleteMapping("DeletePub/{Id}")
+    @DeleteMapping("DeletePub/{id}")
     public void DeletePub(@PathVariable("id") Long id) {
 
         publiciteService.DeletePub(id);
@@ -66,10 +66,10 @@ public class PubliciteController {
         return publiciteService.getByTtile(title);
     }
 
-    @PutMapping("Updatpublicite/{pub}/{id}")
-    public PubliciteOffre Update(@PathVariable("pub") PubliciteOffre publicite, @PathVariable("id") Long id) {
+    @PutMapping("/Updatpublicite/{idpub}")
+    public PubliciteOffre Update(@RequestBody PubliciteOffre publicite,@PathVariable("idpub") Long idpub) {
 
-        return publiciteService.Update(publicite, id);
+        return publiciteService.Update(publicite,idpub);
     }
 
 

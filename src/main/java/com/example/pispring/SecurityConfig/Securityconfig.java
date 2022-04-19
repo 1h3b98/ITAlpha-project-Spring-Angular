@@ -42,7 +42,8 @@ public class Securityconfig extends WebSecurityConfigurerAdapter {
                 "/api/add-dpt","/api/assigndepartmenttouser/{username}/{title}","/api/delete/{id}",
                 "/api/registration/add","/api/registration/confirm","/api/ForgetPassword/{username}","/api/resetPassword/{newpass}/{username}","/router/sendOTP"
                 ,"/api/getuserbyname/{email}","/api/getrolebyen/{name}","/api/completerleprofil","/api/getueserbyusername/{username}"
-                ,"/router/sendOTP","/api/addofre/{idf}","/api/addrating/{note}/{idp}/{idu}","/api/addReservation/{idu}/{idp}","/api/DeleteRating/{id}","/api/GetMeilleurOffre","/api/countReservztion/{titre}/{id}","/api/getbestparticpte/{titre}").permitAll();
+                ,"/router/sendOTP","/api/addofre/{idf}","/api/addrating/{note}/{idp}/{idu}","/api/addReservation/{idu}/{idp}","/api/DeleteRating/{id}"
+                ,"/api/GetMeilleurOffre","/api/countReservztion/{titre}/{id}","/api/getbestparticpte/{titre}","/api/GetAllpub","/api/Updatpublicite/{idpub}","/api/DeletePub/{id}").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/user/**").hasAnyAuthority("user");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/user/save/**").hasAnyAuthority("admin");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users").hasAnyAuthority("admin");

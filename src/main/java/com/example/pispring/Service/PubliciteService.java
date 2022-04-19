@@ -30,7 +30,6 @@ public class PubliciteService {
 
     private final RatingRepository ratingRepository;
     public PubliciteOffre addOffre(PubliciteOffre publiciteOffre, Long idu) {
-
             User user = userRepo.findById(idu).get();
             publiciteOffre.setCreatedat(new Date());
             publiciteOffre.setUser(user);
@@ -49,8 +48,8 @@ public class PubliciteService {
         return userList;
     }
 
-    public PubliciteOffre Update(PubliciteOffre publicite, Long id) {
-        PubliciteOffre publicite1 = publiciteRepo.findById(id).get();
+    public PubliciteOffre Update(PubliciteOffre publicite,Long idpub) {
+        PubliciteOffre publicite1 = publiciteRepo.findById(idpub).get();
         publicite1.setCible(publicite.getCible());
         publicite1.setDatedebut(publicite.getDatedebut());
         publicite1.setCreatedat(new Date());
