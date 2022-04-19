@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Date;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,11 +34,17 @@ public class Score implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long IdScore ;
 	int userscore;
-	
+	@Temporal(TemporalType.DATE)
+	Date date;
+	@JsonIgnore
 	@ManyToOne 
 	Action action;
-	
+//  @JsonIgnore
 	@ManyToOne 
-	Quiz quiz;
+	Quiz quiz;	
+	@JsonIgnore
+	@ManyToOne 
+	User user;
+	
 
 }

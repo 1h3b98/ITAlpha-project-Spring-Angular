@@ -14,7 +14,7 @@ public interface LikePostRepository extends CrudRepository<LikePost, LikePostId>
     @Query("select count(R) from LikePost R  where R.value=true and R.likepostId.post= :post")
     public Integer countnblikebypost(@Param("post") Post post);
 
-    @Query("select count(R) from LikePost R  where R.value=false and R.likepostId= :post")
+    @Query("select count(R) from LikePost R  where R.value=false and R.likepostId.post= :post")
     public Integer countnbdeslikebypost(@Param("post") Post post);
 
     @Query("select R.likepostId.post from LikePost R")
