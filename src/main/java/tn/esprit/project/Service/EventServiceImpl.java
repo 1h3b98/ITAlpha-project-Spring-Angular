@@ -2,18 +2,20 @@ package tn.esprit.project.Service;
 
 import java.io.IOException;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.project.Entities.Event;
-import tn.esprit.project.Entities.User;
+import org.springframework.web.multipart.MultipartFile;
+import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.ActionRepository;
 import tn.esprit.project.Repository.EventRepository;
 import tn.esprit.project.Repository.UserRepository;
 import tn.esprit.project.Service.GoogleCalendarService;
 
 @Service
+@Transactional
 public class EventServiceImpl implements tn.esprit.project.Service.IEventService {
 	@Autowired
 	EventRepository er;
@@ -90,7 +92,7 @@ public class EventServiceImpl implements tn.esprit.project.Service.IEventService
 	public Event findEvent(long eventId){
 		return er.findById(eventId).orElse(null);
 	}
-	
-	
+
+
 
 }

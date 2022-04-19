@@ -63,7 +63,9 @@ public class Event implements Serializable{
 	@JsonIgnore
 	List<Action> actions;
 
+
 	@OneToMany(mappedBy ="event")
+	@JsonIgnore
 	List<Reward> eventrewards;
 
 }
