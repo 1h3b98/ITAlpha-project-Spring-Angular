@@ -194,10 +194,10 @@
                            </div>
                         </li>
                         <li class="nav-item">
-                           <a href="#" class="search-toggle  ">
-                              <div id="lottie-beil"></div>
+                           <a href="#" class="search-toggle   dropdown-toggle" id="notification-drop" data-bs-toggle="dropdown">
+                              <i class="ri-notification-4-line"></i>
                               <span class="bg-danger dots"></span>
-                           </a>
+                          </a>
                            <div class="iq-sub-dropdown">
                               <div class="iq-card shadow-none m-0">
                                  <div class="iq-card-body p-0 ">
@@ -257,10 +257,12 @@
                            </div>
                         </li>
                         <li class="nav-item dropdown">
-                           <a href="#" class="search-toggle  ">
-                              <div id="lottie-mail"></div>
+                           
+                           <a href="#" class="search-toggle" id="mail-drop" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="ri-mail-line"></i>
                               <span class="bg-primary count-mail"></span>
-                           </a>
+
+                          </a>
                            <div class="iq-sub-dropdown">
                               <div class="iq-card shadow-none m-0">
                                  <div class="iq-card-body p-0 ">
@@ -422,7 +424,15 @@
          </div>
          <!-- Right Sidebar Panel End-->
          <!-- Page Content  -->
-        <app-list-postes></app-list-postes>>
+         <div id="content-page" class="content-page">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-12">
+                     <app-badge></app-badge>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
       <!-- Wrapper END -->
       <!-- Footer -->
@@ -441,36 +451,7 @@
             </div>
          </div>
       </footer>
-      <nav class="iq-float-menu">
-         <input type="checkbox" class="iq-float-menu-open" name="menu-open" id="menu-open" />
-         <label class="iq-float-menu-open-button" for="menu-open">
-            <span class="lines line-1"></span>
-            <span class="lines line-2"></span>
-            <span class="lines line-3"></span>
-         </label>
-         <button class="iq-float-menu-item bg-info"  data-toggle="tooltip" data-placement="top" title="Direction Mode" data-mode="rtl"><i class="ri-text-direction-r"></i></button>
-         <button class="iq-float-menu-item bg-danger"  data-toggle="tooltip" data-placement="top" title="Color Mode" id="dark-mode" data-active="true"><i class="ri-sun-line"></i></button>
-         <button class="iq-float-menu-item bg-warning" data-toggle="tooltip" data-placement="top" title="Comming Soon"><i class="ri-palette-line"></i></button> 
-      </nav>
-      <!-- Backend Bundle JavaScript -->
-      <script src="../assets/js/libs.min.js"></script>
-      <!-- slider JavaScript -->
-      <script src="../assets/js/slider.js"></script>
-      <!-- masonry JavaScript --> 
-      <script src="../assets/js/masonry.pkgd.min.js"></script>
-      <!-- SweetAlert JavaScript -->
-      <script src="../assets/js/enchanter.js"></script>
-      <!-- SweetAlert JavaScript -->
-      <script src="../assets/js/sweetalert.js"></script>
-      <!-- Chart Custom JavaScript -->
-      <script src="../assets/js/customizer.js"></script>
-      <!-- app JavaScript -->
-      <script src="../assets/js/charts/weather-chart.js"></script>
-      <script src="../assets/js/app.js"></script>
-      <script src="../assets/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-      <script src="../assets/js/lottie.js"></script>
       
-  
       <!-- Footer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->

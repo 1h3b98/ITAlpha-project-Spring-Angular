@@ -6,5 +6,9 @@ export const env ={
     nbrRecievedUrl:"/FeedBack/nbr",
     getusersurl:"FeedBack/getusers",
     getPosturl :"/post/get",
-    getCommentByPost:"/comment/getComments/"
+    getCommentByPost:"/comment/getComments/",
+    getBadge:"/Evaluation/getbadge/",
+    getTrophies:"/Evaluation/gettrophies/",
+    gettropheytoday:"/gettropheytoday/",
+    getnbrRecieved:"FeedBack/nbr/"
     }

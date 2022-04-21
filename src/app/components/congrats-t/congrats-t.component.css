@@ -1,0 +1,7 @@
+.animate{
+    animation: grow 1s ease-out backwards;
+    animation: pulse .7s 1.5s;
+    animation-duration: 2s;
+    animation-iteration-count:calc(2);
+      transform-origin: 50% 50%;
+}
