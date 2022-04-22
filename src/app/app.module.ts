@@ -18,6 +18,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { UpdateComponent } from './components/update/update.component';
+import { ListForumComponent } from './components/list-forum/list-forum.component';
+import { ForumComponent } from './components/forum/forum.component';
+import { AddForumComponent } from './components/add-forum/add-forum.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DeleteforumDialagComponent } from './components/deleteforum-dialag/deleteforum-dialag.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +38,11 @@ import { UpdateComponent } from './components/update/update.component';
     SignalerComponent,
     DeleteDialogComponent,
     UpdateComponent,
+    ListForumComponent,
+    ForumComponent,
+    AddForumComponent,
+    DeleteforumDialagComponent,
+    
     
   ],
   imports: [
@@ -42,7 +55,11 @@ import { UpdateComponent } from './components/update/update.component';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatBadgeModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule
 
     
   ], 

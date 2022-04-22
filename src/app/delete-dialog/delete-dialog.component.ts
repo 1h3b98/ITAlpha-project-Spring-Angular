@@ -9,23 +9,19 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DeleteDialogComponent implements OnInit {
   btnAction :string ='ok';
-  constructor(private postservice : PostService,@Inject(MAT_DIALOG_DATA) public data : any,private dialogRef : MatDialogRef<DeleteDialogComponent>) { }
+  constructor(private postservice : PostService,@Inject(MAT_DIALOG_DATA) public data  : any,private dialogRef : MatDialogRef<DeleteDialogComponent>) { }
 
   ngOnInit(): void {
   }
 
-  decline(){
 
-  }
   accept(){
     this.postservice.deletepost(this.data).subscribe((Response)=>{
      console.log(this.data);
      this.dialogRef.close('ok');
-    });
+    }); 
   }
-  dismiss(){
-    
-  }
+ 
 
 
 }

@@ -1,0 +1,120 @@
+
+    
+             <div class="col-sm-12">
+               <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                  <div class="iq-card-body">
+                     <div class="user-post-data">
+                        <div class="d-flex flex-wrap">
+                           <div class="media-support-user-img mr-3">
+                             
+                              <img class="rounded-circle img-fluid" src="assets/ images/user/03.jpg" alt="">
+                           </div>
+                           <div class="media-support-info mt-2">
+                              <h5 class="mb-0 d-inline-block"><a href="#" class="">Barb Ackue</a></h5>
+                            
+                              <p class="mb-0 text-primary">------------</p>
+                           </div>
+                           <div class="iq-card-post-toolbar">
+                              <div class="dropdown">
+                                 <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                 <i class="ri-more-fill"></i>
+                                 </span>
+                                 <div class="dropdown-menu m-0 p-0">
+                                    <a class="dropdown-item p-3" >
+                                       <div class="d-flex align-items-top">
+                                          <div class="icon font-size-20"><i class="ri-save-line"></i></div>
+                                          <div class="data ml-2">
+                                             <h6>signaler</h6>
+                                             <p class="mb-0">Add this to your saved items</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a class="dropdown-item p-3" (click)="openConfirmationDialog(article)" >
+                                       <div class="d-flex align-items-top">
+                                          <div class="icon font-size-20"><i class="ri-close-circle-line"></i></div>
+                                          <div class="data ml-2">
+                                             <h6>delete</h6>
+                                             <p class="mb-0">See fewer posts like this.</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a class="dropdown-item p-3" (click)="addToFavoris(article)" >
+                                       <div class="d-flex align-items-top">
+                                          <div class="icon font-size-20"><i class="ri-notification-line"></i></div>
+                                          <div class="data ml-2">
+                                             <h6> add favoris</h6>
+                                             <p class="mb-0">dernier update  </p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="mt-3">
+                        <p>{{article.title}}</p>
+                     </div>
+                     <div class="user-post">
+                        <a href="javascript:void();"><img alt="post-image" class="img-fluid rounded w-100"></a>
+                     </div>
+                     <div class="comment-area mt-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                           <div class="like-block position-relative d-flex align-items-center">
+                              <div class="d-flex align-items-center">
+                                 <div class="like-data">
+                                    <div class="dropdown">
+                                       <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                       <img src="assets/images/icon/01.png" class="img-fluid" alt="">
+                                       </span>
+                                       <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                         <img src="assets/images/icon/06.png" class="img-fluid" alt="">
+                                         </span>
+                                       <div class="dropdown-menu">
+                                          <a class="mr-2"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Love"><img src="assets/images/icon/02.png" class="img-fluid" ></a>
+                                          <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                            aaaaaa
+                                            </span>
+                                          <a class="mr-2"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Sade"><img src="assets/images/icon/06.png" class="img-fluid" ></a>
+                                          <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                             aaaaa
+                                            </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="total-like-block ml-2 mr-3">
+                                    <div class="dropdown">
+                                       <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                        aaaaaaa
+                                       </span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="share-block d-flex align-items-center feather-icon mr-3">
+                                 <div class="dropdown">
+                                    <span  >
+                                     Comments
+                                    </span>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <hr>
+                        <ul class="post-comments p-0 m-0">
+                        
+                        </ul>
+                        <form class="comment-text d-flex align-items-center ">
+                           <input type="text" class="form-control rounded" name="bessem">
+                           <div class="comment-attagement d-flex">
+                            <button  type="button" class="btn btn-light"><a type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16" >
+                              <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                            </svg></a>send</button>
+                             <button (click)=" openDialog()">test</button> 
+                             
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            

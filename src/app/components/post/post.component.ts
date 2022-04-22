@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
   @Input() post : Post;
   signaler : Signaler = new Signaler();
   @Output() DeletePost = new EventEmitter<Post>();
-  @Output() updatePost = new EventEmitter();
+  @Output() updatePost = new EventEmitter(); 
   ListComment : comment[];
   valeurRadio : string;
   idPostSignler : number;
@@ -49,7 +49,7 @@ export class PostComponent implements OnInit {
    });
 
  }
- getcomment(id : number){
+ getcomment(id : number){ 
   this.CommentService.getComment(id).subscribe(
     (data:comment[])=>this.ListComment=data
   );
