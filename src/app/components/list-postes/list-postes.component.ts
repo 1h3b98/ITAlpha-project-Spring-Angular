@@ -27,7 +27,7 @@ export class ListPostesComponent implements OnInit {
     this.postservice.getPosts().subscribe(
       (data:Post[])=>this.Listposts=data
     );
-  }
+  } 
   deletePost(u: Post){
     this.Listposts= this.Listposts.filter((e: Post)=>{
       return e.idPost!=u.idPost;   

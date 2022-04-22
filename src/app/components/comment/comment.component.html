@@ -1,16 +1,51 @@
 <li>
-    <div class="d-flex flex-wrap">
+    <div *ngIf="showUpdate" class="d-flex flex-wrap">
        <div class="user-img">
           <img src="assets/images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
        </div>
-       <div class="comment-data-block ml-3">
+       <div  class="comment-data-block ml-3">
           <h6>Paul Molive</h6>
           <p class="mb-0">{{comment.content}}</p>
           <div class="d-flex flex-wrap align-items-center comment-activity">
-             <a href="javascript:void();">1 like</a>
-             <a href="javascript:void();">reply</a>
-             <span> 5 min </span>
+             <a type="button" (click)=" likeComment(comment.idComment)">1 like</a> 
+             
+               <div class="iq-card-post-toolbar">
+                  <div class="dropdown">
+                     <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                     <i class="ri-more-fill"></i>
+                     </span>
+                     <div class="dropdown-menu m-0 p-0"  type="button" (click)="get()">
+                        <a class="dropdown-item p-3" >
+                           <div class="d-flex align-items-top">
+                              <div class="icon font-size-20"><i class="ri-save-line"></i></div>
+                              <div class="data ml-2">
+                                 <h4>update</h4>
+                              </div>
+                           </div>
+                        </a>
+                        <a class="dropdown-item p-3" type="button" (click)=" deleteComment(comment)" >
+                           <div class="d-flex align-items-top">
+                              <div class="icon font-size-20"><i class="ri-close-circle-line"></i></div>
+                              <div class="data ml-2">
+                                 <h6>delete</h6>
+                              </div>
+                           </div>
+                        </a>
+                     </div>
+                  </div>
+               </div> 
           </div>
        </div>
-    </div>
+    </div>  
  </li>
+
+
+ <form class="comment-text d-flex align-items-center " [formGroup]="commentForum" *ngIf="!showUpdate">
+      <img src="assets/images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">  
+   <input type="text" class="form-control rounded" name="bessem" formControlName="content">
+   
+      <button (click)="updateComment(comment)" class="btn btn-light">save</button>
+
+</form>
+
+

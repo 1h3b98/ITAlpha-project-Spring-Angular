@@ -11,4 +11,8 @@ export class Post{
     retrievedImage: any;
     data:any;
     comments : any
+    photo:any;
+    userId:number;
+    fname:string;
+    lname:string;
 }

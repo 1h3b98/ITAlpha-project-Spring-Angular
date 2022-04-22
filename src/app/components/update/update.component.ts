@@ -22,7 +22,7 @@ export class UpdateComponent implements OnInit {
     this.post = new Post();
     this.postF= this.formBuilder.group({
       content :['',Validators.required]
-    })
+    }) 
     if(this.data){
       this.postF.controls['content'].setValue(this.data.content);
     }

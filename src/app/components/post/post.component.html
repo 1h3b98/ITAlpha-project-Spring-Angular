@@ -7,10 +7,10 @@
                         <div class="d-flex flex-wrap">
                            <div class="media-support-user-img mr-3">
                              
-                              <img class="rounded-circle img-fluid" src="assets/ images/user/03.jpg" alt="">
+                              <img class="rounded-circle img-fluid" [src]="UserImage"  alt="">
                            </div>
                            <div class="media-support-info mt-2">
-                              <h5 class="mb-0 d-inline-block"><a href="#" class="">Barb Ackue</a></h5>
+                              <h5 class="mb-0 d-inline-block"><a href="#" class="">{{post.fname}}</a></h5>
                             
                               <p class="mb-0 text-primary">{{post.createAt | date:'fullDate'}}</p>
                            </div>
@@ -101,7 +101,7 @@
                         </div>
                         <hr>
                         <ul class="post-comments p-0 m-0">
-                           <app-comment *ngFor="let p of ListComment" [comment]="p"></app-comment>
+                           <app-comment *ngFor="let p of ListComment" [comment]="p"  (updatecomment)="getcomment(post.idPost)"></app-comment>
                         </ul>
                         <form class="comment-text d-flex align-items-center ">
                            <input type="text" class="form-control rounded" name="bessem" [(ngModel)]="comment.content">

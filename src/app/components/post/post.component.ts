@@ -24,6 +24,7 @@ export class PostComponent implements OnInit {
   valeurRadio : string;
   idPostSignler : number;
   retrievedImage:string ;
+  UserImage:string ;
   nbrtotle: number;
   idPost:number;
   comment : comment;
@@ -33,6 +34,7 @@ export class PostComponent implements OnInit {
     this.signaler = new Signaler();
     this.comment=new comment();
     this.retrievedImage='data:image/jpeg;base64,'+this.post.data
+    this.UserImage='data:image/jpeg;base64,'+this.post.photo
     this.nbrtotle= this.post.nbrLike+this.post.nbrdislike;
     this.idPost=this.post.idPost;
   }
@@ -44,7 +46,7 @@ export class PostComponent implements OnInit {
   }
   delete(u: Post){
     this.postservice.deletepost(u.idPost).subscribe((Response)=>{
-     console.log(u.content+"");
+     console.log(u.content+"++++++");
     this.DeletePost.emit(this.post);
    });
 
