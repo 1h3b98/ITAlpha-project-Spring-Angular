@@ -26,6 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DeleteforumDialagComponent } from './components/deleteforum-dialag/deleteforum-dialag.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DeleteforumDialagComponent } from './components/deleteforum-dialag/dele
     ForumComponent,
     AddForumComponent,
     DeleteforumDialagComponent,
+    CreatePostComponent,
     
     
   ],
