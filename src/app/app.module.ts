@@ -6,18 +6,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventComponent } from './event/event.component';
 import { AdminEventComponent } from './event/adminEvent.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+const ROUTES: Routes=[
+  {path: 'events',component: EventComponent},
+  {path: 'event-detail/:Id',component: EventDetailComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
-    AdminEventComponent
+    AdminEventComponent,
+    EventDetailComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LuxonModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(ROUTES),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

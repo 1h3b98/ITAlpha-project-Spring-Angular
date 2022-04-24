@@ -10,17 +10,17 @@ import { env } from 'src/app/environments/env';
 export class EventService {
   constructor(private http: HttpClient) { }
 
-  addEvent (): Observable<object> {
-   return this.http.post(env.baseUrl+env.AddEventUrl,  {responseType: 'text' as 'json'});
+  addEvent (e:Events):Observable<Events> {
+   return this.http.post<Events>(env.baseUrl+env.AddEventUrl, e);
   }
-  getEventById(id: number):Observable<object>{
-   return this.http.get(env.baseUrl+env.GetOneEventUrl+ {id});
+  getEventById(id:any):Observable<Events>{
+   return this.http.get<Events>(env.baseUrl+env.GetOneEventUrl+id);
   }
   updateEvent():Observable<object>{
     return this.http.put(env.baseUrl+env.UpdateEventUrl,  {responseType: 'text' as 'json'});
   }
-  deleteEvent(id: number):Observable<object> {
-    return this.http.delete(env.baseUrl+env.DeleteEventUrl+ {id});
+  deleteEvent(id:any):Observable<object> {
+    return this.http.delete(env.baseUrl+env.DeleteEventUrl+id);
   }
   getAllEvent():Observable<Events[]>{
     return this.http.get<Events[]>(env.baseUrl+env.GetAllEventUrl);
