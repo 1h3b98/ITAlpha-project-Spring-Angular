@@ -16,30 +16,26 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 })
 export class AddForumComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
-  filteredFruits: Observable<string[]>;
-  fruits: string[] = [];
-  allFruits: string[] = [];
+  articleCtrl = new FormControl();
+  filteredArticles: Observable<string[]>;
+  articles: string[] = [];
+  allArticles: string[] = [];
   title:string
   content:string
   str : any
- 
-
-
-  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
-
+  @ViewChild('articleInput') articleInput: ElementRef<HTMLInputElement>;
 
   ngOnInit(): void {
 
     this.gettags();
-    this.allFruits=this.data
+    this.allArticles=this.data
     console.log(this.data+"hhhhhhhhhhhh")
    
   }
   constructor(private http:HttpClient ,@Inject(MAT_DIALOG_DATA) public data : any) {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+    this.filteredArticles = this.articleCtrl.valueChanges.pipe(
       startWith(null),
-      map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allFruits.slice())),
+      map((article: string | null) => (article ? this._filter(article) : this.allArticles.slice())),
     );
   }
 
@@ -48,39 +44,39 @@ export class AddForumComponent implements OnInit {
 
     // Add our fruit
     if (value) {
-      this.fruits.push(value);
+      this.articles.push(value);
     }
 
     // Clear the input value
     event.chipInput!.clear();
 
-    this.fruitCtrl.setValue(null);
+    this.articleCtrl.setValue(null);
   }
 
-  remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
+  remove(article: string): void {
+    const index = this.articles.indexOf(article);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.articles.splice(index, 1);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.articles.push(event.option.viewValue);
+    this.articleInput.nativeElement.value = '';
+    this.articleCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allFruits.filter(fruit => fruit.toLowerCase().includes(filterValue));
+    return this.allArticles.filter(article => article.toLowerCase().includes(filterValue));
   }
 
 
 
   addforum(){
-    this.http.post("http://localhost:8089/SpringMVC/forum/addarticle/"+this.title+"/"+this.content,this.fruits)
+    this.http.post("http://localhost:8089/SpringMVC/forum/addarticle/"+this.title+"/"+this.content,this.articles)
     .subscribe(res=>{
       console.log("added");
       
@@ -91,7 +87,7 @@ export class AddForumComponent implements OnInit {
      return this.http.get<string[]>("http://localhost:8089/SpringMVC/forum/gettags").subscribe((data)=>{
        this.str=data;
  
-       this.fruits.push.apply(this.str)
+       this.articles.push.apply(this.str)
        console.log(data)
      })
     }

@@ -30,7 +30,9 @@ export class ForumService {
   addToFavoris(article: Forum){
    return this.http.get(env.baseUrl+env.addArticleTofavoritesUrl+article.idForum);
   }
-
+  rateForum(idArticle:number,note:any){
+    return this.http.get(env.baseUrl+env.rateArticleUrl+idArticle+"/"+note)
+  }
 
 
 }

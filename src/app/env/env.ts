@@ -19,6 +19,7 @@ export const env ={
     deleteArticleUrl :"/forum/delete/",
     updateArticleUrl :"/forum/update/",
     getAllAriclesUrl :"/forum/getatricles",
+    rateForum:"/forum/rate/1/",
     //---------favorite forum ------------//
     addArticleTofavoritesUrl:"/forum/addtof/1/",
     getFavoritesArticlesUrl :"/forum/getFavoiritesArticles/1",

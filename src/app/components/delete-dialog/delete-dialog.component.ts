@@ -1,5 +1,5 @@
 import { Component, OnInit ,Inject} from '@angular/core';
-import { PostService } from '../services/postService/post-service.service';
+import { PostService } from '../../services/postService/post-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({

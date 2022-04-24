@@ -1,29 +1,37 @@
 <h1 mat-dialog-title> add forum</h1>
 <div mat-dialog-content>
-  <h5>title</h5>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">title :</label>
+    <input class="form-control" name="description" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">content:</label>
+    <textarea class="form-control" name="description" class="form-control" placeholder="..."></textarea>
+  </div>
+  
   <mat-form-field class="example-chip-list" appearance="fill">
-    <mat-label>Favorite tag</mat-label>
+    <mat-label>Favorite tag</mat-label>  
     <mat-chip-list #chipList aria-label="Fruit selection">
       <mat-chip
-        *ngFor="let fruit of fruits"
-        (removed)="remove(fruit)">
-        {{fruit}}
+        *ngFor="let article of articles"
+        (removed)="remove(article)">
+        {{article}}
         <button matChipRemove>
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip>
       <input
         placeholder="New tag..."
-        #fruitInput
-        [formControl]="fruitCtrl"
+        #articleInput
+        [formControl]="articleCtrl"
         [matAutocomplete]="auto"
         [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-        {{fruit}}
+      <mat-option *ngFor="let article of filteredArticles | async" [value]="article">
+        {{article}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

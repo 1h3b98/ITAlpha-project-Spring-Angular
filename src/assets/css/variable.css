@@ -2,7 +2,7 @@
 :root {
   --iq-title-text: #3f414d;
   --iq-body-text: #777D74;
-  --iq-primary: #50b5ff;
+  --iq-primary: #23272b;
   --iq-secondary: #a09e9e;
   --iq-success: #49f0d3;
   --iq-warning: #ffba68;
@@ -20,7 +20,7 @@
   --iq-light-warning: #fffcf3;
   --iq-light-info: #eee6f5;
   --iq-light-dark: #f0efef;
-  --iq-primary-hover: #2aa3fb;
+  --iq-primary-hover: #151f25;
   --iq-border-light: #f1f1f1;
   --iq-dark-primary: #29324f;
   --iq-dark-secondary: rgba(160,158,158,0.2);
@@ -28,7 +28,7 @@
   --iq-dark-danger: rgba(255,155,138,0.2);
   --iq-dark-warning: rgba(255,186,104,0.2);
   --iq-dark-info: rgba(213,146,255,0.2);
-  --iq-primary-hover: #2aa3fb;
+  --iq-primary-hover: #162129;
   --iq-border-light: #f1f1f1;
   --iq-dark-bg: #182039;
   --iq-dark-box: #1e2745;

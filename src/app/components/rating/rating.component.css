@@ -1,0 +1,13 @@
+.star {
+    font-size: 1.5rem;
+    color: #FFD700;
+  }
+  .filled {
+    color: #FFD700;
+  }
+  .bad {
+    color: #FFD700;
+  }
+  .filled.bad {
+    color: #FFD700;
+  } 

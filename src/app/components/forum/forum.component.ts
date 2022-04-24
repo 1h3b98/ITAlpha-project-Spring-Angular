@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
+import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
 import { env } from 'src/app/env/env';
 import { Forum } from 'src/app/models/forum';
 import { ForumService } from 'src/app/services/forum-service/forum.service';
 import { AddForumComponent } from '../add-forum/add-forum.component';
 import { DeleteforumDialagComponent } from '../deleteforum-dialag/deleteforum-dialag.component';
+import { RatingComponent } from '../rating/rating.component';
 
 @Component({
   selector: 'app-forum',
@@ -14,6 +15,7 @@ import { DeleteforumDialagComponent } from '../deleteforum-dialag/deleteforum-di
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent implements OnInit {
+  rate:any;
   tags :any
   ListTags:string[]
   @Input() article :Forum
@@ -23,14 +25,10 @@ export class ForumComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getTag()
+    this.rate=this.article.rating
+   
   }
-  openDialog() {
-    this.dialog.open(AddForumComponent, {
-    width:'30%',
-    data:this.ListTags
-    });
-  }
+ 
   openConfirmationDialog(article : any){
     this.dialog.open(DeleteforumDialagComponent, {
       width:'30%',
@@ -41,14 +39,17 @@ export class ForumComponent implements OnInit {
         }
       })
   } 
-  getTag(){
-    this.ForumService.getTags().subscribe((res)=>{
-       this.ListTags=res
-       console.log(this.ListTags)
-    })}
+
 
     addToFavoris(article: Forum){
       this.ForumService.addToFavoris(article).subscribe()
+    }
+
+    rating(){
+      this.dialog.open(RatingComponent, {
+        width:'30%',
+        data:this.article.idForum
+        })
     }
   
 

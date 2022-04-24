@@ -6,7 +6,7 @@ import { CommentServiceService } from 'src/app/services/comment-sercice/comment-
 import { PostService } from 'src/app/services/postService/post-service.service';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SignalerComponent } from '../signaler/signaler.component';
-import { DeleteDialogComponent } from 'src/app/delete-dialog/delete-dialog.component';
+import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
 import { UpdateComponent } from '../update/update.component';
 
 @Component({

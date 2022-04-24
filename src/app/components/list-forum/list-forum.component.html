@@ -1,7 +1,9 @@
+
 <div id="content-page" class="content-page">
     <div class="container">
        <div class="row">
           <div class="col-lg-8 row m-0 p-0">
+            <button (click)=" openDialog()">test</button> 
             <app-forum *ngFor="let p of ListArticle" [article]="p" (DeleteArticle)="deleteArticle($event)" (updateArticle)="getArticle()"></app-forum> 
           </div>
           <div class="col-sm-12 text-center">

@@ -16,7 +16,7 @@ import { SignalerComponent } from './components/signaler/signaler.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
-import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { UpdateComponent } from './components/update/update.component';
 import { ListForumComponent } from './components/list-forum/list-forum.component';
 import { ForumComponent } from './components/forum/forum.component';
@@ -27,6 +27,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DeleteforumDialagComponent } from './components/deleteforum-dialag/deleteforum-dialag.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     AddForumComponent,
     DeleteforumDialagComponent,
     CreatePostComponent,
+    RatingComponent,
     
     
   ],
@@ -61,7 +64,8 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     MatBadgeModule,
     MatChipsModule,
     MatIconModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgbModule,
 
     
   ], 
