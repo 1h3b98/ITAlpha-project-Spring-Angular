@@ -16,11 +16,11 @@ export class EventService {
   getEventById(id:any):Observable<Events>{
    return this.http.get<Events>(env.baseUrl+env.GetOneEventUrl+id);
   }
-  updateEvent():Observable<object>{
-    return this.http.put(env.baseUrl+env.UpdateEventUrl,  {responseType: 'text' as 'json'});
+  updateEvent(e:Events):Observable<Events>{
+    return this.http.put<Events>(env.baseUrl+env.UpdateEventUrl, e);
   }
-  deleteEvent(id:any):Observable<object> {
-    return this.http.delete(env.baseUrl+env.DeleteEventUrl+id);
+  deleteEvent(e:Events):Observable<Events> {
+    return this.http.delete<Events>(env.baseUrl+env.DeleteEventUrl+e.eventId);
   }
   getAllEvent():Observable<Events[]>{
     return this.http.get<Events[]>(env.baseUrl+env.GetAllEventUrl);

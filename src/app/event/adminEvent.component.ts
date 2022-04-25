@@ -13,6 +13,7 @@ export class AdminEventComponent implements OnInit {
   eventList : Events[] = [];
   newE:Events;
   test: Events;
+  Eid :number;
 
   constructor(private eventService:  EventService,private httpClient: HttpClient) {}
 
@@ -22,7 +23,10 @@ export class AdminEventComponent implements OnInit {
   this.eventService.getAllEvent().subscribe((data:Events[])=>this.eventList=data);
   
   }
- 
+  onClick(event:Events) {
+    this.Eid = event.eventId;
+    console.log(this.Eid);
+  }
   getoneEvent(e:Events){
     
     this.eventService.getEventById(e.eventId).subscribe(data=>{
@@ -30,6 +34,7 @@ export class AdminEventComponent implements OnInit {
     });
   }
   addevent(){
+    
     this.newE.startTime=this.newE.startTime+" 00:00:00";
     this.newE.endTime=this.newE.endTime+" 00:00:00";
     console.log(this.newE);
@@ -42,14 +47,18 @@ export class AdminEventComponent implements OnInit {
 
     });
 }
-updateevent(e:Events){
-    this.eventService.updateEvent().subscribe(data=>{
-      console.log(Response);
+updateevent(){
+    this.newE.eventId=this.Eid;
+    this.newE.startTime=this.newE.startTime+" 00:00:00";
+    this.newE.endTime=this.newE.endTime+" 00:00:00";
+    console.log(this.newE);
+    this.eventService.updateEvent(this.newE).subscribe(()=>{
+      this.ngOnInit();
+      console.log(this.eventList);
     });
 }
-  deletePost(e:Events){
-      this.eventService.deleteEvent(e.eventId).subscribe(data=>{
-        console.log(Response);
-      });
+  deleteEvent(e:Events){
+    this.newE = e
+      this.eventService.deleteEvent(e).subscribe(()=>this.ngOnInit());
   }
 }

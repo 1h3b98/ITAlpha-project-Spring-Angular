@@ -22,8 +22,8 @@
        <div id="content-page" class="content-page">
          <!--add button-->
        <div class="row justify-content-end mb-3">
-         <button type="button" class="btn btn-primary mb-3" type="button"data-toggle="modal" data-target=".bd-example-modal-lg"><i class="las la-plus"></i></button></div>
-         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target=".bd-example-modal-lg">Add Event <i class="las la-plus"></i></button></div>
+         <div id="1" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
           <div class="modal-dialog modal-lg">
              <div class="modal-content">
                 <div class="modal-header">
@@ -100,7 +100,7 @@
                                <h5>{{event.startTime | date: "dd"}}</h5>
                             </div>
                             <div class="events-detail ml-3">
-                               <h5><a href="event-detail.html">{{event.title}}</a></h5>
+                               <h5><a [routerLink]="'/admin-event-detail/'+event.eventId">{{event.title}}</a></h5>
                                <p>{{event.about}}</p>
                                
                                
@@ -128,8 +128,61 @@
                             
                          </div>
                          <div class="row justify-content-around mb-3">
-                            <button type="button" class="btn btn-outline-primary rounded-pill mb-3">Update</button>
-                            <button type="button" class="btn btn-outline-danger rounded-pill mb-3">  Delete <i class="ion-heart">  </i></button>
+                            <button type="button" class="btn btn-outline-primary rounded-pill mb-3" data-toggle="modal" data-target="#exampleModal" (click)="onClick(event)">Update</button>
+                           <!--model-->
+                           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                       <h5 class="modal-title" id="exampleModalLabel">Update Event</h5>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">×</span>
+                                       </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <div class="iq-card-body">
+                                          <p>please update the event information</p>
+                                          <div><form >
+                                            <div class="form-group">
+                                               <div class="custom-file">
+                                                  <input type="file" class="custom-file-input" id="customFile">
+                                                  <label class="custom-file-label" for="customFile">Choose file</label>
+                                               </div>
+                                            </div>
+                                            <div class="form-group">
+                                               <label for="exampleInputText1">Event Title </label>
+                                               <input type="text" class="form-control"   [(ngModel)]="this.newE.title" [ngModelOptions]="{standalone: true}">
+                                            </div>
+                                            <div class="form-group">
+                                               <label for="exampleFormControlTextarea1">About</label>
+                                               <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" [(ngModel)]="newE.about" [ngModelOptions]="{standalone: true}"></textarea>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                               <label for="exampleInputNumber1">Event reward</label>
+                                               <input type="number" class="form-control" id="exampleInputNumber1" value="0" [(ngModel)]="newE.eventReward" [ngModelOptions]="{standalone: true}">
+                                            </div>
+                                            <div class="form-group">
+                                               <label for="exampleInputdate">Starts At</label>
+                                               <input type="date" class="form-control" id="exampleInputdate" value="" [(ngModel)]="newE.startTime"  [ngModelOptions]="{standalone: true}" >
+                                            </div>
+                                            <div class="form-group">
+                                               <label for="exampleInputdate">Ends At</label>
+                                               <input type="date" class="form-control" id="exampleInputdate" value="" [(ngModel)]="newE.endTime" [ngModelOptions]="{standalone: true}">
+                                            </div>
+                                          
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary" (click)="updateevent()" data-dismiss="modal">Save</button>
+                                           </div>
+                                         </form></div>
+                                    </div>
+                                    
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                            <button type="button" class="btn btn-outline-danger rounded-pill mb-3" (click)="deleteEvent(event)">  Delete <i class="ion-heart">  </i></button>
                          </div>
                       </div>
                    </div>
