@@ -36,7 +36,7 @@ public class EventController {
 		List<Event> listEvent=er.getAllEvent();
 		return listEvent;
 	}
-	
+
 	@GetMapping("/getOneEvent/{event_id}")
 	public Event getOneEvent(@PathVariable("event_id") long eventId){
 		return er.findEvent(eventId);

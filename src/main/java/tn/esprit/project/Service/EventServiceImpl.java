@@ -73,6 +73,7 @@ public class EventServiceImpl implements tn.esprit.project.Service.IEventService
 		Event eventToupdate=er.findById(e.getEventId()).orElse(null);
 		assert eventToupdate != null;
 		eventToupdate.setTitle(e.getTitle());
+		eventToupdate.setAbout(e.getAbout());
 		eventToupdate.setStartTime(e.getStartTime());
 		eventToupdate.setEndTime(e.getEndTime());
 		eventToupdate.setTitle(e.getTitle());

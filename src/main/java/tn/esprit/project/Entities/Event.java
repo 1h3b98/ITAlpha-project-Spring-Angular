@@ -36,11 +36,12 @@ public class Event implements Serializable{
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	long eventId;
 	String title;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	Timestamp startTime;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	Timestamp endTime;
 	String img;
+	String about;
 	int joinnbr;
 	int likenbr;
 	int eventReward;
