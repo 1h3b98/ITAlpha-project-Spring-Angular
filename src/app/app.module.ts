@@ -29,6 +29,8 @@ import { DeleteforumDialagComponent } from './components/deleteforum-dialag/dele
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BirthdayComponent } from './components/birthday/birthday.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DeleteforumDialagComponent,
     CreatePostComponent,
     RatingComponent,
+    BirthdayComponent,
     
     
   ],
@@ -66,6 +69,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatIconModule,
     MatAutocompleteModule,
     NgbModule,
+    Ng2SearchPipeModule ,
 
     
   ], 

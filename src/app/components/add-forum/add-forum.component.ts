@@ -19,7 +19,7 @@ export class AddForumComponent implements OnInit {
   articleCtrl = new FormControl();
   filteredArticles: Observable<string[]>;
   articles: string[] = [];
-  allArticles: string[] = [];
+  allArticles: string[] = ['bessem'];
   title:string
   content:string
   str : any
@@ -29,10 +29,10 @@ export class AddForumComponent implements OnInit {
 
     this.gettags();
     this.allArticles=this.data
-    console.log(this.data+"hhhhhhhhhhhh")
+    console.log( this.allArticles+"hhhhhhhhhhhh")
    
   }
-  constructor(private http:HttpClient ,@Inject(MAT_DIALOG_DATA) public data : any) {
+  constructor(private http:HttpClient ,@Inject(MAT_DIALOG_DATA) public data : any,  private dialogRef : MatDialogRef<AddForumComponent>) {
     this.filteredArticles = this.articleCtrl.valueChanges.pipe(
       startWith(null),
       map((article: string | null) => (article ? this._filter(article) : this.allArticles.slice())),
@@ -78,17 +78,16 @@ export class AddForumComponent implements OnInit {
   addforum(){
     this.http.post("http://localhost:8089/SpringMVC/forum/addarticle/"+this.title+"/"+this.content,this.articles)
     .subscribe(res=>{
-      console.log("added");
+      console.log(this.articles);
+      console.log("done")
+      this.dialogRef.close('update');
       
     })
     }
 
     gettags(){
      return this.http.get<string[]>("http://localhost:8089/SpringMVC/forum/gettags").subscribe((data)=>{
-       this.str=data;
- 
-       this.articles.push.apply(this.str)
-       console.log(data)
+       console.log(this+"ffffffffffffffff")
      })
     }
   }

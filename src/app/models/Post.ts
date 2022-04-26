@@ -15,4 +15,7 @@ export class Post{
     userId:number;
     fname:string;
     lname:string;
+    etatLike:number;
+    birthDate:Date;
+    jobTitle:string;
 }

@@ -1,3 +1,8 @@
 .example-chip-list {
     width: 100%;
   }
+.add{
+  position: absolute;
+  left: 300px;
+  top: 150px;
+}

@@ -1,6 +1,51 @@
 
 <div id="content-page" class="content-page">
     <div class="container">
+        <div class="row">
+           <div class="col-sm-12">
+              <div class="card">
+                 <div class="card-body chat-page p-0">
+                    <div class="chat-data-block">
+                       <div class="row">
+                          <div class="col-lg-3 chat-data-left scroller">
+                             <div class="chat-search pt-3 ps-3 ">
+                                <div class="d-flex align-items-center">
+                                   <div class="chat-caption">
+                                     
+                                   </div>
+                                   <button type="submit" class="close-btn-res p-3"><i class="ri-close-fill"></i></button>
+                                </div>
+                                <button type="button"class="btn btn-success fa-2x"> new</button>
+                                <div class="chat-searchbar mt-4">
+                                   <div class="form-group chat-search-data m-0">
+                                      <input type="text" class="form-control round"[(ngModel)]="searchtext" placeholder="Search">
+                                   </div>
+                                </div>
+                             </div>
+                             
+                                <hr>
+                             <ul>
+                                <li type="button" (click)="get(i)"  class="tag tag-javascript  tag-lg" *ngFor="let tag of ListTagsDetails | filter:searchtext ; let i=index">{{ tag.name  }}({{tag.nbrArticle}})</li>
+                            </ul>
+                          </div>
+                          <div class="content">
+                            <div class="row">
+                               <div class="col-lg-12 row m-0 p-0" >
+                                 <app-forum *ngFor="let p of ListArticle" [article]="p" (DeleteArticle)="deleteArticle($event)" (updateArticle)="getArticle()"></app-forum> 
+                               </div>
+                               <div class="col-sm-12 text-center">
+                                  <img src="assets/images/page-img/page-load-loader.gif" alt="loader" style="height: 100px;">
+                               </div>
+                            </div>
+                         </div> 
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  <!--  <div class="content">
        <div class="row">
           <div class="col-lg-8 row m-0 p-0">
             <button (click)=" openDialog()">test</button> 
@@ -10,7 +55,7 @@
              <img src="assets/images/page-img/page-load-loader.gif" alt="loader" style="height: 100px;">
           </div>
        </div>
-    </div> 
+    </div> -->
  </div>
  
  

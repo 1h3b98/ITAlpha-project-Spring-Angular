@@ -21,7 +21,10 @@ export class ListPostesComponent implements OnInit {
 
   getPosts(){
     this.postservice.getPosts().subscribe(
-      (data:Post[])=>this.Listposts=data
+      (data:Post[])=>{
+        this.Listposts=data
+        console.log(data)
+      }
     );
   } 
   deletePost(u: Post){

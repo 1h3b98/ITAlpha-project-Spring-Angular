@@ -1,14 +1,13 @@
-<h1>rate Article</h1>
-
-<div class="mb-6">
+<p class="h2 "style="text-align: center;">rate Article</p>
+<hr>
+<div class="mb-6" style="text-align: center;">
   <ngb-rating  class="star" [formControl]="ctrl"  [max]="5"></ngb-rating>
   <div class="form-text small">
-    <div *ngIf="ctrl.valid" class="text-success">Thanks!</div>
-    <div *ngIf="ctrl.invalid" class="text-danger">Please rate us</div>
+    <div *ngIf="ctrl.valid" class="h3">Thanks!</div>
   </div>
 </div>
+<div class="text-center">
+  <button (click)="confirmeRating()" class="btn btn-success"mat-dialog-close>save</button>
+</div>
 
-<hr>
-<pre><b>{{ ctrl.value }}</b></pre>
-<button (click)="confirmeRating()">save</button>
 

@@ -17,7 +17,7 @@ export class UpdateComponent implements OnInit {
   constructor(private formBuilder : FormBuilder, private postservice : PostService ,@Inject(MAT_DIALOG_DATA) public data : any,
   private dialogRef : MatDialogRef<UpdateComponent>
    ) { }
-
+ 
   ngOnInit(): void {
     this.post = new Post();
     this.postF= this.formBuilder.group({

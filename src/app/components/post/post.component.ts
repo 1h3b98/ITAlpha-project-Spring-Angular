@@ -34,7 +34,7 @@ export class PostComponent implements OnInit {
     this.signaler = new Signaler();
     this.comment=new comment();
     this.retrievedImage='data:image/jpeg;base64,'+this.post.data
-    this.UserImage='data:image/jpeg;base64,'+this.post.photo
+    this.UserImage='data:image/jpeg;base64,'+this.post.photo 
     this.nbrtotle= this.post.nbrLike+this.post.nbrdislike;
     this.idPost=this.post.idPost;
   }
@@ -47,13 +47,19 @@ export class PostComponent implements OnInit {
   delete(u: Post){
     this.postservice.deletepost(u.idPost).subscribe((Response)=>{
      console.log(u.content+"++++++");
-    this.DeletePost.emit(this.post);
+     this.updatePost.emit(u);
+    
    });
 
  }
  getcomment(id : number){ 
   this.CommentService.getComment(id).subscribe(
-    (data:comment[])=>this.ListComment=data
+    (data:comment[])=>{
+      this.ListComment=data
+      console.log(data)
+      
+    }
+
   );
  }
 
@@ -69,7 +75,7 @@ openConfirmationDialog(post : any){
     data:post.idPost
     }).afterClosed().subscribe(val=>{
       if(val==='ok'){
-        this.DeletePost.emit(post);
+        this.updatePost.emit(post);
       }
     })
 }
@@ -85,21 +91,33 @@ openUpdateDialog(post : any){
 }
 
 likePost(post:Post){
+ if(post.etatLike==2 || post.etatLike==0){
   this.nbrtotle= this.post.nbrLike+this.post.nbrdislike;
   console.log(post.idPost)
 this.postservice.likePost(post).subscribe((Response)=>{
-  
+  this.updatePost.emit(post);
 });
-this.nbrtotle=this.nbrtotle+1;
+ }else{
+   this.removelike(post);
+ }
 }
 
 dislikePost(post:Post){
+if(post.etatLike==2 || post.etatLike==1){
   this.nbrtotle= this.post.nbrLike+this.post.nbrdislike;
   console.log(post.idPost)
 this.postservice.dislikePost(post).subscribe((Response)=>{
-  
-});
-this.nbrtotle=this.nbrtotle+1;
+  this.updatePost.emit(post);
+}); 
+ }else{
+   this.removelike(post);
+ }
+}
+removelike(post:Post){
+  this.postservice.removeLike(this.post).subscribe(res=>{
+    console.log("done")
+    this.updatePost.emit(post);
+  })
 }
 addcomment(post:Post){
   this.CommentService.addcomment(post,this.comment).subscribe((response) => {

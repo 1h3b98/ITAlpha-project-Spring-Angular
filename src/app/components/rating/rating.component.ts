@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ForumService } from 'src/app/services/forum-service/forum.service';
 
 @Component({
@@ -22,7 +22,8 @@ export class RatingComponent  {
   note:number
   ctrl = new FormControl(null, Validators.required);
 
-constructor(private ForumService:ForumService,@Inject(MAT_DIALOG_DATA) public data  : any){}
+constructor(private ForumService:ForumService,@Inject(MAT_DIALOG_DATA) public data  : any,
+private dialogRef : MatDialogRef< RatingComponent>){}
   toggle() {
     if (this.ctrl.disabled) {
       this.ctrl.enable();
@@ -36,6 +37,7 @@ constructor(private ForumService:ForumService,@Inject(MAT_DIALOG_DATA) public da
     console.log(this.note+"note")
 this.ForumService.rateForum(this.data,this.note).subscribe(res=>{
   console.log("done")
+  this.dialogRef.close('update');
 })
   } 
 }

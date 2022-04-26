@@ -11,6 +11,7 @@ import { FormGroup ,Validator,FormBuilder, Validators} from '@angular/forms';
 })
 export class CommentComponent implements OnInit {
   ListComment : comment[];
+  UserImage:string ;
   @Input() comment : comment;
   commentForum !:FormGroup;
   showUpdate :boolean=true;
@@ -20,6 +21,7 @@ export class CommentComponent implements OnInit {
     
   }
   ngOnInit(): void {
+    this.UserImage='data:image/jpeg;base64,'+this.comment.photo
     this.commentUpdated=new comment();
     this.commentForum= this.formBuilder.group({
       content :['',Validators.required]

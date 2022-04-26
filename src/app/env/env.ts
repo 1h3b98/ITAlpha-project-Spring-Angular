@@ -13,6 +13,7 @@ export const env ={
     updatePostUrl:"/post/update/1",
     likePostUrl:"/post/1/like/",
     dislikePostUrl:"/post/1/dislike/",
+    removeLike:"/post/1/remove/",
     
     //--------- forum ------------
     addArticleUrl :"/forum/addarticle/1",
@@ -25,7 +26,10 @@ export const env ={
     getFavoritesArticlesUrl :"/forum/getFavoiritesArticles/1",
     rateArticleUrl :"/forum/rate/1/",
     //---------tags-----------------//
+    gettagsByArticle :"/forum/gettagsbyArticle/",
     getTagsUrl :"/forum/gettags",
+    getDetails:"/forum/getTagDetails",
+    getTagArticles:"/forum/getatriclesbyTag/",
     //---------comment--------------//
     addCommentUrl:"/comment/addComment/",
     likeCommentUrl:"/comment/makelikecomment/1/",

@@ -16,16 +16,20 @@ import { RatingComponent } from '../rating/rating.component';
 })
 export class ForumComponent implements OnInit {
   rate:any;
-  tags :any
-  ListTags:string[]
+  tags :any 
+  UserImage:string ;
+  ListTagsByOne:string[] 
   @Input() article :Forum
   @Output() DeleteArticle = new EventEmitter<Forum>();
   @Output() updateArticle = new EventEmitter();
+
   constructor(public dialog: MatDialog , private http:HttpClient,private ForumService:ForumService) { }
 
 
   ngOnInit(): void {
     this.rate=this.article.rating
+    this.getTagsbyArticle(this.article)
+    this.UserImage='data:image/jpeg;base64,'+this.article.photo 
    
   }
  
@@ -40,7 +44,12 @@ export class ForumComponent implements OnInit {
       })
   } 
 
-
+  getTagsbyArticle(forum:Forum){
+    this.ForumService.getTagsbyArticle(forum).subscribe(res=>{
+      this.ListTagsByOne=res;
+    })
+  }
+ 
     addToFavoris(article: Forum){
       this.ForumService.addToFavoris(article).subscribe()
     }
@@ -49,7 +58,14 @@ export class ForumComponent implements OnInit {
       this.dialog.open(RatingComponent, {
         width:'30%',
         data:this.article.idForum
-        })
+        }).afterClosed().subscribe(val=>{
+          if(val==='update'){
+            this.updateArticle.emit();
+          }});
+    }
+
+    cons(){
+      console.log("gggggggggggggg")
     }
   
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { env } from 'src/app/env/env';
 import { Forum } from 'src/app/models/forum';
+import { tag } from 'src/app/models/tag';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +27,21 @@ export class ForumService {
   getTags(){
     return this.http.get<string[]>(env.baseUrl+env.getTagsUrl);
   }
+  getTagsbyArticle(forum:Forum){
+    return this.http.get<string[]>(env.baseUrl+env.gettagsByArticle+forum.idForum);
+  }
 
   addToFavoris(article: Forum){
    return this.http.get(env.baseUrl+env.addArticleTofavoritesUrl+article.idForum);
   }
   rateForum(idArticle:number,note:any){
     return this.http.get(env.baseUrl+env.rateArticleUrl+idArticle+"/"+note)
+  }
+  getTagDetails(){
+    return this.http.get<tag[]>(env.baseUrl+env.getDetails)
+  }
+  getTagArticles(id:number){
+return this.http.get<Forum[]>(env.baseUrl+env.getTagArticles+id);
   }
 
 

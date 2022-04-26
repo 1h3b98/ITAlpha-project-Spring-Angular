@@ -39,4 +39,8 @@ dislikePost(post:Post){
   return this.http.get(env.baseUrl+env.dislikePostUrl+post.idPost);
 }
 
+removeLike(post:Post){
+  return this.http.delete(env.baseUrl+env.removeLike+post.idPost);
+}
+
 }
