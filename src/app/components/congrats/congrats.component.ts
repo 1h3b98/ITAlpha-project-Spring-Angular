@@ -29,7 +29,21 @@ export class CongratsComponent implements OnInit {
     return  this.congratsservice.checkDate(this.badge.date);
   }
  
- 
+  gold():boolean{
+    if(this.badge.badge=="GOLDEN")
+    return true;
+    return false;
+  }
+  bronze():boolean{
+    if(this.badge.badge=="BRONZE")
+    return true;
+    return false;
+  }
+  silver():boolean{
+    if(this.badge.badge=="SILVER")
+    return true;
+    return false;
+  }
   
 
 }

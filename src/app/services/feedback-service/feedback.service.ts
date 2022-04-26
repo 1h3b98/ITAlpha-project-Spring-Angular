@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 
 import { FeedBack } from 'src/app/models/FeedBack';
 import { user } from 'src/app/models/user';
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FeedbackService {
+  
 
   constructor(private http : HttpClient) { }
 
@@ -17,12 +18,28 @@ export class FeedbackService {
  addFeedback(f: FeedBack,id:number,idd:number)
  {
      
-   return this.http.post(env.baseUrl+env.AddUrl+"/"+id+"/"+idd,f).subscribe();
+   return this.http.post(env.baseUrl+env.AddUrl+"/"+id+"/"+idd,f);
  }
 
- getusers():Observable<user[]>{
-   return this.http.get<user[]>(env.baseUrl+env.getusersurl);
+ getfeedsrecieved(){
+   return this.http.get<FeedBack[]>(env.baseUrl+env.feedsRecievedUrl+1);
  }
+ getnbrRecieved(){
+  return this.http.get<number>(env.baseUrl+env.getnbrRecieved+1);
+}
+getnbrsent(){
+  return this.http.get<number>(env.baseUrl+env.getnbrSent+1);
+}
+getfeedssent(){
+  return this.http.get<FeedBack[]>(env.baseUrl+env.getfeedsSent+1);
+}
 
+getUsers(){
+  return this.http.get<number[]>(env.baseUrl+env.getusers);
+}
+
+getUsersnames(){
+  return this.http.get<string[]>(env.baseUrl+env.getusersnames);
+}
 
 }

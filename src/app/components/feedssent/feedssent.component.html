@@ -1,0 +1,117 @@
+
+<ul class="iq-email-sender-list" [hidden]="!hidee">
+    <li class="iq-unread">
+
+    <div class="d-flex align-self-center iq-unread-inner">
+        <div class="iq-email-sender-info">
+        <div class="iq-checkbox-mail">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="mailk">
+                <label class="form-check-label" for="mailk"></label>
+            </div>
+        </div>
+        <span class="ri-star-line iq-star-toggle text-warning"></span>
+        <a href="#" class="iq-email-title">{{Feedsent.username}}</a>
+        </div>
+        <div class="iq-email-content">
+        <a href="#" class="iq-email-subject">
+            
+         &nbsp;–&nbsp;
+        <span> {{Feedsent.content}}</span>
+        </a>
+        <div class="iq-email-date">{{Feedsent.date}}</div>
+        </div>
+        <ul class="iq-social-media list-inline">
+        <li><a href="#" ><i class="ri-delete-bin-2-line"></i></a></li>
+        <li><a href="#"(click)="showfeed()" ><i class="ri-mail-line"></i></a></li>
+        <li><a href="#"><i class="ri-file-list-2-line"></i></a></li>
+        <li><a href="#"><i class="ri-time-line"></i></a></li>
+        </ul>
+        </div> 
+                                       
+    </li> 
+                  
+    
+ </ul>
+
+ <div class="email-app-details show" [hidden]="hidee">
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="">
+                <div class="iq-email-to-list p-3">
+                    <div class="d-flex justify-content-between">
+                        <ul class="list-inline d-flex align-items-center justify-content-between m-0 p-0">
+                            <li class="me-3">
+                                <a href="javascript: void(0);" class="email-remove">
+                                    <i class="ri-arrow-left-line m-0 h4" (click)="showfeed()"></i>
+                                </a>
+                            </li>
+                            <li class="me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Mail"><a href="#"><i class="ri-mail-open-line"></i></a></li>
+                            <li class="me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Info"><a href="#"><i class="ri-information-line"></i></a></li>
+                            <li class="me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><a href="#"><i class="ri-delete-bin-line"></i></a></li>
+                            <li class="me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Unread"><a href="#"><i class="ri-mail-unread-line"></i></a></li>
+                            <li class="me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Transfer"><a href="#"><i class="ri-folder-transfer-line"></i></a></li>
+                            <li class="me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Bookmark"><a href="#"><i class="ri-bookmark-line"></i></a></li>
+                        </ul>
+                        <div class="iq-email-search d-flex">
+                        <ul class="list-inline d-flex align-items-center justify-content-between m-0 p-0">
+                            <li class="me-3">
+                                <a class="font-size-14" href="#">1 of 505</a>
+                            </li>
+                            <li class="me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Previous"><a href="#"><i class="ri-arrow-left-s-line"></i></a></li>
+                            <li class="me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Next"><a href="#"><i class="ri-arrow-right-s-line"></i></a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mt-0">
+                <div class="iq-inbox-subject p-3">
+                    <h5 class="mb-2"></h5>
+                    <div class="iq-inbox-subject-info">
+                        <div class="iq-subject-info">
+                        <img src="../assets/images/user/user-1.jpg" class="img-fluid rounded-circle avatar-80" alt="#">
+                        <div class="iq-subject-status align-self-center">
+                            <h6 class="mb-0">Hive <a href="dummy@SocialV.com"></a></h6>
+                            <div class="dropdown">
+                                <a (click)="showdetails()" class="dropdown-toggle" href="#"  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                to Me
+                                </a>
+                                <div class="dropdown-menu font-size-12 show" aria-labelledby="dropdownMenuButton" [hidden]="hide1">
+                                    <table class="iq-inbox-details">
+                                    <tbody>
+                                        <tr>
+                                            <td>from:</td>
+                                            <td>Me</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td>to:</td>
+                                            <td>{{Feedsent.username}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>date:</td>
+                                            <td>{{Feedsent.date}}</td>
+                                        </tr>
+                                       
+                                       
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="align-self-center">{{Feedsent.date}}</span>
+                        </div>
+                        <div class="iq-inbox-body mt-5">
+                        <p>{{Feedsent.content}}</p>
+                        <p class="mt-5 mb-0">to<span class="d-inline-block w-100">{{Feedsent.username}}</span></p>
+                        </div>
+                        <hr>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+

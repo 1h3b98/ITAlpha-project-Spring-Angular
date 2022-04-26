@@ -14,8 +14,6 @@ id:number;
     return this.http.get<Badge>(env.baseUrl+env.getBadge+1);
 
   }
-  getnbrRecieved(){
-    return this.http.get<number>(env.baseUrl+env.nbrRecievedUrl+1);
-  }
+ 
   
 }

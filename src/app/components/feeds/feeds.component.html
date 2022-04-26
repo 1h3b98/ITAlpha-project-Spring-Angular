@@ -1,0 +1,172 @@
+
+<div class="row">
+    
+
+        <div class="col-lg-3">
+   
+         <!-- Right Sidebar Panel End-->
+         <!-- Page Content  -->
+        
+              
+           <div class="modal" id="hh">
+           
+             <div class="modal-body">
+          <div class="container">  
+              
+  <div class="card iq-border-radius-20"  >
+    <div class="card-body" >
+        <div class="row">
+        <div class="col-md-12 mb-3">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            <h5 class="text-primary card-title"><i class="ri-pencil-fill"></i> Compose Feedback</h5>
+        </div>
+        </div>
+        <form class="email-form">
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">To:</label>
+            <div class="col-sm-10">
+                <select  id="inputEmail3" class="select2jsMultiSelect form-control" multiple="multiple">
+                    <div  ></div>
+                    <option value="Petey Cruiser">Petey Cruiser</option>
+                    <option value="Bob Frapples">Bob Frapples</option>
+                    <option value="Barb Ackue">Barb Ackue</option>
+                    <option value="Greta Life">Greta Life</option>
+                </select>
+            </div>
+        </div>
+       
+        
+        <div class="form-group row">
+            <label for="subject" class="col-sm-2 col-form-label">Your Feedback:</label>
+            <div class="col-md-10">
+                <input type="text"  name="content" class="form-control" [(ngModel)]="feedback.content">
+
+            </div>
+        </div>
+        <div>
+            <input type="radio" id="huey" name="Ftype" value="true"  [(ngModel)]="feedback.status">
+            <label for="huey">Nonymous</label>
+          </div>
+          
+          <div>
+            <input type="radio" id="dewey" name="Ftype" value="false"  [(ngModel)]="feedback.status">
+            <label for="dewey">Anonymous</label>
+          </div>
+        <div class="form-group d-flex flex-wrap align-items-center justify-content-between mb-0">
+            <div class="d-flex flex-wrap flex-grow-1 align-items-center">
+                <div class="send-btn pl-3 mb-2">
+                  <button class="btn btn-primary"   (click)="save()"> send </button>
+                </div>
+                
+            </div>
+            <div class="d-flex mr-3 align-items-center">
+                <div class="send-panel float-right">
+                    </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</div> 
+
+            <div class="card">
+                <div class="card-body">
+                <div class="">
+                    <div class="iq-email-list">
+                        <div class="iq-email-ui nav flex-column nav-pills">
+                            <button class="btn btn-outline-primary" data-target="#hh" data-toggle="modal"><i class="ri-send-plane-line me-2"></i>New Feedback</button>
+
+                            <a (click)="feedsRecieved()"class="nav-link active" role="button" data-bs-toggle="pill" href="#mail-inbox"><div class="d-flex align-items-center justify-content-between"><span><i class="ri-mail-line"></i>Inbox</span><span class="badge bg-primary ms-2">{{nb}}</span></div></a>
+                            
+                        </div>
+                        <div class="iq-email-ui nav flex-column nav-pills">
+
+                            <a (click)="feedsSend()" class="nav-link " role="button" data-bs-toggle="pill" href="#mail-inbox"><div class="d-flex align-items-center justify-content-between"><span><i class="ri-mail-line" ></i>Feeds Sent</span><span class="badge bg-primary ms-2">{{nbs}}</span></div></a>
+                            
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 mail-box-detail">
+            <div class="card">
+                <div class="card-body p-0">
+                <div class="">
+                    <div class="iq-email-to-list p-3">
+                        <div class="iq-email-to-list-detail d-flex justify-content-between">
+                            <ul class="list-inline d-flex align-items-center justify-content-between m-0 p-0">
+                                <li class="me-1">
+                                    <div id="navbarDropdown" data-bs-toggle="dropdown">
+                                        <div class="d-flex align-items-center form-check">
+                                            <input type="checkbox" class="form-check-input" id="customCheck1">
+                                            <label class="form-check-label" for="customCheck1"><i class="ri-arrow-down-s-line"></i></label>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </li>
+                                <li class="me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Reload"><a href="#"><i class="ri-restart-line"></i></a></li>
+                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Zoom"><a href="#"><i class="ri-drag-move-2-line"></i></a></li>
+                            </ul>
+                            <div class="iq-email-search d-flex">
+                                <form class="me-2 position-relative searchbox">
+                                    <div class="form-group mb-0">
+                                        <input type="email" class="form-control search-input" id="exampleInputEmail1" placeholder="Search">
+                                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                                    </div>
+                                </form>
+                                <ul class="list-inline d-flex align-items-center justify-content-between m-0 p-0">
+                                    <li class="me-2">
+                                        <a class="font-size-14" href="#" id="navbarDropdown1" data-bs-toggle="dropdown">
+                                        1 - 50 of 505
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                            <a class="dropdown-item" href="#">20 per page</a>
+                                            <a class="dropdown-item" href="#">50 per page</a>
+                                            <a class="dropdown-item" href="#">100 per page</a>
+                                        </div>
+                                    </li>
+                                    <li class="me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Previous"><a href="#"><i class="ri-arrow-left-s-line"></i></a></li>
+                                    <li class="me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Next"><a href="#"><i class="ri-arrow-right-s-line"></i></a></li>
+                                    <li class="me-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Setting"><a href="#"><i class="ri-list-settings-line"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="iq-email-listbox" [hidden]="hide">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="mail-inbox" role="tabpanel">
+                                               
+                                
+                                    <app-listfeeds *ngFor="let t of Listf" [Feed]="t" (update)="getfeedsent()"></app-listfeeds>
+                                                     
+                                                                     
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="iq-email-listbox" [hidden]="!hide">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active " id="mail-sent" role="tabpanel">
+                                    <app-feedssent *ngFor="let t of Listfs" [Feedsent]="t" (update)="getfeedsent()" ></app-feedssent>                                         
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>

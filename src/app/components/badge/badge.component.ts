@@ -1,7 +1,7 @@
 
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { from } from 'rxjs';
+import { ConnectableObservable, from } from 'rxjs';
 
 import { AppComponent } from 'src/app/app.component';
 import { Badge } from 'src/app/models/Badge';
@@ -31,6 +31,7 @@ export class BadgeComponent implements OnInit {
 
   ngOnInit(): void {
     this.badge=new Badge();
+    console.log(this.nbrrecieved);
     this.BadgeService.getEvaluation().subscribe(
       Response=>{
         this.badge=Response;
@@ -48,16 +49,19 @@ export class BadgeComponent implements OnInit {
     
 
     this.trophey=new Trophey();
-    
     this.congratstservice.gettropheyToday().subscribe(
       Response=>{
         this.trophey=Response;
-        //if(this.checkTrophey())
-        this. openDialog1(this.trophey);
+        console.log(this.trophey.id);
+        if(this.checkTrophey()){
+        this.openDialog1(this.trophey);
+        this.start();
+        this.stop();}
       }
     );
-    console.log(this.trophey.id);
-    this.getnbrrecieved();
+    
+    
+    
     
   }
 
@@ -84,15 +88,11 @@ export class BadgeComponent implements OnInit {
     width:'30%',
     data :trophey
     });
+    console.log(this.trophey);
   }
 
 
-getnbrrecieved(){
-  return this.BadgeService.getnbrRecieved().subscribe(
-    (data:number)=>this.nbrrecieved=data
 
-  )
-}
 
 
   void(){
@@ -137,5 +137,13 @@ getnbrrecieved(){
     return this.trophey!=null;
   }
 
+
+  getTrophey(){
+    this.congratstservice.gettropheyToday().subscribe(
+      Response=>{
+        this.trophey=Response;
+      }
+    );
+  }
  
 }

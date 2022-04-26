@@ -16,7 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CongratsTComponent } from './components/congrats-t/congrats-t.component';
 import { NgParticlesModule } from 'ng-particles';
-import { ProfileVisiterComponent } from './profile-visiter/profile-visiter.component';
+import { ListfeedsComponent } from './components/listfeeds/listfeeds.component';
+import { FeedsComponent } from './components/feeds/feeds.component';
+import { FeedssentComponent } from './components/feedssent/feedssent.component';
+import { ChartpointsComponent } from './components/chartpoints/chartpoints.component';
+import { StepprogressbarComponent } from './components/stepprogressbar/stepprogressbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +32,11 @@ import { ProfileVisiterComponent } from './profile-visiter/profile-visiter.compo
     TropheyComponent,
     CongratsComponent,
     CongratsTComponent,
-    ProfileVisiterComponent
+    ListfeedsComponent,
+    FeedsComponent,
+    FeedssentComponent,
+    ChartpointsComponent,
+    StepprogressbarComponent
     
   ],
   imports: [
