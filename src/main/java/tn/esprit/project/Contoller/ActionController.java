@@ -3,20 +3,13 @@ package tn.esprit.project.Contoller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import tn.esprit.project.Entities.Action;
 import tn.esprit.project.Entities.Event;
 import tn.esprit.project.Service.IActionService;
 @RestController
+@CrossOrigin(origins = "**", maxAge = 3600)
 @RequestMapping("/Action")
 public class ActionController {
 	@Autowired 
@@ -49,7 +42,7 @@ public class ActionController {
 		List<Action> listAction=ar.getAllAction();
 		return listAction;
 	}
-	@GetMapping("/getallFavAction/{user_id}")
+	@GetMapping("/getallFavEvent/{user_id}")
 	public List<Event> getAllFActions(@PathVariable("user_id") long userId){
 		List<Event> listFavEvent=ar.getAllFavAction(userId);
 		return listFavEvent;
@@ -60,8 +53,25 @@ public class ActionController {
 		return ar.findAction(actionId);
 	}
 	
-	@GetMapping("/getInvite/{reciever_id}/{user_id}")
-	public Action getReceiverInvite(@PathVariable("reciever_id") Long recieverId,@PathVariable("user_id") long userId){
-		return ar.getInvite(recieverId, userId);
+	@GetMapping("/getInvite/{reciever_id}")
+	public List<Action> getReceiverInvite(@PathVariable("reciever_id") Long recieverId){
+		return ar.getAllInvite(recieverId);
+	}
+	@GetMapping("/getLike/{user_id}/{event_id}")
+	public Action getlike(@PathVariable("user_id") Long userId,@PathVariable("event_id") Long eventId){
+		return ar.getlike(userId,eventId);
+	}
+
+	@GetMapping("/getJoin/{user_id}/{event_id}")
+	public Action getjoinByUserAndEvent(@PathVariable("user_id") Long userId,@PathVariable("event_id") Long eventId){
+		return ar.getjoin(userId,eventId);
+	}
+	@GetMapping("/getFav/{user_id}/{event_id}")
+	public Action getfavByUserAndEvent(@PathVariable("user_id") Long userId,@PathVariable("event_id") Long eventId){
+		return ar.getfav(userId,eventId);
+	}
+	@GetMapping("/getAllComment/{event_id}")
+	public Action getcomment(@PathVariable("event_id") Long eventId){
+		return ar.getcomment(eventId);
 	}
 }

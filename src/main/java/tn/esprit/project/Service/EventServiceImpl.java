@@ -94,6 +94,9 @@ public class EventServiceImpl implements tn.esprit.project.Service.IEventService
 		return er.findById(eventId).orElse(null);
 	}
 
-
+	@Override
+	public List<User> getUsersByEvent(long eventId){
+		return er.findUserListByEvent(eventId);
+	}
 
 }

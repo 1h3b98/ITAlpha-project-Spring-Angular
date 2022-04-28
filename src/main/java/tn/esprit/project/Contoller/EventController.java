@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import tn.esprit.project.Entities.Event;
+import tn.esprit.project.Entities.User;
 import tn.esprit.project.Service.IEventService;
 
 @RestController
@@ -42,4 +43,9 @@ public class EventController {
 		return er.findEvent(eventId);
 	}
 
+	@GetMapping("/getUsersByEvent/{event_id}")
+	public List<User> getEvents(@PathVariable("event_id") long eventId){
+		List<User> listUser=er.getUsersByEvent(eventId);
+		return listUser;
+	}
 }

@@ -3,6 +3,7 @@ package tn.esprit.project.Service;
 
 import java.sql.Timestamp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,6 +43,8 @@ public class ActionServiceImpl implements IActionService {
 	boolean foundInvite;
 	boolean foundFav;
 	Action p;
+
+
 
 	{
 		p = new Action();
@@ -255,12 +258,36 @@ public class ActionServiceImpl implements IActionService {
 	}
 	
 	@Override
-	public Action getInvite(Long recieverId,long userId){
+	public List<Action> getAllInvite(Long recieverId){
 		ActionType invite=ActionType.INVITE;
-		User u=ur.findById(userId).orElse(null);
-		return ar.findByInviteAndRecieverAndSender(invite,recieverId,u);
+		List<Action>allInvite=ar.findByInviteAndRecieverAndSender(invite, recieverId);
+	return allInvite;
+
 	}
-	
+	@Override
+	public Action getlike(Long uId,Long eId){
+		ActionType like=ActionType.LIKE;
+		return ar.getLike(uId,eId,like);
+
+	}
+	@Override
+	public Action getfav(Long uId,Long eId){
+		ActionType fav=ActionType.FAVORITE;
+		return ar.getFav(uId,eId,fav);
+
+	}
+	@Override
+	public Action getjoin(Long uId,Long eId){
+		ActionType join=ActionType.JOIN;
+		return ar.getJoin(uId,eId,join);
+
+	}
+	@Override
+	public Action getcomment(Long eId){
+		ActionType comment=ActionType.COMMENT;
+		return ar.getComment(eId,comment);
+
+	}
 	
 	
 }
