@@ -14,10 +14,10 @@
                <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
                      <li>
-                        <a href="" class=" "><i class="las la-newspaper"></i><span>Newsfeed</span></a>
+                        <a routerLink="/posts" class=" "><i class="las la-newspaper"></i><span>Newsfeed</span></a>
                      </li>
                      <li>
-                        <a href="" class=" "><i class="las la-user"></i><span>Profile</span></a>
+                        <a routerLink="/forums" class=" "><i class="las la-user"></i><span>Profile</span></a>
                      </li>
                      <li>
                         <a href="" class=" "><i class="las la-user-friends"></i><span>Friend Lists</span></a>
@@ -418,8 +418,8 @@
          </div>
          <!-- Right Sidebar Panel End-->
          <!-- Page Content  -->
-   <app-list-postes></app-list-postes>
-
+ 
+<router-outlet></router-outlet>
       </div>
       <!-- Wrapper END -->
       <!-- Footer -->

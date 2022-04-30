@@ -43,6 +43,9 @@ export class ForumService {
   getTagArticles(id:number){
 return this.http.get<Forum[]>(env.baseUrl+env.getTagArticles+id);
   }
+  getOneArticle(idForum: any){
+    return this.http.get<Forum>(env.baseUrl+env.getOneArticle+idForum);
+  }
 
 
 }

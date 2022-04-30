@@ -31,6 +31,15 @@ import { RatingComponent } from './components/rating/rating.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BirthdayComponent } from './components/birthday/birthday.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RouterModule, Routes } from '@angular/router';
+import { ForumDetailsComponent } from './components/forum-details/forum-details.component';
+
+const ROUTES :Routes=[
+  {path:'posts', component: ListPostesComponent},
+  {path:'forums',component:ListForumComponent},
+  {path:'forums/articleDetail/:id',component:ForumDetailsComponent}
+  
+]
 
 @NgModule({
   declarations: [
@@ -50,6 +59,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CreatePostComponent,
     RatingComponent,
     BirthdayComponent,
+    ForumDetailsComponent,
     
     
   ],
@@ -70,6 +80,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatAutocompleteModule,
     NgbModule,
     Ng2SearchPipeModule ,
+    RouterModule.forRoot(ROUTES)
 
     
   ], 

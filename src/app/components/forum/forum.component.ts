@@ -29,7 +29,7 @@ export class ForumComponent implements OnInit {
   ngOnInit(): void {
     this.rate=this.article.rating
     this.getTagsbyArticle(this.article)
-    this.UserImage='data:image/jpeg;base64,'+this.article.photo 
+    this.UserImage='data:image/jpeg;base64,'+this.article.photo  
    
   }
  
@@ -64,8 +64,10 @@ export class ForumComponent implements OnInit {
           }});
     }
 
-    cons(){
-      console.log("gggggggggggggg")
+    getOneArticle(){
+      this.ForumService.getOneArticle(this.article).subscribe(res=>{
+        this.updateArticle.emit();
+      })
     }
   
 

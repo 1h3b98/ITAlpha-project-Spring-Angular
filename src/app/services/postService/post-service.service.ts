@@ -42,5 +42,9 @@ dislikePost(post:Post){
 removeLike(post:Post){
   return this.http.delete(env.baseUrl+env.removeLike+post.idPost);
 }
+addPostWithoutPhoto(post:Post){
+  return this.http.post(env.baseUrl+env.addPostWithoutPhoto,post)
+}
+
 
 }

@@ -12,10 +12,11 @@ import { CreatePostComponent } from '../create-post/create-post.component';
 })
 export class ListPostesComponent implements OnInit {
   Listposts : Post[];
- 
+ post:Post;
   constructor(private postservice : PostService , private httpClient: HttpClient,public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.post= new Post();
    this.getPosts();
   }
 
@@ -41,6 +42,12 @@ export class ListPostesComponent implements OnInit {
           this.getPosts();
         }
       })
+  }
+  addPostWithoutPhoto(){
+    this.postservice.addPostWithoutPhoto(this.post).subscribe(res=>{
+      console.log(this.post.content)
+      this.getPosts();
+    })
   }
 
 

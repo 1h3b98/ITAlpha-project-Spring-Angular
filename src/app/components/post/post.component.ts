@@ -37,6 +37,7 @@ export class PostComponent implements OnInit {
     this.UserImage='data:image/jpeg;base64,'+this.post.photo 
     this.nbrtotle= this.post.nbrLike+this.post.nbrdislike;
     this.idPost=this.post.idPost;
+    console.log(this.post.photo)
   }
 
   openDialog() {
