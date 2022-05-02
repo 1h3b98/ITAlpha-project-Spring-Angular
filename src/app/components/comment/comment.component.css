@@ -11,3 +11,9 @@ p
   margin-right: 3px;
   margin-left: 3px;
 }
+
+.backgound{
+  background-color:gainsboro;
+  padding: 12px;
+  border-radius: 25px;
+}

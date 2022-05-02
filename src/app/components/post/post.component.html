@@ -113,7 +113,7 @@
                               </div>
                               <div class="share-block d-flex align-items-center feather-icon mr-3">
                                  <div class="dropdown">
-                                    <span  *ngIf="post.nbrComment>0" (click)="getcomment(post.idPost)" >
+                                    <span   *ngIf="post.nbrComment>0" (click)="getcomment(post.idPost)" >
                                     {{post.nbrComment}} Comments
                                     </span>
                                        <span *ngIf="post.nbrComment==0"  (click)="getcomment(post.idPost)" >
@@ -128,10 +128,10 @@
                         <ul class="post-comments p-0 m-0">
                            <app-comment *ngFor="let p of ListComment" [comment]="p"  (updatecomment)="getcomment(post.idPost)"></app-comment>
                         </ul>
-                        <form class="comment-text d-flex align-items-center ">
-                           <input type="text" class="form-control rounded" name="bessem" [(ngModel)]="comment.content">
+                        <form class="comment-text d-flex align-items-center" >
+                           <input type="text" class="form-control  backgound" name="bessem" [(ngModel)]="comment.content">
                            
-                            <button (click)="addcomment(post)" type="button" class="btn btn-light"><a type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                            <button (click)="addcomment(post)" type="button" class="btn btn-light backgound"><a type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
                               <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
                             </svg></a></button>
                            

@@ -11,3 +11,8 @@ p
   margin-right: 3px;
   margin-left: 3px;
 }
+
+.backgound{
+  border-radius: 60px;
+  margin: 6px;
+}

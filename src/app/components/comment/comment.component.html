@@ -1,44 +1,41 @@
-<li>
-    <div *ngIf="showUpdate" class="d-flex flex-wrap">
+
+    <div *ngIf="showUpdate" class="d-flex flex-wrap ">
        <div class="user-img">
           <img [src]="UserImage" alt="userimg" class="avatar-35 rounded-circle img-fluid">
        </div>
-       <div  class="comment-data-block ml-3">
+       <div  class="comment-data-block ml-3 backgound">
          <p class="h6 users">{{comment.fname}} {{comment.lname}}</p>
           <p class="users">{{comment.content}}</p>
-          <div class="d-flex flex-wrap align-items-center comment-activity">
-             <a type="button" (click)=" likeComment(comment.idComment)">1 like</a> 
-             
-               <div class="iq-card-post-toolbar">
-                  <div class="dropdown">
-                     <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                     <i class="ri-more-fill"></i>
-                     </span>
-                     <div class="dropdown-menu m-0 p-0"  type="button" (click)="get()">
-                        <a class="dropdown-item p-3" >
-                           <div class="d-flex align-items-top">
-                              <div class="icon font-size-20"><i class="ri-save-line"></i></div>
-                              <div class="data ml-2">
-                                 <h4>update</h4>
-                              </div>
-                           </div>
-                        </a>
-                        <a class="dropdown-item p-3" type="button" (click)=" deleteComment(comment)" >
-                           <div class="d-flex align-items-top">
-                              <div class="icon font-size-20"><i class="ri-close-circle-line"></i></div>
-                              <div class="data ml-2">
-                                 <h6>delete</h6>
-                              </div>
-                           </div>
-                        </a>
+          
+       </div>
+       <div  style="padding: 10px 10px 50px;" >
+         <div class="dropdown">
+            <span class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+            <i class="ri-more-fill"></i>
+            </span>
+            <div  class="dropdown-menu m-0 p-0"  type="button" (click)="get()">
+               <a class="dropdown-item p-3" >
+                  <div class="d-flex align-items-top">
+                     <div class="icon font-size-20"><i class="ri-save-line"></i></div>
+                     <div class="data ml-2">
+                        <h4>update</h4>
                      </div>
                   </div>
-               </div> 
-          </div>
-       </div>
+               </a>
+               <a class="dropdown-item p-3" type="button" (click)=" deleteComment(comment)" >
+                  <div class="d-flex align-items-top">
+                     <div class="icon font-size-20"><i class="ri-close-circle-line"></i></div>
+                     <div class="data ml-2">
+                        <h6>delete</h6>
+                     </div>
+                  </div>
+               </a>
+            </div>
+         </div>
+      </div> 
     </div> 
     <br> 
- </li>
+
 
 
  <form class="comment-text d-flex align-items-center " [formGroup]="commentForum" *ngIf="!showUpdate">
