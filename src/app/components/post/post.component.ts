@@ -14,7 +14,7 @@ import { UpdateComponent } from '../update/update.component';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit  {
 
   @Input() post : Post;
   signaler : Signaler = new Signaler();

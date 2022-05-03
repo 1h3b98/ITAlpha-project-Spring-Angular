@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import {MatMenuModule} from '@angular/material/menu';
 import { AppComponent } from './app.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { PostComponent } from './components/post/post.component';
@@ -33,11 +34,15 @@ import { BirthdayComponent } from './components/birthday/birthday.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule, Routes } from '@angular/router';
 import { ForumDetailsComponent } from './components/forum-details/forum-details.component';
+import { OpinionComponent } from './components/opinion/opinion.component';
+import { ListFavorisComponent } from './components/list-favoris/list-favoris.component';
+
 
 const ROUTES :Routes=[
   {path:'posts', component: ListPostesComponent},
   {path:'forums',component:ListForumComponent},
-  {path:'forums/articleDetail/:id',component:ForumDetailsComponent}
+  {path:'forums/articleDetail/:id',component:ForumDetailsComponent},
+  {path:'forum/favoris',component:ListFavorisComponent} 
   
 ]
 
@@ -60,6 +65,8 @@ const ROUTES :Routes=[
     RatingComponent,
     BirthdayComponent,
     ForumDetailsComponent,
+    OpinionComponent,
+    ListFavorisComponent,
     
     
   ],
@@ -80,11 +87,14 @@ const ROUTES :Routes=[
     MatAutocompleteModule,
     NgbModule,
     Ng2SearchPipeModule ,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    MatMenuModule
 
     
   ], 
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

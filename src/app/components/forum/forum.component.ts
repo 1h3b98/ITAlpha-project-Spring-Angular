@@ -4,7 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/components/delete-dialog/delete-dialog.component';
 import { env } from 'src/app/env/env';
 import { Forum } from 'src/app/models/forum';
+import { opinion } from 'src/app/models/opinion';
 import { ForumService } from 'src/app/services/forum-service/forum.service';
+import { OpinionService } from 'src/app/services/opinionService/opinion.service';
 import { AddForumComponent } from '../add-forum/add-forum.component';
 import { DeleteforumDialagComponent } from '../deleteforum-dialag/deleteforum-dialag.component';
 import { RatingComponent } from '../rating/rating.component';
@@ -16,20 +18,21 @@ import { RatingComponent } from '../rating/rating.component';
 })
 export class ForumComponent implements OnInit {
   rate:any;
-  tags :any 
-  UserImage:string ;
+  tags :any  
+  UserImage:string ; 
   ListTagsByOne:string[] 
   @Input() article :Forum
   @Output() DeleteArticle = new EventEmitter<Forum>();
   @Output() updateArticle = new EventEmitter();
 
-  constructor(public dialog: MatDialog , private http:HttpClient,private ForumService:ForumService) { }
+  constructor(public dialog: MatDialog ,private OpinionService:OpinionService, private http:HttpClient,private ForumService:ForumService) { }
 
 
   ngOnInit(): void {
     this.rate=this.article.rating
     this.getTagsbyArticle(this.article)
     this.UserImage='data:image/jpeg;base64,'+this.article.photo  
+
    
   }
  
@@ -69,6 +72,8 @@ export class ForumComponent implements OnInit {
         this.updateArticle.emit();
       })
     }
+
+  
   
 
 }

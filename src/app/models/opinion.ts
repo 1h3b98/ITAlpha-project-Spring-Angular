@@ -7,5 +7,7 @@ content:string;
 birthDate:Date;
 jobTitle:string;
 updateAt : Date;
-createAt: Date; 
+createAt: Date;
+idOpinion:number;
+note:number; 
 }

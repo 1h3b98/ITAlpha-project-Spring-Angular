@@ -216,4 +216,15 @@
    
   }
 
+  .pp{
+    padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 12px;
+  }
+  .pp:hover{
+    background-color: gainsboro;
+  }
+
  

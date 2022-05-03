@@ -23,7 +23,13 @@ return this.http.post(env.baseUrl+env.addOpinion+idArticle,opinion);
   deleteOpinion(idOpinion:number){
 return this.http.delete(env.baseUrl+env.deleteOpinion+idOpinion);
   }
-  updateopinion(idOpinion:number ,opinion :opinion){
-return this.http.put(env.baseUrl+env.updateopinion+idOpinion,opinion);
+  updateopinion(content:any ,opinion :opinion){
+return this.http.put(env.baseUrl+env.updateopinion+opinion.idOpinion,content);
   }
+  up(idArticle:number){
+return this.http.get(env.baseUrl+env.upUrl+idArticle);
+  }
+  down(idArticle:number){
+    return this.http.get(env.baseUrl+env.downUrl+idArticle);
+      }
 }

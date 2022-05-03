@@ -7,7 +7,7 @@ import { FormGroup ,Validator,FormBuilder, Validators} from '@angular/forms';
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
-  styleUrls: ['./comment.component.css']
+  styleUrls: ['./comment.component.css'] 
 })
 export class CommentComponent implements OnInit {
   ListComment : comment[];
@@ -16,13 +16,13 @@ export class CommentComponent implements OnInit {
   commentForum !:FormGroup;
   showUpdate :boolean=true;
   commentUpdated:comment;
-  @Output() updatecomment = new EventEmitter(); 
+  @Output() updatecomment = new EventEmitter();  
   constructor(private formBuilder : FormBuilder, private  CommentService: CommentServiceService) {  
     
   }
   ngOnInit(): void {
     this.UserImage='data:image/jpeg;base64,'+this.comment.photo
-    this.commentUpdated=new comment();
+    this.commentUpdated=new comment(); 
     this.commentForum= this.formBuilder.group({
       content :['',Validators.required]
     }) 

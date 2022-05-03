@@ -34,6 +34,9 @@ export class ForumService {
   addToFavoris(article: Forum){
    return this.http.get(env.baseUrl+env.addArticleTofavoritesUrl+article.idForum);
   }
+  getFavoris(){
+    return this.http.get<Forum[]>(env.baseUrl+env.getFavoritesArticlesUrl);
+  }
   rateForum(idArticle:number,note:any){
     return this.http.get(env.baseUrl+env.rateArticleUrl+idArticle+"/"+note)
   }
@@ -45,6 +48,10 @@ return this.http.get<Forum[]>(env.baseUrl+env.getTagArticles+id);
   }
   getOneArticle(idForum: any){
     return this.http.get<Forum>(env.baseUrl+env.getOneArticle+idForum);
+  }
+
+  getSimilarPost(){
+    return this.http.get<Forum[]>(env.baseUrl+env.similarArticle);
   }
 
 

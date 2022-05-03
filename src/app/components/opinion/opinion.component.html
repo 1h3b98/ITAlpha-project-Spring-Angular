@@ -1,0 +1,67 @@
+<div class="col-lg-12" *ngIf="showUpdate">
+    <div class="iq-card iq-card-block iq-card-stretch iq-card-height blog">
+       <div class="iq-card-body">
+          <div class="d-flex align-items-center justify-content-between mb-2 border-bottom">
+            <div class="d-flex align-items-center border-bottom">
+               <div class="user-image mb-50">
+                  <img class="avatar-50 rounded" [src]="UserImage" alt="#" data-original-title="" title="">
+               </div>
+               <div class="ml-3">
+                 <p class="">{{opinion.fname}} {{opinion.lname}}</p>
+                 <h6 class="">{{opinion.jobTitle}}</h6>
+               </div>
+            </div>
+               <span  mat-icon-button [matMenuTriggerFor]="menu"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" color="gris" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                     <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                   </svg>
+                  </span>
+             <mat-menu #menu="matMenu">
+               <button mat-menu-item (click)=" delete()" >
+                 <mat-icon>voicemail</mat-icon>
+                 <span>Delete</span>
+               </button>
+               <button mat-menu-item (click)="get()">
+                 <mat-icon>Update</mat-icon>
+                 <span>Update</span>
+               </button>
+             </mat-menu>
+             
+          </div>
+          
+          
+          <div class="blog-description  mt-3">
+             <div class="blog-meta d-flex align-items-center mb-9">
+               
+                <div  class="media-support-user-img mr-3  ">
+                  <svg *ngIf="opinion.note>4" xmlns="http://www.w3.org/2000/svg" width="32" height="32" color="green" fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+                     <path d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"/>
+                     <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"/>
+                   </svg>
+                   <svg type="button" (click)="up()"xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="Green"  fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                      <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                    </svg>
+                    <h1 style="margin-left: 10px;">{{opinion.note}}</h1>
+                   <svg type="button" (click)="down()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" color="Green" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                      <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                 </div>
+                <div>
+                   <p>{{opinion.content}}</p>
+                </div>
+             </div> 
+            
+             <div class="d-flex align-items-center justify-content-between mb-2"> 
+
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <form class="comment-text d-flex align-items-center " [formGroup]="opinionForum" *ngIf="!showUpdate">
+   <img src="assets/images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">  
+<textarea style=" height: 100px;width: 950px; border-radius: 20px;" type="text" class="form-control rounded" name="bessem" formControlName="content"></textarea>
+
+   <button (click)="updateopinion(opinion)" class="btn btn-light">update</button>
+
+</form>

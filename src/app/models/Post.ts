@@ -18,4 +18,5 @@ export class Post{
     etatLike:number;
     birthDate:Date;
     jobTitle:string;
+    age :number;
 }

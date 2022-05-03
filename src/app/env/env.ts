@@ -23,6 +23,7 @@ export const env ={
     getAllAriclesUrl :"/forum/getatricles",
     rateForum:"/forum/rate/1/",
     getOneAtricle:"/forum/getOneAtricle/",
+    similarArticle:"/post/similare/1",
     //---------favorite forum ------------//
     addArticleTofavoritesUrl:"/forum/addtof/1/",
     getFavoritesArticlesUrl :"/forum/getFavoiritesArticles/1",
@@ -43,6 +44,11 @@ export const env ={
     getOpinionByArticle:"/opinion/getOpinionbypost/",
     addOpinion:"/opinion/add/",
     deleteOpinion:"/opinion/delete/",
-    updateopinion:"/opinion/update/"
+    updateopinion:"/opinion/update/",
+    upUrl:"/opinion/up/",
+    downUrl:"/opinion/down/",
+      //------------opinion----------------
+      userbirthday:"/user/BirthFriends"
+
 
     }
