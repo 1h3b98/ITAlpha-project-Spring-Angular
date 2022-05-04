@@ -27,12 +27,7 @@ export class AdminEventComponent implements OnInit {
     this.Eid = event.eventId;
     console.log(this.Eid);
   }
-  getoneEvent(e:Events){
-    
-    this.eventService.getEventById(e.eventId).subscribe(data=>{
-      console.log(Response);
-    });
-  }
+  
   addevent(){
     
     this.newE.startTime=this.newE.startTime+" 00:00:00";

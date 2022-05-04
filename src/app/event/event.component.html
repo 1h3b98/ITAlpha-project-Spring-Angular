@@ -32,6 +32,8 @@
                    <li>{{event.eventReward}}</li>-->
                 <div class="col-md-6 col-lg-4" *ngFor="let event of eventList">
                      <div class="iq-card rounded iq-card-block iq-card-stretch iq-card-height">
+                        <app-favorite  [event]="event"></app-favorite>
+                        
                         <div class="event-images">
                            <a href="#">
                            <img src="assets/images/page-img/51.jpg" class="img-fluid" alt="Responsive image">
@@ -74,8 +76,8 @@
                               
                            </div>
                            <div class="row justify-content-around mb-3">
-                              <button type="button" class="btn btn-outline-primary rounded-pill mb-3">JOIN</button>
-                              <button type="button" class="btn btn-outline-danger rounded-pill mb-3">  LIKE <i class="ion-heart">  </i></button>
+                              <app-join  [event]="event"></app-join>
+                              <app-like  [event]="event"></app-like>
                            </div>
                         </div>
                      </div>

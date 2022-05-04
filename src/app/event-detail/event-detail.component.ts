@@ -1,7 +1,9 @@
 import { HttpClient,HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Actions } from '../model/action';
 import { Events } from '../model/events';
+import { ActionService } from '../service/action.service';
 import { EventService } from '../service/event.service';
 
 @Component({
@@ -14,9 +16,11 @@ export class EventDetailComponent implements OnInit {
   data:any
   oneEvent: Events ;
   param:any;
+  newA:Actions;
   constructor(
     private _routes:ActivatedRoute,
     private eventService:  EventService,
+    private actionService:  ActionService,
     private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -25,11 +29,12 @@ export class EventDetailComponent implements OnInit {
       console.log(params)//log the entire params object
       this.id=params['Id']
       console.log('this.id ='+this.id)
-     
+      
       //console.log(params['event.eventId']) //log the value of id
     //this.id=+params['event.eventId'];
    
     this.getOne(this.id)
+    this.newA= new Actions();
    });
   }
   getOne(id:any){
@@ -37,11 +42,18 @@ export class EventDetailComponent implements OnInit {
     this.eventService.getEventById(id).subscribe(data=>{
       this.oneEvent=data
       console.log(data)
-    });
+    });}
+    postComment(auId:number,aeId:number){
+      
+      this.newA.actionType="COMMENT";
+      
+      console.log(this.newA)
+      this.actionService.addAction(this.newA,auId,aeId).subscribe();
+    }
   }
   
 
     
     
   
-}
+

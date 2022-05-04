@@ -10,11 +10,16 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AdminEventDetailComponent } from './event-detail/adminEvent-detail.component';
+import { UserComponent } from './user/user.component';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { LikeComponent } from './like/like.component';
+import { JoinComponent } from './join/join.component';
 
 const ROUTES: Routes=[
   {path: 'events',component: EventComponent},
   {path: 'event-detail/:Id',component: EventDetailComponent},
-  {path: 'admin-event-detail/:Id',component: AdminEventDetailComponent}
+  {path: 'admin-event-detail/:Id',component: AdminEventDetailComponent},
+  {path: 'user',component: UserComponent}
 ]
 @NgModule({
   declarations: [
@@ -22,7 +27,11 @@ const ROUTES: Routes=[
     EventComponent,
     AdminEventComponent,
     EventDetailComponent,
-    AdminEventDetailComponent
+    AdminEventDetailComponent,
+    UserComponent,
+    FavoriteComponent,
+    LikeComponent,
+    JoinComponent
     
   ],
   imports: [
