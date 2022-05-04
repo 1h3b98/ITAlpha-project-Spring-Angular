@@ -2,24 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>pifrontend</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/images/favicon.ico" />
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <!-- Typography CSS -->
-  <link rel="stylesheet" href="assets/css/typography.css">
-  <!-- Style CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <!-- Responsive CSS -->
-  <link rel="stylesheet" href="assets/css/responsive.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>SocialV | Responsive Bootstrap 5 Admin Dashboard Template</title>
+      
+      <link rel="shortcut icon" href="assets/images/favicon.ico" />
+      <link rel="stylesheet" href="assets/css/libs.min.css">
+      <link rel="stylesheet" href="assets/css/socialv.css?v=4.0.0">
+      <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="assets/vendor/remixicon/fonts/remixicon.css">
+      <link rel="stylesheet" href="assets/vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
+      <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="images/favicon.ico" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- Typography CSS -->
+      <link rel="stylesheet" href="css/typography.css">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="css/responsive.css">
+      
 </head>
-<body>
- 
-  <app-root></app-root>
+<body class="  ">
+  <!-- loader Start -->
+  <div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+  
+
+<app-root></app-root>
     
   
 
@@ -27,49 +43,116 @@
 
 
 
-  <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/popper.min.js"></script>
-      <script src="assets/js/bootstrap.min.js"></script>
-      <!-- Appear JavaScript -->
-      <script src="assets/js/jquery.appear.js"></script>
-      <!-- Countdown JavaScript -->
-      <script src="assets/js/countdown.min.js"></script>
-      <!-- Counterup JavaScript -->
-      <script src="assets/js/waypoints.min.js"></script>
-      <script src="assets/js/jquery.counterup.min.js"></script>
-      <!-- Wow JavaScript -->
-      <script src="assets/js/wow.min.js"></script>
-      <!-- Apexcharts JavaScript -->
-      <script src="assets/js/apexcharts.js"></script>
-      <!-- Slick JavaScript -->
-      <script src="assets/js/slick.min.js"></script>
-      <!-- Select2 JavaScript -->
-      <script src="assets/js/select2.min.js"></script>
-      <!-- Owl Carousel JavaScript -->
-      <script src="assets/js/owl.carousel.min.js"></script>
-      <!-- Magnific Popup JavaScript -->
-      <script src="assets/js/jquery.magnific-popup.min.js"></script>
-      <!-- Smooth Scrollbar JavaScript -->
-      <script src="assets/js/smooth-scrollbar.js"></script>
-      <!-- lottie JavaScript -->
-      <script src="assets/js/lottie.js"></script>
-      <!-- am core JavaScript -->
-      <script src="assets/js/core.js"></script>
-      <!-- am charts JavaScript -->
-      <script src="assets/js/charts.js"></script>
-      <!-- am animated JavaScript -->
-      <script src="assets/js/animated.js"></script>
-      <!-- am kelly JavaScript -->
-      <script src="assets/js/kelly.js"></script>
-      <!-- am maps JavaScript -->
-      <script src="assets/js/maps.js"></script>
-      <!-- am worldLow JavaScript -->
-      <script src="assets/js/worldLow.js"></script>
-      <!-- Chart Custom JavaScript -->
-      <script src="assets/js/chart-custom.js"></script>
-      <!-- Custom JavaScript -->
-      <script src="assets/js/custom.js"></script>
+  <footer class="iq-footer bg-white">
+    <div class="container-fluid">
+       <div class="row">
+          <div class="col-lg-6">
+             <ul class="list-inline mb-0">
+                <li class="list-inline-item"><a href="../dashboard/privacy-policy.html">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="../dashboard/terms-of-service.html">Terms of Use</a></li>
+             </ul>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-end">
+             Copyright 2022 <a href="#">Hive</a> All Rights Reserved.
+          </div>
+       </div>
+    </div>
+ </footer>
+ <nav class="iq-float-menu">
+    <input type="checkbox" class="iq-float-menu-open" name="menu-open" id="menu-open" />
+    <label class="iq-float-menu-open-button" for="menu-open">
+       <span class="lines line-1"></span>
+       <span class="lines line-2"></span>
+       <span class="lines line-3"></span>
+    </label>
+    <button class="iq-float-menu-item bg-info"  data-toggle="tooltip" data-placement="top" title="Direction Mode" data-mode="rtl"><i class="ri-text-direction-r"></i></button>
+    <button class="iq-float-menu-item bg-danger"  data-toggle="tooltip" data-placement="top" title="Color Mode" id="dark-mode" data-active="true"><i class="ri-sun-line"></i></button>
+    <button class="iq-float-menu-item bg-warning" data-toggle="tooltip" data-placement="top" title="Comming Soon"><i class="ri-palette-line"></i></button> 
+ </nav>
+ <!-- Backend Bundle JavaScript -->
+ <script src="assets/js/libs.min.js"></script>
+ <!-- slider JavaScript -->
+ <script src="assets/js/slider.js"></script>
+ <!-- masonry JavaScript --> 
+ <script src="assets/js/masonry.pkgd.min.js"></script>
+ <!-- SweetAlert JavaScript -->
+ <script src="assets/js/enchanter.js"></script>
+ <!-- SweetAlert JavaScript -->
+ <script src="assets/js/sweetalert.js"></script>
+ <!-- Chart Custom JavaScript -->
+ <script src="assets/js/customizer.js"></script>
+ <!-- app JavaScript -->
+ <script src="assets/js/charts/weather-chart.js"></script>
+ <script src="assets/js/app.js"></script>
+ <script src="assets/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+ <script src="assets/js/lottie.js"></script>
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/popper.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <!-- Appear JavaScript -->
+ <script src="js/jquery.appear.js"></script>
+ <!-- Countdown JavaScript -->
+ <script src="js/countdown.min.js"></script>
+ <!-- Counterup JavaScript -->
+ <script src="js/waypoints.min.js"></script>
+ <script src="js/jquery.counterup.min.js"></script>
+ <!-- Wow JavaScript -->
+ <script src="js/wow.min.js"></script>
+ <!-- Apexcharts JavaScript -->
+ <script src="js/apexcharts.js"></script>
+ <!-- Slick JavaScript -->
+ <script src="js/slick.min.js"></script>
+ <!-- Select2 JavaScript -->
+ <script src="js/select2.min.js"></script>
+ <!-- Owl Carousel JavaScript -->
+ <script src="js/owl.carousel.min.js"></script>
+ <!-- Magnific Popup JavaScript -->
+ <script src="js/jquery.magnific-popup.min.js"></script>
+ <!-- Smooth Scrollbar JavaScript -->
+ <script src="js/smooth-scrollbar.js"></script>
+ <!-- lottie JavaScript -->
+ <script src="js/lottie.js"></script>
+ <!-- Chart Custom JavaScript -->
+ <script src="js/chart-custom.js"></script>
+ <!-- Custom JavaScript -->
+ <script src="js/custom.js"></script>
+
+ <!-- offcanvas start -->
+
+ <div class="offcanvas offcanvas-bottom share-offcanvas" tabindex="-1" id="share-btn" aria-labelledby="shareBottomLabel">
+    <div class="offcanvas-header">
+       <h5 class="offcanvas-title" id="shareBottomLabel">Share</h5>
+       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+       <div class="d-flex flex-wrap align-items-center">
+          <div class="text-center me-3 mb-3">
+             <img src="assets/images/icon/08.png" class="img-fluid rounded mb-2" alt="">
+             <h6>Facebook</h6>
+          </div>
+          <div class="text-center me-3 mb-3">
+             <img src="assets/images/icon/09.png" class="img-fluid rounded mb-2" alt="">
+             <h6>Twitter</h6>
+          </div>
+          <div class="text-center me-3 mb-3">
+             <img src="assets/images/icon/10.png" class="img-fluid rounded mb-2" alt="">
+             <h6>Instagram</h6>
+          </div>
+          <div class="text-center me-3 mb-3">
+             <img src="assets/images/icon/11.png" class="img-fluid rounded mb-2" alt="">
+             <h6>Google Plus</h6>
+          </div>
+          <div class="text-center me-3 mb-3">
+             <img src="assets/images/icon/13.png" class="img-fluid rounded mb-2" alt="">
+             <h6>In</h6>
+          </div>
+          <div class="text-center me-3 mb-3">
+             <img src="assets/images/icon/12.png" class="img-fluid rounded mb-2" alt="">
+             <h6>YouTube</h6>
+          </div>
+       </div>
+    </div>
+ </div>
 </body>
 </html>

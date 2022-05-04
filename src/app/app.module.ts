@@ -1,7 +1,7 @@
 import {HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LuxonModule } from 'luxon-angular';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventComponent } from './event/event.component';
@@ -14,6 +14,7 @@ import { UserComponent } from './user/user.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { LikeComponent } from './like/like.component';
 import { JoinComponent } from './join/join.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 const ROUTES: Routes=[
   {path: 'events',component: EventComponent},
@@ -37,12 +38,11 @@ const ROUTES: Routes=[
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LuxonModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     FormsModule
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
