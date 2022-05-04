@@ -44,7 +44,7 @@ public class EvaluationService {
 public void User_join_quiz(){
     er.findAll().forEach(e->{
         if((e.getEndTime().before(new Date()))&&(e.getEndTime().after(addDays(new Date(),-7))))
-         ar.findusersByEvent(e, ActionType.JOIN).forEach(u->{
+         ar.findusersByEvent(e, ActionType.JOINA).forEach(u->{
 
             u.setPoints(u.getPoints()+e.getEventReward()+u.getScores().stream().filter(s->s.getDate()
                     .before(new Date()) && s.getDate().after(addDays(new Date(),-7)))

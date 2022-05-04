@@ -9,7 +9,7 @@ import tn.esprit.project.Entities.Action;
 import tn.esprit.project.Entities.Event;
 import tn.esprit.project.Service.IActionService;
 @RestController
-@CrossOrigin(origins = "**", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RequestMapping("/Action")
 public class ActionController {
 	@Autowired 
@@ -31,7 +31,7 @@ public class ActionController {
 	}
 	@DeleteMapping("/delete/{action_id}/{event_id}/{user_id}")
 	public void deleteLikeOrJoin(@PathVariable("action_id") long actionId,@PathVariable("event_id") long eventId,@PathVariable("user_id") long userId){
-		ar.deleteLikeOrJoin(actionId, eventId, userId);;
+		ar.deleteLikeOrJoin(actionId, eventId, userId);
 	}
 	@DeleteMapping("/delete/{action_id}")
 	public void deleteOther(@PathVariable("action_id") long actionId){
@@ -71,7 +71,7 @@ public class ActionController {
 		return ar.getfav(userId,eventId);
 	}
 	@GetMapping("/getAllComment/{event_id}")
-	public Action getcomment(@PathVariable("event_id") Long eventId){
+	public List<Action> getcomment(@PathVariable("event_id") Long eventId){
 		return ar.getcomment(eventId);
 	}
 }

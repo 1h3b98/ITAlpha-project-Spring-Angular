@@ -59,6 +59,7 @@ public class Action implements Serializable{
 	User userAction;
 
 	@ManyToOne
+
 	Event event;
 
 

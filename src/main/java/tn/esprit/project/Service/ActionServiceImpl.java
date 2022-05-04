@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import tn.esprit.project.Service.IEventService;
 import tn.esprit.project.Repository.UserRepository;
 
 @Service
+@Slf4j
 public class ActionServiceImpl implements IActionService {
 	@Autowired
 	ActionRepository ar;
@@ -56,10 +58,10 @@ public class ActionServiceImpl implements IActionService {
 
 		foundLike = actionList.stream().anyMatch((Action p) -> p.getEvent().equals(er.findById(eventId).orElse(null)) &&
 				p.getUserAction().equals(ur.findById(userId).orElse(null)) &&
-				p.getActionType().equals(ActionType.LIKE));
+				p.getActionType().equals(ActionType.LIKEA));
 		foundJoin = actionList.stream().anyMatch((Action p) -> p.getEvent().equals(er.findById(eventId).orElse(null)) &&
 				p.getUserAction().equals(ur.findById(userId).orElse(null)) &&
-				p.getActionType().equals(ActionType.JOIN));
+				p.getActionType().equals(ActionType.JOINA));
 		foundInvite = actionList.stream().anyMatch((Action p) -> Objects.equals(er.findById(eventId).orElse(null), p.getEvent()) &&
 				Objects.equals(p.getUserAction(), ur.findById(userId).orElse(null)) && Objects.equals(p.getRecieverId(), a.getRecieverId()) &&
 				Objects.equals(p.getActionType(), ActionType.INVITE));
@@ -68,7 +70,7 @@ public class ActionServiceImpl implements IActionService {
 				p.getActionType().equals(ActionType.FAVORITE));
 		
 		
-		if (a.getActionType()==ActionType.LIKE){
+		if (a.getActionType()==ActionType.LIKEA){
 			if (!foundLike){
 
 			a.setUserAction(ur.findById(userId).orElse(null));
@@ -88,7 +90,7 @@ public class ActionServiceImpl implements IActionService {
 			}
 
 		}
-		else if (a.getActionType()==ActionType.JOIN){
+		else if (a.getActionType()==ActionType.JOINA){
 			if (!foundJoin){
 			a.setUserAction(ur.findById(userId).orElse(null));
 			a.setEvent(er.findById(eventId).orElse(null));
@@ -185,7 +187,7 @@ public class ActionServiceImpl implements IActionService {
 			
 			if(a.getActionType()==ActionType.REPONSE && a.isAccepted()){
 				actionToupdate.setUserAction(ur.findById(receiverId).orElse(null));
-				actionToupdate.setActionType(ActionType.JOIN);
+				actionToupdate.setActionType(ActionType.JOINA);
 				actionToupdate.setComment(null);
 				actionToupdate.setLikeStatus(false);
 				actionToupdate.setFavStatus(false);
@@ -213,11 +215,11 @@ public class ActionServiceImpl implements IActionService {
 	public void deleteLikeOrJoin(long actionId,long eventId,long userId){
 		Action actionToupdate=ar.findById(actionId).orElse(null);
 		assert actionToupdate != null;
-		if(actionToupdate.getActionType()==ActionType.JOIN){
+		if(actionToupdate.getActionType()==ActionType.JOINA){
 			es.removeJoin(eventId, userId);
 			deleteAction(actionId);	
 		}
-		else if(actionToupdate.getActionType()==ActionType.LIKE){
+		else if(actionToupdate.getActionType()==ActionType.LIKEA){
 			es.removeLike(eventId);
 			deleteAction(actionId);
 		}
@@ -250,7 +252,8 @@ public class ActionServiceImpl implements IActionService {
 	}
 	@Override
 	public List<Event> getAllFavAction(long userId){
-		return ur.findAllFavEventByUser(userId);
+		List<Event> list=(ur.findById(userId).orElse(null)).getFavEvents();
+		return list;
 	}
 	@Override
 	public Action findAction(long actionId){
@@ -266,24 +269,62 @@ public class ActionServiceImpl implements IActionService {
 	}
 	@Override
 	public Action getlike(Long uId,Long eId){
-		ActionType like=ActionType.LIKE;
-		return ar.getLike(uId,eId,like);
+		ActionType like=ActionType.LIKEA;
+		Action result;
+		try{
+			Action likes=ar.getLike(uId,eId,like);
+			if (likes!=null){
+				result=likes;
+			}else{
+				log.info("done");
+				result=null;
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+			result = null;
+		}
+		return result;
 
 	}
 	@Override
 	public Action getfav(Long uId,Long eId){
 		ActionType fav=ActionType.FAVORITE;
-		return ar.getFav(uId,eId,fav);
+		Action result;
+		try{
+			Action favs=ar.getFav(uId,eId,fav);
+			if (favs!=null){
+				result=favs;
+			}else{
+				result=null;
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+			result = null;
+		}
+		return result;
+
 
 	}
 	@Override
 	public Action getjoin(Long uId,Long eId){
-		ActionType join=ActionType.JOIN;
-		return ar.getJoin(uId,eId,join);
+		ActionType join=ActionType.JOINA;
+		Action result;
+		try{
+			Action joins=ar.getJoin(uId,eId,join);
+			if (joins!=null){
+				result=joins;
+			}else{
+				result=null;
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+			result = null;
+		}
+		return result;
 
 	}
 	@Override
-	public Action getcomment(Long eId){
+	public List<Action> getcomment(Long eId){
 		ActionType comment=ActionType.COMMENT;
 		return ar.getComment(eId,comment);
 

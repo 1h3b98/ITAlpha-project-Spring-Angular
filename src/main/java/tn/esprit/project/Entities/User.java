@@ -84,7 +84,7 @@ public class User implements Serializable {
 	 
 	 @OneToMany(mappedBy ="reciever")
 	 List<Message> msgRecieved;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Event> FavEvents;
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy="userL")

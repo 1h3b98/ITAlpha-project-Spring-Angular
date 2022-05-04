@@ -22,6 +22,6 @@ public interface IActionService {
 	 Action getlike(Long uId,Long eId);
 	 Action getjoin(Long uId,Long eId);
 	 Action getfav(Long uId,Long eId);
-	 Action getcomment(Long eId);
+	 List<Action> getcomment(Long eId);
 	 
 }
