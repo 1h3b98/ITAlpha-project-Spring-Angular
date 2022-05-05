@@ -106,6 +106,26 @@ body {
       .star circle:nth-of-type(5) {
           animation-delay: 1.9s;
       }
-       
+     .box {
+  width: 100px;
+  height: 100px;
+  background: rgba(254, 249, 247, 1);
+  border: 1.5px solid #e24301;
+  margin: 50px;
+  font-size: 0.8rem;
+  position: absolute;	
+
+}
+#fs-modal{
+  width: 100px;
+    height: 100px;
+    margin: 10px;
+
+  background: rgba(254, 249, 247, 1);
+
+  position: absolute;
+  
+}
+  
 
      

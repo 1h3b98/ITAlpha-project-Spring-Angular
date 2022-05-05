@@ -21,6 +21,10 @@ import { FeedsComponent } from './components/feeds/feeds.component';
 import { FeedssentComponent } from './components/feedssent/feedssent.component';
 import { ChartpointsComponent } from './components/chartpoints/chartpoints.component';
 import { StepprogressbarComponent } from './components/stepprogressbar/stepprogressbar.component';
+import { FilterFeedbackPipe } from './pipes/filter-feedback.pipe';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { TriUsersComponent } from './components/tri-users/tri-users.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +40,11 @@ import { StepprogressbarComponent } from './components/stepprogressbar/stepprogr
     FeedsComponent,
     FeedssentComponent,
     ChartpointsComponent,
-    StepprogressbarComponent
+    StepprogressbarComponent,
+    FilterFeedbackPipe,
+    LineChartComponent,
+    TriUsersComponent,
+    
     
   ],
   imports: [
@@ -46,7 +54,8 @@ import { StepprogressbarComponent } from './components/stepprogressbar/stepprogr
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    NgParticlesModule
+    NgParticlesModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

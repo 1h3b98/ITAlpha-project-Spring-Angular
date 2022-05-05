@@ -14,6 +14,7 @@ export const env ={
     getfeedsSent:"/FeedBack/show-sent/",
     getusers:"/FeedBack/getu",
     getnbrSent:"/FeedBack/nbrsent/",
-    getusersnames:"/FeedBack/getun"
-
+    getusersnames:"/FeedBack/getun",
+    getusersBadges:"/Evaluation/getUsersBadges",
+    getBadgePoints: "/Evaluation/getbadgesvaluesmax"
     }

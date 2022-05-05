@@ -5,6 +5,8 @@
     <div class="container">
        <div class="row">
           <div class="col-sm-12">
+            <app-tri-users></app-tri-users>
+
              <div class="iq-card">
                 <div class="iq-card-body profile-page p-0">
                    <div class="profile-header">
@@ -15,20 +17,24 @@
                             <li><a href="javascript:void();"><i class="ri-settings-4-line"></i></a></li>
                          </ul>
                       </div>
-                      <div class="user-detail text-center mb-3">
+                      <div class="user-detail text-center mb-3" >
                          <div class="profile-img">
                             <img src="/assets/images/user/11.png" alt="profile-img" class="avatar-130 img-fluid" />
                          </div>
                          <div class="profile-detail">
                             <h3 class="">Bni Cyst</h3>
                          </div>
+
                       </div>
                       <div class="profile-info p-4 d-flex align-items-center justify-content-between position-relative">
                          <div class="social-links">
                             <ul class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0">
-                               <li  class="text-center pr-3 ">
-                                 <div id="starhover" *ngIf="gold()"> 
+                               <li  (mouseenter)="addClickEvent($event)" (mouseleave)="addClickEvent($event)" (click)="addClickEvent($event)" class="text-center pr-3 ">
+                                  
+                                 <div class="starhover" *ngIf="gold()"> 
                                     <li   class="text-center pr-3 ">
+                                       <div style="border:1px solid black;padding: 1pm;" id="fs-modal" [ngStyle]="modelStyle" (mouseleave)="onPopEvent()">Popupmodal</div>
+
                                 <svg class="badge "  xmlns="http://www.w3.org/2000/svg" height="70" width="70" viewBox="-40 -40 440 440">
                                     <circle class="outer" fill="#F9D535" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/>
                                     <circle class="inner" fill="#DFB828" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
@@ -43,7 +49,7 @@
                                         </g>	
                                   </svg>
                                  </div>
-                                 <div id="starhover" *ngIf="bronze()"> 
+                                 <div class="starhover" *ngIf="bronze()"> 
                                     <li   class="text-center pr-3 ">
                                 <svg class="badge"  xmlns="http://www.w3.org/2000/svg" height="70" width="70" viewBox="-40 -40 440 440">
                                     <circle class="outer" fill="#CD7F32" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/>
@@ -59,7 +65,7 @@
                                         </g>	
                                   </svg>
                                  </div>
-                                 <div id="starhover"  *ngIf="silver()"> 
+                                 <div class="starhover"  *ngIf="silver()"> 
                                     
                                     <li   class="text-center pr-3 ">
                                        
@@ -76,8 +82,12 @@
                                             <circle fill="#FFC300" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="251.7" cy="160.4" r="4.4"/>
                                         </g>	
                                   </svg>
+                         
                                  </div> 
-                                   <p>{{nbrrecieved}}</p>
+                                                                  
+
+        
+                                 
                                  </li>
                              
                             </ul>
@@ -102,10 +112,13 @@
                 </div>
              </div>
              <div class="iq-card">
+                
                 <div class="iq-card-body p-0">
                    <div class="user-tabing">
                       <ul class="nav nav-pills d-flex align-items-center justify-content-center profile-feed-items p-0 m-0">
+
                          <li class="col-sm-3 p-0">
+
                             <a class="nav-link active" data-toggle="pill" href="#timeline">Timeline</a>
                          </li>
                          <li class="col-sm-3 p-0">
@@ -134,7 +147,6 @@
                          <div class="col-lg-4">
                             <div class="iq-card">
                                <div class="iq-card-body">
-                                  <app-feedback></app-feedback>
                                </div>
                             </div>
                             <div class="iq-card">

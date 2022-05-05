@@ -20,15 +20,16 @@ export class FeedsComponent implements OnInit {
   id:number=0;
   ids:number=0;
   feedback : FeedBack;
+  filteredString : string='';
+  filteredString1 : string='';
 
   ngOnInit(): void {
     this.feedback = new FeedBack();
-
+this.filteredString1=this.filteredString;
     this.getfeedsrecieved();
     this.getnbrrecieved();
     this.getfeedsent();
     this.getnbrsent();
-
   }
   save(){
     this.feedbackservice.addFeedback(this.feedback,2,1).subscribe(res=>{
@@ -51,7 +52,6 @@ export class FeedsComponent implements OnInit {
     return this.feedbackservice.getnbrsent().subscribe(
       Response=>{
         this.nbs=Response;
-        console.log(Response)
       }
      );
   }
@@ -71,7 +71,6 @@ getfeedsent(){
       Response=>{
         this.Listfs=Response;
 
-        console.log(Response);
         
       }
     );

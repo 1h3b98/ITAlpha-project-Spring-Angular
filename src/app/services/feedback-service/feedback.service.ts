@@ -5,6 +5,7 @@ import { FeedBack } from 'src/app/models/FeedBack';
 import { user } from 'src/app/models/user';
 import { env } from 'src/app/env/env';
 import { Observable } from 'rxjs';
+import { userBadge } from 'src/app/models/userBadge';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +43,7 @@ getUsersnames(){
   return this.http.get<string[]>(env.baseUrl+env.getusersnames);
 }
 
+getUsersBadges(){
+  return this.http.get<userBadge[]>(env.baseUrl+env.getusersBadges);
+}
 }

@@ -124,7 +124,7 @@
                             <div class="iq-email-search d-flex">
                                 <form class="me-2 position-relative searchbox">
                                     <div class="form-group mb-0">
-                                        <input type="email" class="form-control search-input" id="exampleInputEmail1" placeholder="Search">
+                                        <input type="text" class="form-control "  [(ngModel)]="filteredString"  [(ngModel)]="filteredString1" name="first">
                                         <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                                     </div>
                                 </form>
@@ -150,8 +150,10 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="mail-inbox" role="tabpanel">
                                                
-                                
-                                    <app-listfeeds *ngFor="let t of Listf" [Feed]="t" (update)="getfeedsent()"></app-listfeeds>
+                              
+                                    <app-listfeeds *ngFor="let t of Listf | filterFeedback:filteredString" [Feed]="t" (update)="getfeedsrecieved()">
+                                       
+                                    </app-listfeeds>
                                                      
                                                                      
                             </div>
@@ -161,9 +163,8 @@
                     <div class="iq-email-listbox" [hidden]="!hide">
                         <div class="tab-content">
                             <div class="tab-pane fade show active " id="mail-sent" role="tabpanel">
-                                    <app-feedssent *ngFor="let t of Listfs" [Feedsent]="t" (update)="getfeedsent()" ></app-feedssent>                                         
+                                <app-feedssent *ngFor="let t of Listfs | filterFeedback:filteredString1" [Feedsent]="t" (update)="getfeedsent()" ></app-feedssent>                                         
                             </div>
-                            
                         </div>
                     </div>
                 </div>

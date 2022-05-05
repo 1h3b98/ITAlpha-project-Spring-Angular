@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { userBadge } from 'src/app/models/userBadge';
 import { FeedbackService } from 'src/app/services/feedback-service/feedback.service';
 @Component({
   selector: 'app-chartpoints',
@@ -7,6 +8,7 @@ import { FeedbackService } from 'src/app/services/feedback-service/feedback.serv
   styleUrls: ['./chartpoints.component.css']
 })
 export class ChartpointsComponent implements OnInit {
+  listUB: userBadge[];
 
   constructor(private feedbackservice:FeedbackService) { }
 data:any;
@@ -74,5 +76,6 @@ getnames(){
   }
  );
 }
+
 
 }

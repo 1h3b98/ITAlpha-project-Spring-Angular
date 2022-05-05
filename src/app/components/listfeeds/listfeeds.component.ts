@@ -17,11 +17,12 @@ name : string;
 
   ngOnInit(): void {
 if(this.Feed.status==true){
-  this.name=this.Feed.fname
+  this.name=this.Feed.username
+  
 }
 else
-this.name="Anonymous"
-console.log(this.name+"hhhhhhhh")
+this.name="Anonymous";
+this.Feed.username=this.name
   }
   showfeed(){
     this.hidee=!this.hidee;
@@ -29,5 +30,9 @@ console.log(this.name+"hhhhhhhh")
   showdetails(){
     this.hide1=!this.hide1;
   }
+ AnonymeCheck():Boolean{
+   return this.name=="Anonymous"
+ }
   
+
 }

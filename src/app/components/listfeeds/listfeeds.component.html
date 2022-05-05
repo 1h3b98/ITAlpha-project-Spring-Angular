@@ -9,8 +9,9 @@
                 <label class="form-check-label" for="mailk"></label>
             </div>
         </div>
-        <span class="ri-star-line iq-star-toggle text-warning"></span>
-        <a href="#" class="iq-email-title">{{name}}</a>
+        <img  class="iq-email-title" *ngIf="AnonymeCheck()" src="/assets/anonymous.png" alt="" style="width:5%" class="w3-round">
+     
+        <a href="#" class="iq-email-title" *ngIf="!AnonymeCheck()">{{name}}</a>
         </div>
         <div class="iq-email-content">
         <a href="#" class="iq-email-subject">

@@ -1,4 +1,3 @@
-import { user } from "./user";
 
 export class FeedBack{
     id : number;

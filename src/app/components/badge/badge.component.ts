@@ -5,6 +5,7 @@ import { ConnectableObservable, from } from 'rxjs';
 
 import { AppComponent } from 'src/app/app.component';
 import { Badge } from 'src/app/models/Badge';
+import { badgespoints } from 'src/app/models/badgepoints';
 import { Trophey } from 'src/app/models/Trophey';
 import { BadgeService } from 'src/app/services/badge-service/badge.service';
 import { CongratsService } from 'src/app/services/congrats-service/congrats.service';
@@ -26,10 +27,14 @@ export class BadgeComponent implements OnInit {
   Listtrophey: Trophey[];
   trophey:Trophey;
   @Input() ttrophey : Trophey;
-
+  idUser:number;
+  badgepoints:badgespoints;
+valeur:number;
   constructor(private BadgeService:BadgeService,private tropheyservice:TropheyService ,private congratsservice: CongratsService,public dialog: MatDialog,private congratstservice : CongratsTService) { }
 
   ngOnInit(): void {
+    this.badgepoints=new badgespoints();
+
     this.badge=new Badge();
     console.log(this.nbrrecieved);
     this.BadgeService.getEvaluation().subscribe(
@@ -42,6 +47,22 @@ export class BadgeComponent implements OnInit {
 
         }
       }
+    );
+
+    this.BadgeService.getbadgepoints(this.idUser).subscribe(
+      Response=>{
+        this.badgepoints=Response;
+        if(this.badgepoints.badge=="BRONZE")
+        this.valeur=this.badgepoints.user_percentage;
+        else if (this.badgepoints.badge=="SILVER")
+        this.valeur=this.badgepoints.user_percentage+40;
+        else 
+        this.valeur=100
+  console.log(this.valeur)
+  console.log(this.badgepoints.user_percentage)
+  
+      }
+      
     );
     this.tropheyservice.getTrophies().subscribe(
       (data1:Trophey[])=>this.Listtrophey=data1
@@ -64,6 +85,46 @@ export class BadgeComponent implements OnInit {
     
     
   }
+
+
+  modelStyle: any = {
+    display: 'none'
+  };
+
+  modalShow = false;
+  zoneIsClicked: any;
+
+  addClickEvent(e:any) {
+    let x = e.currentTarget.getBoundingClientRect();
+    if (e.type === 'click') {
+      this.modalShow = true;
+    }
+    else if (e.type === 'mouseenter') {
+      this.modelStyle = {
+        top: 0 + 'px',
+        left: x.right + 'px',
+        height: screen.height + 'px',
+        width: x.width + 'px',
+        display: 'flex'
+      };
+    }
+    else if (e.type === 'mouseleave' && e.clientX < x.right) {
+      this.modelStyle = {
+        display: 'none'
+      };
+    }
+  }
+
+  onPopEvent() {
+    this.modelStyle = {
+      display: 'none'
+    };
+  }
+
+
+
+
+
 
   start = () => {
     setTimeout(function() {
