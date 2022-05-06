@@ -27,6 +27,9 @@ export class EventService {
     return this.http.get<Events[]>(env.baseUrl+env.GetAllEventUrl);
    }
 
+   getAllUsersInEvent(id:number):Observable<User[]>{
+    return this.http.get<User[]>(env.baseUrl+env.GetAllUsersInEventUrl+id);
+   }
    getFavEvent(u:User):Observable<Events[]>{
     return this.http.get<Events[]>(env.baseUrl+env.GetFavEventUrl+u.userId);
    }

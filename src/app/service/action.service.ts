@@ -41,8 +41,12 @@ export class ActionService {
    getOneActions(actionId:number):Observable<Actions>{
     return this.http.get<Actions>(env.baseUrl+env.GetOneActionUrl+actionId);
    }
-   getAllInvites(recieverId:number):Observable<Actions>{
-    return this.http.get<Actions>(env.baseUrl+env.GetInviteActionUrl+recieverId);
+   getAllInvites(recieverId:number):Observable<Events[]>{
+    return this.http.get<Events[]>(env.baseUrl+env.GetInviteActionUrl+recieverId);
+   }
+
+   getEventInvite(recieverId:number,eventId:number):Observable<Actions>{
+    return this.http.get<Actions>(env.baseUrl+env.GetInviteActionUrl+recieverId+"/"+eventId);
    }
 
    getLike(userId:number,eventId:number):Observable<Actions>{

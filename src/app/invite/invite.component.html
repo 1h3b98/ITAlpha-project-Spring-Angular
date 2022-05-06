@@ -1,0 +1,49 @@
+<div id="content-page" class="content-page">
+    <div class="container" >
+       <div class="d-grid gap-3 d-grid-template-1fr-19" >
+          <!--<li>{{event.title}}</li>
+           <li></li>
+           <li>{{event.endTime}}</li>
+           <li>{{event.joinnbr}}</li>
+           <li>{{event.likenbr}}</li>
+           <li>{{event.eventReward}}</li>-->
+        <div class="" *ngFor="let event of eventList">
+             <div class="card rounded  mb-0">
+                
+                
+                <div class="event-images">
+                   <a href="#">
+                   <img src="assets/images/page-img/51.jpg" class="img-fluid" alt="Responsive image">
+                   </a>
+                </div>
+                <div class="card-body">
+                   <div class="d-flex">
+                      <div class="date-of-event ">
+                         <span>{{event.startTime | date: "MMM"}}</span>
+                         <h5>{{event.startTime | date: "dd"}}</h5>
+                      </div>
+                      <div class="events-detail ml-3">
+                         <h5 >
+                            <a [routerLink]="'/event-detail/'+event.eventId">{{event.title}}</a>
+                         </h5>
+                         <p>{{event.about}}</p>
+
+                         
+
+                         <div class="event-member">
+                            <app-members [event]="event"></app-members>
+                         </div>
+                      </div>
+                      
+                   </div>
+                   <div class="row justify-content-around mb-3">
+                    <app-accept [event]="event"></app-accept>
+                    <app-refuse [event]="event"></app-refuse>
+                   </div>
+                </div>
+             </div>
+            
+        </div>
+       </div>
+    </div>
+   </div>

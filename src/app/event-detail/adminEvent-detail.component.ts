@@ -2,6 +2,7 @@ import { HttpClient,HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Events } from '../model/events';
+import { ActionService } from '../service/action.service';
 import { EventService } from '../service/event.service';
 
 @Component({
@@ -14,9 +15,11 @@ export class AdminEventDetailComponent implements OnInit {
   data:any
   oneEvent: Events ;
   param:any;
+  newA: any;
   constructor(
     private _routes:ActivatedRoute,
     private eventService:  EventService,
+    private actionService:  ActionService,
     private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -39,8 +42,13 @@ export class AdminEventDetailComponent implements OnInit {
       console.log(data)
     });
   }
-  
-
+  postComment(auId:number,aeId:number){
+      
+    this.newA.actionType="COMMENT";
+    
+    console.log(this.newA)
+    this.actionService.addAction(this.newA,auId,aeId).subscribe();
+  }
     
     
   

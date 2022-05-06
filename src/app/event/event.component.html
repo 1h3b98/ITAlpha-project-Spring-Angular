@@ -8,10 +8,10 @@
       <div class="wrapper">
          
         
-        
+         
          <div class="header-for-bg">
             <div class="background-header position-relative">
-               <img src="assets/images/page-img/profile-bg6.jpg" class="img-fluid w-100 rounded rounded" alt="profile-bg">
+               <img src="assets/images/events.jpg" class="img-fluid w-100  rounded rounded" alt="profile-bg">
                <div class="title-on-header">
                   <div class="data-block">
                      <h2>Your Events</h2>
@@ -19,19 +19,37 @@
                </div>
             </div>
          </div>
-
-         <!-- Page Content  -->
-         <div id="content-page" class="content-page">
+         <div class="card">
+            <div class="card-body p-0">
+               <div class="user-tabing">
+                  <ul class="nav nav-pills d-flex align-items-center justify-content-center profile-feed-items p-0 m-0">
+                     <li class="nav-item col-12 col-sm-6 p-0">
+                        <a class="nav-link active" href="#pills-event-tab" data-bs-toggle="pill" data-bs-target="#event" role="button">All Events</a>
+                     </li>
+                     <li class="nav-item col-12 col-sm-6 p-0">
+                        <a class="nav-link" href="#pills-invite-tab" data-bs-toggle="pill" data-bs-target="#invite" role="button">Your Invitation</a>
+                     </li>
+                     
+                     
+                  </ul>
+               </div>
+            </div>
+         </div>
+   <div class="col-sm-12">
+      <div class="tab-content">
+         <div class="tab-pane fade show active" id="event" role="tabpanel">
+             <!-- Page Content  -->
+            <div id="content-page" class="content-page">
             <div class="container" >
-               <div class="row" >
+               <div class="d-grid gap-3 d-grid-template-1fr-19" >
                   <!--<li>{{event.title}}</li>
                    <li></li>
                    <li>{{event.endTime}}</li>
                    <li>{{event.joinnbr}}</li>
                    <li>{{event.likenbr}}</li>
                    <li>{{event.eventReward}}</li>-->
-                <div class="col-md-6 col-lg-4" *ngFor="let event of eventList">
-                     <div class="iq-card rounded iq-card-block iq-card-stretch iq-card-height">
+                <div class="" *ngFor="let event of eventList">
+                     <div class="card rounded  mb-0">
                         <app-favorite  [event]="event"></app-favorite>
                         
                         <div class="event-images">
@@ -39,14 +57,14 @@
                            <img src="assets/images/page-img/51.jpg" class="img-fluid" alt="Responsive image">
                            </a>
                         </div>
-                        <div class="iq-card-body">
-                           <div class="d-flex">
-                              <div class="date-of-event">
+                        <div class="card-body">
+                           <div class="d-flex ">
+                              <div class="date-of-event ">
                                  <span>{{event.startTime | date: "MMM"}}</span>
                                  <h5>{{event.startTime | date: "dd"}}</h5>
                               </div>
                               <div class="events-detail ml-3">
-                                 <h5>
+                                 <h5 >
                                     <a [routerLink]="'/event-detail/'+event.eventId">{{event.title}}</a>
                                  </h5>
                                  <p>{{event.about}}</p>
@@ -54,23 +72,7 @@
                                  
 
                                  <div class="event-member">
-                                    <div class="iq-media-group">
-                                       <a href="#" class="iq-media">
-                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/05.jpg" alt="">
-                                       </a>
-                                       <a href="#" class="iq-media">
-                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/06.jpg" alt="">
-                                       </a>
-                                       <a href="#" class="iq-media">
-                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/07.jpg" alt="">
-                                       </a>
-                                       <a href="#" class="iq-media">
-                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/08.jpg" alt="">
-                                       </a>
-                                       <a href="#" class="iq-media">
-                                       <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/09.jpg" alt="">
-                                       </a>
-                                    </div>
+                                    <app-members [event]="event"></app-members>
                                  </div>
                               </div>
                               
@@ -85,10 +87,22 @@
                 </div>
                </div>
             </div>
+            </div>
+             <!-- Wrapper END -->
          </div>
+      
+         
+         <div class="tab-pane fade" id="invite" role="tabpanel">
+             <!-- Page Content  -->
+          <app-invite></app-invite>
+             <!-- Wrapper END -->
+        </div>
       </div>
-      <!-- Wrapper END -->
+   </div>
+</div>    
+</div>     
+        
     
 
-   </div>
+  
    <router-outlet></router-outlet>

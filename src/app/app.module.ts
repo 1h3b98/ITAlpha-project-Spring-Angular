@@ -10,17 +10,21 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AdminEventDetailComponent } from './event-detail/adminEvent-detail.component';
-import { UserComponent } from './user/user.component';
+import { UserComponent } from './favEvent/user.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { LikeComponent } from './like/like.component';
 import { JoinComponent } from './join/join.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { MembersComponent } from './members/members.component';
+import { InviteComponent } from './invite/invite.component';
+import { AcceptComponent } from './accept/accept.component';
+import { RefuseComponent } from './refuse/refuse.component';
 
 const ROUTES: Routes=[
   {path: 'events',component: EventComponent},
   {path: 'event-detail/:Id',component: EventDetailComponent},
   {path: 'admin-event-detail/:Id',component: AdminEventDetailComponent},
-  {path: 'user',component: UserComponent}
+  {path: 'favEvent',component: UserComponent}
 ]
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ const ROUTES: Routes=[
     UserComponent,
     FavoriteComponent,
     LikeComponent,
-    JoinComponent
+    JoinComponent,
+    MembersComponent,
+    InviteComponent,
+    AcceptComponent,
+    RefuseComponent
     
   ],
   imports: [

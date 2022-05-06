@@ -17,5 +17,6 @@ export const env ={
     RefuseInviteActionUrl:"/Action/refuse/",
     AcceptInviteActionUrl:"/Action/accept/",
     addActionUrl:"/Action/add/",
+    GetAllUsersInEventUrl:"/Event/getUsersByEvent/",
 
     }

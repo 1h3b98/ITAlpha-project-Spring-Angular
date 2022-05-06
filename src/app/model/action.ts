@@ -6,6 +6,6 @@ export class Actions {
 	'favStatus': boolean;
 	'joinStatus': boolean;
     'recieverId':number;
-	'acceptState':boolean;
+	'accepted':boolean;
 	'date': Date;
 }
