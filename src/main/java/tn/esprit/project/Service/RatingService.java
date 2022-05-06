@@ -1,37 +1,36 @@
 package tn.esprit.project.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.ForumRepository;
 import tn.esprit.project.Repository.PostRepository;
-import tn.esprit.project.Repository.RatingRepository;
-import tn.esprit.project.Repository.UserRepository;
+import tn.esprit.project.Repository.RatinggRepository;
+import tn.esprit.project.Repository.UserRepo;
 
 @Service
 public class RatingService implements IRatingService{
 
     @Autowired
-    UserRepository ur;
+    UserRepo ur;
     @Autowired
     PostRepository pr;
     @Autowired
     ForumRepository fr;
     @Autowired
-    RatingRepository rr;
+    RatinggRepository rr;
 
     @Override
     public void ratearticle(float note, Long idarticle, Long idUser) {
         User user = ur.findById(idUser).get();
         Forum forum = fr.findById(idarticle).get();
-        Rating rating = new Rating();
+        Ratingg ratingg = new Ratingg();
         RatingId ratingId = new RatingId();
         ratingId.setUser(user);
         ratingId.setForm(forum);
-        rating.setRatingId(ratingId);
-        rating.setValue(note);
-        rr.save(rating);
+        ratingg.setRatingId(ratingId);
+        ratingg.setValue(note);
+        rr.save(ratingg);
 
     }
 

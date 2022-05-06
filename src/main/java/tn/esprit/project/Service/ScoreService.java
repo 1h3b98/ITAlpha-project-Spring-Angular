@@ -12,7 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.*;
 
-import java.util.Collections;  
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 @Service
 @Slf4j
@@ -24,26 +26,37 @@ public class ScoreService implements IScoreService {
 	@Autowired
 	EventRepository eventrepo;
 	@Autowired
-	UserRepository userrepo;
+	UserRepo userrepo;
 	@Autowired
 	QquestionRepository qquestion;
 	@Override
 	public Score AjouterScoreusers(long idevent, long idquiz) {
-Event event =new Event();
-event=eventrepo.findById(idevent).get();
-Quiz quiz = quizRepository.findById(idquiz).get();
-List<User> users = null;
-users=event.getUserL();
-Score score =new Score();
+//Event event =new Event();
+//event=eventrepo.findById(idevent).get();
+		Quiz quiz = quizRepository.findById(idquiz).get();
+//List<User> users =event.getUserL();
+//users=event.getUserL();
+		List<User> users=(List<User>) userrepo.findAll();
 //List<int>=null;
-for (User user : users) {
-	
-	score.setUser(user);
-	score.setUserscore(0);
-	score.setQuiz(quiz);
-	scoreRep.save(score);
-}
-return null;
+/*List<String> listt=new ArrayList<String>();
+listt.add("Mango");
+listt.add("Apple");
+listt.add("Banana");  */
+//for (String a : listt) {
+		for (User user : users) {
+			Score score =new Score();
+
+			score.setUser(user);
+			score.setUserscore(0);
+			score.setQuiz(quiz);
+			scoreRep.save(score);
+		}
+/*score =new Score();
+score.setUser(null);
+score.setUserscore(0);
+score.setQuiz(null);
+*/
+		return null;
 	}
 
 	@Override
@@ -55,21 +68,22 @@ return null;
 	@Override
 	public void DeleteScore(long idSc) {
 		scoreRep.deleteById(idSc);
-		
+
 	}
 
 	@Override
 	public Score ShowScore(long idQz) {
-Score score=scoreRep.findById(idQz).get();
-return score;
+		Score score=scoreRep.findById(idQz).get();
+		return score;
 	}
 
 	@Override
-	public int ShowuserScoreQuiz(long idQz,long iduser) {
-	List<Score> sc=scoreRep.showscore(idQz, iduser);
-	for(Score score:sc){return score.getUserscore();
-	}
-	return 0;
+	public Score ShowuserScoreQuiz(long idQz,long iduser) {
+		List<Score> sc=scoreRep.showscore(idQz, iduser);
+		for(Score score:sc){
+			return score;
+		}
+		return null;
 	}
 
 	@Override
@@ -89,32 +103,11 @@ return score;
 				score.setUserscore(score.getUserscore()+qqquestion.getPointNumbr());
 				scoreRep.save(score);
 			}
-			
+
 		}
-		
+
 	}
 
-	@Override
-	public boolean quizpassornot(long iduser, long idquiz) {
-		int nbrtot=0;
-		Quiz quiz=quizRepository.findById(idquiz).get();
-		List<Qquestion> questions=quiz.getQuestions();
-		for(Qquestion q:questions){
-			nbrtot=nbrtot+q.getPointNumbr();
-		}
-		List<Score> scores=scoreRep.findAll();
-		for(Score s:scores){
-			if(s.getUser().getUserId()==iduser && s.getQuiz().getQuizId()==idquiz){
-				if((s.getUserscore()*2)==nbrtot || s.getUserscore()>(nbrtot/2)){ 
-					return true;
-				}
-				else{
-					return false;
-				}
-			}
-		}
-		return false;
-	}
 
 	@Override
 	public List<Score> triscore (long idqz){
@@ -122,6 +115,46 @@ return score;
 		return Showscores;
 	}
 
-	
+	@Override
+	public List<User> quizpassornot( long idquiz) {
+		int nbrtot=0;
+		List<User> users=(List<User>) userrepo.findAll();
+		users.clear();
+		Quiz quiz=quizRepository.findById(idquiz).get();
+		List<Qquestion> questions=quiz.getQuestions();
+		for(Qquestion q:questions){
+			nbrtot=nbrtot+q.getPointNumbr();
+		}
+		List<Score> scores=scoreRep.findAll();
+		for(Score s:scores){
+			if(s.getQuiz().getQuizId()==idquiz){
+				if((s.getUserscore()*2)==nbrtot || s.getUserscore()>(nbrtot/2)){
+					users.add(s.getUser());
+				}
+				else{
+				}
+			}
+		}
+		return users;
+	}
+
+	@Override
+	public List<Score> triscoresuser(long iduser) {
+		List<Score> Showscores = scoreRep.triuserscore(iduser);
+		return Showscores;
+	}
+
+	@Override
+	public Score AjouterScore(Score score,long iduser,long idquiz) {
+		Quiz quiz=quizRepository.findById(idquiz).get();
+		User user=userrepo.findById(iduser).get();
+		score.setQuiz(quiz);
+		score.setUser(user);
+		scoreRep.save(score);
+		return score;
+	}
+
+
+
 
 }

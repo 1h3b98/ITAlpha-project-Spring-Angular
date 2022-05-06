@@ -15,4 +15,10 @@ public interface ScoreRepository extends JpaRepository<Score, Long>  {
 	public List<Score> triscore(@Param("idqz") Long idqz);
 	@Query(value ="select * from score s where (s.quiz_quiz_id = :idqz and s.user_user_id = :iduser)",nativeQuery=true)
 	public List<Score> showscore(@Param("idqz") Long idqz,@Param("iduser") Long iduser);
+	@Query(value ="select * from score m where m.user_user_id = :iduser1 " ,nativeQuery = true)
+	public List<Score>showuserquizs(@Param("iduser1")Long id1);
+
+	@Query(value ="select * from score s where s.user_user_id = :iduser order by s.userscore desc",nativeQuery=true)
+	public List<Score> triuserscore(@Param("iduser") Long iduser);
+
 }

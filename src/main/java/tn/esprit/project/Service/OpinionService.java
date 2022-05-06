@@ -5,11 +5,9 @@ import org.springframework.stereotype.Service;
 import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.ForumRepository;
 import tn.esprit.project.Repository.OpinionRepository;
-import tn.esprit.project.Repository.RatingRepository;
-import tn.esprit.project.Repository.UserRepository;
+import tn.esprit.project.Repository.UserRepo;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,7 +17,7 @@ public class OpinionService implements IOpinionService {
     @Autowired
     OpinionRepository op ;
     @Autowired
-    UserRepository ur ;
+    UserRepo ur ;
 
 
     @Override

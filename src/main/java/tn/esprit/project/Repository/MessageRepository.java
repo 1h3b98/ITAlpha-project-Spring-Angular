@@ -9,5 +9,10 @@ import tn.esprit.project.Entities.*;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long>  {
 	@Query(value ="select * FROM message m where (m.sender_user_id = :iduser1 and m.reciever_user_id = :iduser2) or (m.sender_user_id = :iduser2 and m.reciever_user_id = :iduser1)" ,nativeQuery = true)
-			public List<Message>retrievemessagebetween2users(@Param("iduser1")Long id1,@Param("iduser2")Long id2);
-	}
+	public List<Message>retrievemessagebetween2users(@Param("iduser1")Long id1,@Param("iduser2")Long id2);
+
+	@Query(value ="select * FROM message m where (m.sender_user_id = :iduser1 or m.reciever_user_id = :iduser1) "  ,nativeQuery = true)
+	public List<Message>findallogthemById(@Param("iduser1")Long id1);
+
+
+}

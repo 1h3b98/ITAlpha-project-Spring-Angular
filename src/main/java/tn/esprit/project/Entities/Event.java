@@ -61,5 +61,8 @@ public class Event implements Serializable{
 	@OneToMany(mappedBy ="event")
 	@JsonIgnore
 	List<Reward> eventrewards;
+	@JsonIgnore
+	@OneToOne
+	private Quiz quize;
 
 }

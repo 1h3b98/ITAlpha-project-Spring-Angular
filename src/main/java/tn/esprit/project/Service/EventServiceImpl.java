@@ -7,12 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.ActionRepository;
 import tn.esprit.project.Repository.EventRepository;
-import tn.esprit.project.Repository.UserRepository;
-import tn.esprit.project.Service.GoogleCalendarService;
+import tn.esprit.project.Repository.UserRepo;
 
 @Service
 @Transactional
@@ -20,7 +18,7 @@ public class EventServiceImpl implements tn.esprit.project.Service.IEventService
 	@Autowired
 	EventRepository er;
 	@Autowired
-	UserRepository ur;
+    UserRepo ur;
 	@Autowired
 	ActionRepository ar;
 	@Autowired

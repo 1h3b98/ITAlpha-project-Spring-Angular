@@ -8,7 +8,7 @@ import tn.esprit.project.Entities.QvtAnswer;
 import tn.esprit.project.Entities.User;
 import tn.esprit.project.Repository.QvtAnswerRepository;
 import tn.esprit.project.Repository.QvtRepository;
-import tn.esprit.project.Repository.UserRepository;
+import tn.esprit.project.Repository.UserRepo;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ public class QvtService {
     @Autowired
     QvtAnswerRepository qar;
     @Autowired
-    UserRepository ur;
+    UserRepo ur;
     @Autowired
-    EmailService emailService;
+    EmailServiceB emailServiceB;
 
 
     public void  addQvt(Qvt qvt , Long iduser){
@@ -43,7 +43,7 @@ public class QvtService {
         mailMessage.setSubject("Qvt !");
         mailMessage.setFrom("bessem@esprit.tn");
         mailMessage.setText("merci !");
-        emailService.sendEmail(mailMessage);
+        emailServiceB.sendEmailB(mailMessage);
     }
 
     public List<QvtAnswer> getAnswerByqvt(Long idQvt){

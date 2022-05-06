@@ -39,20 +39,41 @@ public class MessageController {
 	public void removeQuiz(@PathVariable("Message-id") Long Messageid) {
 		messageService.DeleteMessage(Messageid);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@GetMapping("/retrievefinalMessagebetween12/{id1}/{id2}")
+	public Message getfinalMessagebetween2users(@PathVariable("id1") Long id1,@PathVariable("id2") Long id2) {
+
+		Message messages=messageService.between2users(id1,id2);
+		return messages;
+	}
+
+	@GetMapping("/triMessage/{id1}")
+	public List<Message> getAllMessagebetween2users(@PathVariable("id1") Long id1) {
+		List<Message> listMessage =null;
+		listMessage=messageService.triMessage(id1);
+		return listMessage;
+	}
+
+	@GetMapping("/tri/{id1}")
+	public List<Message> triMessageusers(@PathVariable("id1") Long id1) {
+		List<Message> listMessage =null;
+		listMessage=messageService.triMessage(id1);
+		return listMessage;
+	}
+
+	@GetMapping("/triuserfinal/{id1}")
+	public List<User> trimessagefinal(@PathVariable("id1") Long id1) {
+		List<User> listMessage =null;
+		listMessage=messageService.listUsermessage(id1);
+		return listMessage;
+	}
+	@GetMapping("/shuser/{id1}")
+	public User shuserr(@PathVariable("id1") Long id1) {
+		User	listMessage=messageService.ShowUser(id1);
+		return listMessage;
+
+	}
+
+
 }
 

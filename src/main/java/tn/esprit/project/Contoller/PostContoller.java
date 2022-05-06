@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.PostRepository;
-import tn.esprit.project.Repository.UserRepository;
+import tn.esprit.project.Repository.UserRepo;
 import tn.esprit.project.Service.PostService;
 import tn.esprit.project.Service.RecommandationService;
 
@@ -22,7 +22,7 @@ public class PostContoller {
     @Autowired
     RecommandationService p;
     @Autowired
-    UserRepository ur;
+    UserRepo ur;
     @Autowired
     PostRepository pr;
 

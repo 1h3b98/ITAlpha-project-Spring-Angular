@@ -16,7 +16,7 @@ public class CommentService implements ICommentService{
     @Autowired
     CommentRepository cr ;
     @Autowired
-    UserRepository ur;
+    UserRepo ur;
     @Autowired
     PostRepository pr ;
     @Autowired
@@ -65,7 +65,7 @@ public class CommentService implements ICommentService{
         for (Comment c: comments) {
             Notification nt = new Notification();
             nt.setUser(c.getUserComment());
-            nt.setContent(comment.getUserComment().getFName()+" add new comment");
+            nt.setContent(comment.getUserComment().getFirstName()+" add new comment");
             nr.save(nt);
            log.info("");
         }

@@ -1,89 +1,81 @@
 package tn.esprit.project.Entities;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.*;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+
+
+import javax.persistence.*;
+import java.util.*;
+
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	 Long userId;
-	 String FName;
-	 String LName;
-	 boolean sexe;
-	 String email;
-	 String username;
-	 Date birthDate;
-	 int phonenumbr;
-	 String jobTitle;
-	 String picture;
-	 @Enumerated(EnumType.STRING)
-	 Hobbies hobbies;
-	 String adresse;
-	 String bio;
-	 int points;
-	 
-	 @ManyToMany(cascade = CascadeType.ALL)
-	 private List<Role> roles;
-	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
-	 private List<QvtAnswer> QVTAnswers;
-	 
-	 @OneToMany( mappedBy="userP")
-	 private List<Post> Posts;
-	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userComment")
-	 private List<Comment> Comments;
-	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userAction")
-	 private List<Action> actions;
-	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userForum")
-	 private List<Forum> forums;
-	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userOpinion")
-	 private List<Opinion> Opinions;
-	 
+public class User {// implements UserDetails {
 
-	 
-	 @ManyToOne
-	 private Vote vote;
-	 
-	 @OneToMany (mappedBy ="user")
-	 List<Notification> notifications;
-	 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	long userId;
+	String firstName;
+	String lastName;
+	String password;
+	Boolean isBlocked ;
+	Long Cin;
 
-	 @ManyToOne 
-	 Departement department;
-	 
-	 @OneToMany(mappedBy = "sender")
-	 List<Message> msgSent;
-	 
-	 @OneToMany(mappedBy ="reciever")
-	 List<Message> msgRecieved;
+	String sexe;
+	String email;
+	String username;
+	@JsonFormat(pattern = "yyyy-mm-dd")
+	Date birthDate;
+	String phonenumbr;
+	String jobTitle;
+	String picture;
+	@Enumerated(EnumType.STRING)
+	Hobbies hobbies;
+	String adresse;
+	String bio;
+	String oneTimePassword;
+	int points;
+	private Boolean locked ;
+	private Boolean enabled =false;
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Role> roles;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	Departement department;
+	@OneToMany(mappedBy = "user")
+	@JsonIgnore
+	List<PubliciteOffre> publiciteLis;
+	@OneToMany(mappedBy = "user")
+	@JsonIgnore
+	List<Reservation> reservationList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+	private List<QvtAnswer> QVTAnswers;
+	@OneToMany( mappedBy="userP")
+	private List<Post> Posts;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="userComment")
+	private List<Comment> Comments;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="userAction")
+	private List<Action> actions;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="userForum")
+	private List<Forum> forums;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="userOpinion")
+	private List<Opinion> Opinions;
+
+	@OneToMany(mappedBy = "sender")
+	List<Message> msgSent;
+
+	@OneToMany(mappedBy ="reciever")
+	List<Message> msgRecieved;
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Event> FavEvents;
@@ -91,17 +83,57 @@ public class User implements Serializable {
 	private List<Event> rEvents;
 
 
-	 
-	 @OneToMany(mappedBy = "sender")
-	  List<FeedBack> feedBacksent;
 
-	 @OneToMany(mappedBy = "reciever")
+	@OneToMany(mappedBy = "sender")
+	List<FeedBack> feedBacksent;
+
+	@OneToMany(mappedBy = "reciever")
 	List<FeedBack> feedbackrecieved;
 
-	 @OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "user")
 	private Evaluation evaluation;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	List<Score> scoree;
 
-	 @OneToMany(mappedBy = "user")
-	List<Score> scores;
+
+
+	@ManyToOne
+	private Vote vote;
+
+	@OneToMany (mappedBy ="user")
+	List<Notification> notifications;
+
+
+
+	public User(Long userId, String password, String username, List<Role> roles) {
+		this.userId = userId;
+		this.password = password;
+		this.username = username;
+		this.roles = roles;
+	}
+
+	public User(String firstName, String lastName, String email, String password) {
+		this.firstName=firstName;
+		this.lastName=lastName;
+		this.email=email;
+		this.password=password;
+
+	}
+
+
+
+
+
+	public User(OtpStatus delivered, String otpMessage) {
+	}
+
+
+	public String getEmail() {
+		return this.email;
+	}
+
+
+
 }

@@ -12,5 +12,6 @@ import tn.esprit.project.Entities.*;
 @Repository
 
 public interface QuizRepository extends CrudRepository<Quiz, Long> {
-
+    @Query(value ="select * from score m where m.user_user_id = :iduser1 " ,nativeQuery = true)
+    public List<Score>showuserquizs(@Param("iduser1")Long id1);
 }

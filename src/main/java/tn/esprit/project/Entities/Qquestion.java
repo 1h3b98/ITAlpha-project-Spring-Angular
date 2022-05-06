@@ -7,8 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,10 +27,10 @@ import lombok.experimental.FieldDefaults;
 public class Qquestion implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id 
+	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	long questionId;
 	String content;
@@ -39,6 +40,11 @@ public class Qquestion implements Serializable {
 	int correctNumbr;
 	int pointNumbr;
 	int chose;
-	
-	
+	@JsonIgnore
+	@ManyToOne
+	private Quiz quizz;
+
+
+
+
 }

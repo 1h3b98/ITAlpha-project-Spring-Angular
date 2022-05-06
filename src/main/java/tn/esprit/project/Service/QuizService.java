@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 
 import lombok.extern.slf4j.Slf4j;
 import tn.esprit.project.Entities.*;
@@ -22,7 +21,7 @@ public class QuizService implements IQuizService {
 	@Autowired
 	EventRepository eventrepo;
 	@Autowired
-	UserRepository userrepo;
+    UserRepo userrepo;
 	@Autowired
 	ScoreRepository scorerepo;
 	

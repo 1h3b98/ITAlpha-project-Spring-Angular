@@ -10,9 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 import lombok.AccessLevel;
@@ -32,19 +32,21 @@ import lombok.experimental.FieldDefaults;
 public class Quiz implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id 
+	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	long quizId;
 	String qTitle;
 	Timestamp qDate;
-	//@JsonIgnore
-	@OneToMany (cascade = CascadeType. ALL,mappedBy = "quiz")
+	@JsonIgnore
+	@OneToMany (cascade = CascadeType. ALL, mappedBy="quiz")
 	List<Score> scores;
-	
+
 	@OneToMany (cascade = CascadeType.ALL)
 	List<Qquestion> Questions;
-
+	@JsonIgnore
+	@OneToOne
+	private Event eventt;
 }

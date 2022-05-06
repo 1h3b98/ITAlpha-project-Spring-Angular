@@ -1,18 +1,18 @@
 package tn.esprit.project.Repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-import tn.esprit.project.Entities.Forum;
-import tn.esprit.project.Entities.Post;
 import tn.esprit.project.Entities.Rating;
-import tn.esprit.project.Entities.RatingId;
 
+import java.util.List;
 
-@Repository
-public interface RatingRepository extends CrudRepository<Rating, RatingId> {
-    @Query("SELECT sum (j.value) from  Rating j where j.ratingId.form=:post")
-    public float sommeDenoteByPost(Forum post);
-    @Query("select count(j) from  Rating j where j.ratingId.form=:post")
-    public int nbrPosts(Forum post);
+public interface RatingRepository extends JpaRepository<Rating,Long> {
+//    @Query("select sum (r.value) from  Rating r where r.publiciteOffre=:pub")
+//    public int Sommedenotebyoffre(PubliciteOffre publiciteOffre);
+//    @Query("select count(r) from  Rating r where r.publiciteOffre=:post")
+//    public int  nbredoffre(PubliciteOffre publiciteOffre);
+
+    @Query("select r.publiciteOffre.titre from Rating  r where (r.value)=(select max(r.value) from Rating r)")
+    public String bestoffre();
+
 }

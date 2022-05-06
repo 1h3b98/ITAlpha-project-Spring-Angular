@@ -38,32 +38,32 @@ public class QuizController {
 	public void removeQuiz(@PathVariable("Quiz-id") Long quizid) {
 		quizservice.DeleteQuiz(quizid);
 	}
-	@GetMapping("/retrieve-quizs/{user-id}")
+	@GetMapping("/retrieveuserquiz/{user-id}")
 	public List<Quiz>getquizss(@PathVariable("user-id") Long iduser) {
 		List<Quiz> listQuiz = quizservice.ShowQuizuser(iduser);
 		return listQuiz;
 	}
-	
+
 	@GetMapping("/show-Quiz/{quiz-id}")
 	public Quiz getQuiz(@PathVariable("quiz-id") Long idQz) {
 		Quiz qQuiz=quizservice.ShowQuiz(idQz);
 		return qQuiz;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	@GetMapping("/retrieve-result")
 	public int getscore(@PathVariable("Quiz-id") Long quizid) {
 		int score =quizservice.calculescore(quizid);
 		return score;
 	}
 
-	
-	
-	
-	
+
+
+
+
 }

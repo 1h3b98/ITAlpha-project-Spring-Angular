@@ -16,13 +16,21 @@ public class QuestionService implements IQuestionServise {
 	@Autowired
 	QuizRepository quizRepository;
 
-	
+
 
 
 	@Override
 	public void DeleteQestion(long idQ) {
+		//qquestionRepository.delelteq(idQ);
+		Qquestion q=qquestionRepository.findById(idQ).get();
+		List<Quiz> quizs=(List<Quiz>) quizRepository.findAll();
+		for(Quiz quiz:quizs){
+			if(quiz.getQuestions().contains(q)){
+				quiz.getQuestions().remove(q);
+			}
+		}
 		qquestionRepository.deleteById(idQ);
-		
+
 	}
 
 	@Override
@@ -32,12 +40,12 @@ public class QuestionService implements IQuestionServise {
 	}
 
 	@Override
-	
+
 	public void AjouterQuestionAndaffect(Qquestion Q, long idQuiz) {
-		 Quiz qz = quizRepository.findById(idQuiz).orElse(null);
-		// Q.setQuizs(qz);
-		 qz.getQuestions().add(Q);
-		 qquestionRepository.save(Q);
+		Quiz qz = quizRepository.findById(idQuiz).orElse(null);
+		Q.setQuizz(qz);
+		qz.getQuestions().add(Q);
+		qquestionRepository.save(Q);
 
 	}
 
@@ -47,29 +55,29 @@ public class QuestionService implements IQuestionServise {
 		if(chose==question.getCorrectNumbr()){
 			Score score = new Score();
 			//score=question.getQuiz().getScores();
-			
-		}		
+
+		}
 	}
 
-	
+
 
 	@Override
 	public List<Qquestion> retrieveallQuestionsForQuiz(Long idquiz) {
 		Quiz q=quizRepository.findById(idquiz).get();
-		
-		
-		
+
+
+
 		return q.getQuestions();
 	}
 
 	@Override
 	public Qquestion showquestion(long idq) {
 		Qquestion q = qquestionRepository.findById(idq).get();
- return q;
+		return q;
 	}
-	
 
 
-	
-	
+
+
+
 }

@@ -1,28 +1,29 @@
 package tn.esprit.project.Entities;
-import java.io.Serializable;
 
-import javax.persistence.*;
-
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.springframework.data.repository.NoRepositoryBean;
+
+import javax.persistence.*;
+
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Rating implements Serializable {
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-    @EmbeddedId
-   RatingId ratingId;
-    float value;
+public class Rating {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long value;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private PubliciteOffre publiciteOffre;
+
+
+
 }

@@ -5,12 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.project.Entities.Favoritesarticle;
 import tn.esprit.project.Entities.Forum;
-import tn.esprit.project.Entities.Post;
 import tn.esprit.project.Entities.User;
 import tn.esprit.project.Repository.FavoritesArticleRepository;
 import tn.esprit.project.Repository.ForumRepository;
-import tn.esprit.project.Repository.RatingRepository;
-import tn.esprit.project.Repository.UserRepository;
+import tn.esprit.project.Repository.RatinggRepository;
+import tn.esprit.project.Repository.UserRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +20,9 @@ public class ForumService implements IForumService{
     @Autowired
     ForumRepository fr ;
     @Autowired
-    UserRepository ur;
+    UserRepo ur;
     @Autowired
-    RatingRepository rr;
+    RatinggRepository rr;
     @Autowired
     FavoritesArticleRepository ftr;
 

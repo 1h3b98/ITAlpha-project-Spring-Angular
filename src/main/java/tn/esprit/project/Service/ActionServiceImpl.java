@@ -3,7 +3,6 @@ package tn.esprit.project.Service;
 
 import java.sql.Timestamp;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,13 +14,10 @@ import org.springframework.stereotype.Service;
 import tn.esprit.project.Entities.Action;
 import tn.esprit.project.Entities.ActionType;
 import tn.esprit.project.Entities.Event;
-import tn.esprit.project.Entities.User;
 import tn.esprit.project.Repository.ActionRepository;
 import tn.esprit.project.Repository.EventRepository;
-import tn.esprit.project.Service.IActionService;
-import tn.esprit.project.Service.IEventService;
 
-import tn.esprit.project.Repository.UserRepository;
+import tn.esprit.project.Repository.UserRepo;
 
 @Service
 @Slf4j
@@ -29,7 +25,7 @@ public class ActionServiceImpl implements IActionService {
 	@Autowired
 	ActionRepository ar;
 	@Autowired
-	UserRepository ur;
+    UserRepo ur;
 	@Autowired
 	EventRepository er;
 	@Autowired

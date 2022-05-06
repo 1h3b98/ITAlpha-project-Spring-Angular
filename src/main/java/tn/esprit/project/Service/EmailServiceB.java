@@ -6,18 +6,18 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-@Service("emailService")
-public class EmailService {
+@Service
+public class EmailServiceB {
 
     private JavaMailSender  javaMailSender;
 
     @Autowired
-    public EmailService(JavaMailSender javaMailSender) {
+    public EmailServiceB(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
     @Async
-    public void sendEmail(SimpleMailMessage email) {
+    public void sendEmailB(SimpleMailMessage email) {
         javaMailSender.send(email);
     }
 }

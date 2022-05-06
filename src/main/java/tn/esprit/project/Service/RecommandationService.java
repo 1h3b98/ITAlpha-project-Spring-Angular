@@ -2,15 +2,11 @@ package tn.esprit.project.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.project.Entities.*;
 import tn.esprit.project.Repository.*;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -20,7 +16,7 @@ public class RecommandationService {
     @Autowired
     PostRepository pr ;
     @Autowired
-    UserRepository ur ;
+    UserRepo ur ;
     @Autowired
     LikePostRepository lpr ;
     @Autowired
@@ -28,7 +24,7 @@ public class RecommandationService {
     @Autowired
     ForumRepository fr;
     @Autowired
-    RatingRepository rr;
+    RatinggRepository rr;
     @Autowired
     SimilarRepository sr;
     /*
@@ -128,7 +124,7 @@ public class RecommandationService {
         User user2 = ur.findById(userb).get();
 
         List<Forum> forums = (List<Forum>) fr.findAll();
-        List<Rating> ratings = (List<Rating>) rr.findAll();
+        List<Ratingg> ratinggs = (List<Ratingg>) rr.findAll();
         double score1=0;
         double score2=0;
         double somme=0;
@@ -136,18 +132,18 @@ public class RecommandationService {
         int i=0;
         Set<Long> forumset= new TreeSet<>();
 
-        for (Rating r: ratings) {forumset.add(r.getRatingId().getForm().getIdForum());}
+        for (Ratingg r: ratinggs) {forumset.add(r.getRatingId().getForm().getIdForum());}
 
         for (Long l : forumset) {
             i++;
-            for (Rating r:ratings) {
+            for (Ratingg r: ratinggs) {
                 if(r.getRatingId().getForm().getIdForum()== l &&
                         r.getRatingId().getUser().getUserId()==user1.getUserId()){
                     score1=r.getValue()+10;
                     break;
             }else score1 = 10;
         }
-            for (Rating r:ratings) {
+            for (Ratingg r: ratinggs) {
                 if(r.getRatingId().getForm().getIdForum()== l &&
                         r.getRatingId().getUser().getUserId()==user2.getUserId()){
                     score2=r.getValue()+10;

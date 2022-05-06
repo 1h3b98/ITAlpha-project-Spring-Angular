@@ -3,7 +3,6 @@ package tn.esprit.project.Service;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.nlp.Pipeline;
 import tn.esprit.project.Entities.*;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 public class EvaluationService {
 
     @Autowired
-    UserRepository ur;
+    UserRepo ur;
     @Autowired
     TrophyRepository tr;
 
@@ -46,12 +45,12 @@ public void User_join_quiz(){
         if((e.getEndTime().before(new Date()))&&(e.getEndTime().after(addDays(new Date(),-7))))
          ar.findusersByEvent(e, ActionType.JOINA).forEach(u->{
 
-            u.setPoints(u.getPoints()+e.getEventReward()+u.getScores().stream().filter(s->s.getDate()
+            u.setPoints(u.getPoints()+e.getEventReward()+u.getScoree().stream().filter(s->s.getDate()
                     .before(new Date()) && s.getDate().after(addDays(new Date(),-7)))
                             .mapToInt(Score::getUserscore).sum());
              Notification n = new Notification();
              n.setUser(u);
-             n.setContent(u.getPoints()+e.getEventReward()+u.getScores().stream().filter(s->s.getDate()
+             n.setContent(u.getPoints()+e.getEventReward()+u.getScoree().stream().filter(s->s.getDate()
                              .before(new Date()) && s.getDate().after(addDays(new Date(),-7)))
                      .mapToInt(Score::getUserscore).sum()+"are added to your points");
              n.setNotDate(new Timestamp(new Date().getTime()));
@@ -204,12 +203,12 @@ public void User_join_quiz(){
             Evaluation e = new Evaluation();
             e.setBadge(Badge.BRONZE);
             e.setUser(u);
-            e.setDescription("congratulation  "+u.getFName()+"!  you won a bronze badge !");
+            e.setDescription("congratulation  "+u.getFirstName()+"!  you won a bronze badge !");
             Er.save(e);}
             else{
                 Evaluation e = u.getEvaluation();
                 e.setBadge(Badge.BRONZE);
-                e.setDescription("congratulation "+u.getFName()+"!  you won a bronze badge !");
+                e.setDescription("congratulation "+u.getFirstName()+"!  you won a bronze badge !");
                 Er.save(e);}
 
 
@@ -221,12 +220,12 @@ public void User_join_quiz(){
                     Evaluation e = new Evaluation();
                     e.setBadge(Badge.SILVER);
                     e.setUser(u);
-                    e.setDescription("congratulation "+u.getFName()+"! you won a silver badge !");
+                    e.setDescription("congratulation "+u.getFirstName()+"! you won a silver badge !");
                     Er.save(e);}
                 else{
                     Evaluation e = u.getEvaluation();
                     e.setBadge(Badge.SILVER);
-                    e.setDescription("congratulation "+u.getFName()+"! you won a silver badge !");
+                    e.setDescription("congratulation "+u.getFirstName()+"! you won a silver badge !");
                     Er.save(e);
                 }
 
@@ -238,12 +237,12 @@ public void User_join_quiz(){
                     Evaluation e = new Evaluation();
                     e.setBadge(Badge.GOLDEN);
                     e.setUser(u);
-                    e.setDescription("congratulation "+u.getFName()+"! you won a golden badge !");
+                    e.setDescription("congratulation "+u.getFirstName()+"! you won a golden badge !");
                     Er.save(e);}
                 else{
                     Evaluation e = u.getEvaluation();
                     e.setBadge(Badge.GOLDEN);
-                    e.setDescription("congratulation "+u.getFName()+"! you won a golden badge !");
+                    e.setDescription("congratulation "+u.getFirstName()+"! you won a golden badge !");
                     Er.save(e);
                 }
 
@@ -265,7 +264,7 @@ public void User_join_quiz(){
         t.setDateTrophey(new Date());
         t.setTrophytype(TrophyType.Week);
         t.setEvaluation(u.getEvaluation());
-        t.setDescription("congratulation "+u.getFName()+"!  you are the employee of the week");
+        t.setDescription("congratulation "+u.getFirstName()+"!  you are the employee of the week");
         tr.save(t);
         Notification n = new Notification();
         n.setUser(u);
@@ -303,7 +302,7 @@ public void User_join_quiz(){
             t.setDateTrophey(new Date());
             t.setTrophytype(TrophyType.Month);
             t.setEvaluation(ur.findById(idU).get().getEvaluation());
-            t.setDescription("congratulation "+ur.findById(idU).get().getFName()+"!  you are the employee of the month");
+            t.setDescription("congratulation "+ur.findById(idU).get().getFirstName()+"!  you are the employee of the month");
             tr.save(t);
         Notification n = new Notification();
         n.setUser(ur.findById(idU).get());
@@ -344,7 +343,7 @@ public void User_join_quiz(){
         t.setDateTrophey(new Date());
         t.setTrophytype(TrophyType.Year);
         t.setEvaluation(ur.findById(idU).get().getEvaluation());
-        t.setDescription("congratulation "+ur.findById(idU).get().getFName()+"!  you are the employee of the year");
+        t.setDescription("congratulation "+ur.findById(idU).get().getFirstName()+"!  you are the employee of the year");
         tr.save(t);
         Notification n = new Notification();
         n.setUser(ur.findById(idU).get());

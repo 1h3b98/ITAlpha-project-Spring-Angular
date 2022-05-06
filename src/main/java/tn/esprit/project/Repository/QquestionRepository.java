@@ -12,4 +12,7 @@ import tn.esprit.project.Entities.*;
 public interface QquestionRepository extends CrudRepository<Qquestion,Long> {
 	//@Query(value = "SELECT q FROM Qquestion q WHERE q.Qid= ?1")
 	//List<Qquestion> retrieveallQuestionsForquiz(Long id);
+    @Query(value = "delete from quiz_questions q where q.questions_question_id = :id",nativeQuery = true)
+    void delelteq(@Param("id")Long id);
+
 }

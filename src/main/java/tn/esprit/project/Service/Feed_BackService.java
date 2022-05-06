@@ -1,9 +1,7 @@
 package tn.esprit.project.Service;
 
-import edu.stanford.nlp.*;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import org.hibernate.query.criteria.internal.expression.function.CurrentTimeFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -13,7 +11,7 @@ import tn.esprit.project.Entities.User;
 import tn.esprit.nlp.Pipeline;
 import tn.esprit.project.Repository.Feed_BackRepository;
 import tn.esprit.project.Repository.NotificationRepository;
-import tn.esprit.project.Repository.UserRepository;
+import tn.esprit.project.Repository.UserRepo;
 
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
@@ -28,7 +26,7 @@ public class Feed_BackService {
     @Autowired
     Feed_BackRepository fr;
     @Autowired
-    UserRepository  ur;
+    UserRepo ur;
     @Autowired
     NotificationRepository nr;
 

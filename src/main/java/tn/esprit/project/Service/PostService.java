@@ -19,9 +19,9 @@ public class PostService implements  IPostService{
     @Autowired
     PostRepository pr ;
     @Autowired
-    UserRepository ur ;
+    UserRepo ur ;
     @Autowired
-    RatingRepository rr;
+    RatinggRepository rr;
     @Autowired
     FavoritesArticleRepository ftr;
     @Autowired

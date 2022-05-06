@@ -19,14 +19,15 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Role implements Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String role;
+    private String name;
 
-   
-    
+
+    public Role(String name) {
+    }
 }
