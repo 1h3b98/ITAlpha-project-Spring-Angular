@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.project.Entities.Event;
 import tn.esprit.project.Entities.User;
 import tn.esprit.project.Service.IEventService;
@@ -19,8 +20,8 @@ public class EventController {
 	
 	@PostMapping("/add")
 	@ResponseBody
-	public Event addEvent(@RequestBody Event e) throws IOException {
-		return er.addEvent(e);
+	public Event addEvent(@RequestBody Event e,@RequestParam("file") MultipartFile file) throws IOException {
+		return er.addEvent(e,file);
 	}
 	@PutMapping("/update")
 	public Event updateEvent(@RequestBody Event e){

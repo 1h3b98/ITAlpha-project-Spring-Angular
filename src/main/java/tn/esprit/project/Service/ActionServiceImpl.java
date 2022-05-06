@@ -257,10 +257,17 @@ public class ActionServiceImpl implements IActionService {
 	}
 	
 	@Override
-	public List<Action> getAllInvite(Long recieverId){
+	public List<Event> getAllInvite(Long recieverId){
 		ActionType invite=ActionType.INVITE;
-		List<Action>allInvite=ar.findByInviteAndRecieverAndSender(invite, recieverId);
+		List<Event>allInvite=ar.findByInviteAndRecieverAndSender(invite, recieverId);
 	return allInvite;
+
+	}
+	@Override
+	public Action getInviteByEvent(Long recieverId,Long eventId){
+		ActionType invite=ActionType.INVITE;
+		Action oneInvite=ar.findInviteByRecieverAndEvent(invite, recieverId,eventId);
+		return oneInvite;
 
 	}
 	@Override

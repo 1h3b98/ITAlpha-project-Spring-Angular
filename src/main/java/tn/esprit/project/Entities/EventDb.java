@@ -1,5 +1,4 @@
 package tn.esprit.project.Entities;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,13 +7,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="FILES")
+@Table(name ="EFILES")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FileDb {
-
+public class EventDb {
     @Id
     private String id;
 
@@ -24,7 +22,8 @@ public class FileDb {
 
     @Lob
     private byte[] data;
-    @OneToOne
-    Post post;
 
+
+    @OneToOne
+    Event event;
 }

@@ -64,5 +64,6 @@ public class Event implements Serializable{
 	@JsonIgnore
 	@OneToOne
 	private Quiz quize;
-
+	@OneToOne
+	EventDb eventDb;
 }

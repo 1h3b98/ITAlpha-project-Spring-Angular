@@ -18,7 +18,8 @@ public interface IActionService {
 	 List<Action> getAllAction();
 	 List<Event> getAllFavAction(long userId);
 	 Action findAction(long actionId);
-	 List<Action> getAllInvite(Long recieverId);
+	 List<Event> getAllInvite(Long recieverId);
+	 Action getInviteByEvent(Long recieverId,Long eventId);
 	 Action getlike(Long uId,Long eId);
 	 Action getjoin(Long uId,Long eId);
 	 Action getfav(Long uId,Long eId);

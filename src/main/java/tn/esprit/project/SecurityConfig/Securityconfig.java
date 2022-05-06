@@ -108,7 +108,14 @@ public class Securityconfig extends WebSecurityConfigurerAdapter {
         http.headers().addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","*"));
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/login", "/api/token/refresh/**","/api/registration/add","/api/completerleprofil","/api/GetAllpub","/api/getAlluser","/api/registration/confirm","/api/getuser/{id}","/api/role/save","/api/addofre/{idf}").permitAll();
+        http.authorizeRequests().antMatchers("/login", "/api/token/refresh/**","/api/registration/add","/api/completerleprofil",
+                "/api/GetAllpub","/api/getAlluser","/api/registration/confirm","/api/getuser/{id}","/api/role/save","/api/addofre/{idf}",
+                "/Event/add","/Event/update","/Event/delete/{event_id}","/Event/getallEvent","/Event/getOneEvent/{event_id}",
+                "/Event/getUsersByEvent/{event_id}","/Action/add/{user_id}/{event_id}","/Action/accept/{action_id}/{reciever_id}/{event_id}",
+                "/Action/refuse/{action_id}/{reciever_id}/{event_id}","/Action/delete/{action_id}/{event_id}/{user_id}","/Action/delete/{action_id}",
+                "/Action/getallAction","/Action/getallFavEvent/{user_id}","/Action/getOneAction/{action_id}","/Action/getInvite/{reciever_id}",
+                "/Action/getLike/{user_id}/{event_id}","/Action/getJoin/{user_id}/{event_id}","/Action/getFav/{user_id}/{event_id}",
+                "/Action/getAllComment/{event_id}","/Action/getInvite/{reciever_id}/{event_id}").permitAll();
         // http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/user").hasAnyAuthority("user");
         // http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/save/**").hasAnyAuthority("admin");
         http.authorizeRequests().anyRequest().authenticated();

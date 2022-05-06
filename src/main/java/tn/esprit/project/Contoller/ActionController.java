@@ -54,8 +54,12 @@ public class ActionController {
 	}
 	
 	@GetMapping("/getInvite/{reciever_id}")
-	public List<Action> getReceiverInvite(@PathVariable("reciever_id") Long recieverId){
+	public List<Event> getReceiverInvite(@PathVariable("reciever_id") Long recieverId){
 		return ar.getAllInvite(recieverId);
+	}
+	@GetMapping("/getInvite/{reciever_id}/{event_id}")
+	public Action getEventInvite(@PathVariable("reciever_id") Long recieverId,@PathVariable("event_id") Long eventId){
+		return ar.getInviteByEvent(recieverId,eventId);
 	}
 	@GetMapping("/getLike/{user_id}/{event_id}")
 	public Action getlike(@PathVariable("user_id") Long userId,@PathVariable("event_id") Long eventId){

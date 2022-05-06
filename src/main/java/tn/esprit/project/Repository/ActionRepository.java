@@ -13,8 +13,11 @@ public interface ActionRepository extends JpaRepository<Action,Long> {
     @Query("select a.userAction from Action a where a.event=:event  and a.actionType=:JOIN")
     public List<User> findusersByEvent(@Param("event") Event e, @Param("JOIN")ActionType join);
 
-	 @Query("select a from Action a where a.actionType=:at and a.recieverId=:rId ")
-    public List<Action> findByInviteAndRecieverAndSender(@Param("at")ActionType invite,@Param("rId")Long recieverId);
+	 @Query("select a.event from Action a where a.actionType=:at and a.recieverId=:rId ")
+    public List<Event> findByInviteAndRecieverAndSender(@Param("at")ActionType invite,@Param("rId")Long recieverId);
+
+    @Query("select a from Action a where a.actionType=:at and a.recieverId=:rId and a.event.eventId=:eId ")
+    public Action findInviteByRecieverAndEvent(@Param("at")ActionType invite,@Param("rId")Long recieverId ,@Param("eId")Long eventId);
 
     @Query("select a from Action a where a.actionType=:LIKEA and a.userAction.userId=:u and a.event.eventId=:eId")
     public Action getLike(@Param("u")Long uId,@Param("eId")Long eId,@Param("LIKEA")ActionType like);
