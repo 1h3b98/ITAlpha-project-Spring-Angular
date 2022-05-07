@@ -59,7 +59,7 @@ export class ActionService {
    getJoin(userId:number,eventId:number):Observable<Actions>{
     return this.http.get<Actions>(env.baseUrl+env.GetJoinActionUrl+userId+"/"+eventId);
    }
-   getComments(eventId:number):Observable<Actions>{
-    return this.http.get<Actions>(env.baseUrl+env.GetLikeActionUrl+eventId);
+   getComments(eventId:number):Observable<Actions[]>{
+    return this.http.get<Actions[]>(env.baseUrl+env.GetLikeActionUrl+eventId);
    }
 }

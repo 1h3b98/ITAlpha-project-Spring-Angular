@@ -19,6 +19,8 @@ import { MembersComponent } from './members/members.component';
 import { InviteComponent } from './invite/invite.component';
 import { AcceptComponent } from './accept/accept.component';
 import { RefuseComponent } from './refuse/refuse.component';
+import { CommentComponent } from './comment/comment.component';
+import { InvMembersComponent } from './inv-members/inv-members.component';
 
 const ROUTES: Routes=[
   {path: 'events',component: EventComponent},
@@ -40,7 +42,9 @@ const ROUTES: Routes=[
     MembersComponent,
     InviteComponent,
     AcceptComponent,
-    RefuseComponent
+    RefuseComponent,
+    CommentComponent,
+    InvMembersComponent
     
   ],
   imports: [

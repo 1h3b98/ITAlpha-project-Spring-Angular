@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body">
                    <div class="d-flex">
-                      <div class="date-of-event ">
+                      <div class="date-of-event  col-sm-2 ">
                          <span>{{event.startTime | date: "MMM"}}</span>
                          <h5>{{event.startTime | date: "dd"}}</h5>
                       </div>
@@ -37,8 +37,8 @@
                       
                    </div>
                    <div class="row justify-content-around mb-3">
-                    <app-accept [event]="event"></app-accept>
-                    <app-refuse [event]="event"></app-refuse>
+                    <app-accept class="d-grid" [event]="event"></app-accept>
+                    <app-refuse class="d-grid" [event]="event"></app-refuse>
                    </div>
                 </div>
              </div>

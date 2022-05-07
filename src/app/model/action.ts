@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export class Actions {
 	'actionId': number;
     'actionType':string;
@@ -8,4 +10,5 @@ export class Actions {
     'recieverId':number;
 	'accepted':boolean;
 	'date': Date;
+	'user':User;
 }

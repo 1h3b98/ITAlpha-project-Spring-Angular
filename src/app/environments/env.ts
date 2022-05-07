@@ -18,5 +18,6 @@ export const env ={
     AcceptInviteActionUrl:"/Action/accept/",
     addActionUrl:"/Action/add/",
     GetAllUsersInEventUrl:"/Event/getUsersByEvent/",
+    GetAllUserUrl:"/api/getAlluser",
 
     }

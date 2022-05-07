@@ -1,14 +1,14 @@
 <div class="wrapper">
    <div class="header-for-bg">
       <div class="background-header position-relative">
-         <img src="assets/images/page-img/profile-bg6.jpg" class="img-fluid w-100 rounded rounded" alt="profile-bg">
-         <div class="title-on-header">
-            <div class="data-block">
-               <h2>Event details</h2>
-            </div>
-         </div>
+          <img style="width: 1000px;height: 400px;" src="../assets/images/3.jpg"  alt="header-bg">
+          <div class="title-on-header">
+              <div class="data-block">
+                  <h2>Events Details</h2>
+              </div>
+          </div>
       </div>
-   </div>
+      </div>
 
 
    
@@ -19,7 +19,7 @@
             <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
                <div class="group-info d-flex align-items-center">
                    <div class="me-3">
-                       <img class="rounded-circle img-fluid avatar-100" src="../assets/images/page-img/gi-1.jpg" alt="">
+                       <img class="rounded-circle img-fluid avatar-100" src="../assets/images/3.jpg" alt="">
                    </div>
                    <div class="info">
                        <h4>{{oneEvent.title}}</h4>
@@ -84,7 +84,7 @@
                 <div class="card-body" data-ds-toggle="modal" data-bs-target="#post-modal">
                    <div class="d-flex align-items-center">
                       <div class="user-img">
-                         <img src="assets/images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle">
+                         <img src="assets/images/3.jpg" alt="userimg" class="avatar-60 rounded-circle">
                       </div>
                       <form class="post-text ml-3 w-100" data-bs-toggle="modal" data-bs-target="#post-modal" action="#">
                          <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;">
@@ -103,7 +103,7 @@
                          <div class="modal-body">
                             <div class="d-flex align-items-center">
                                <div class="user-img">
-                                  <img src="assets/images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle img-fluid">
+                                  <img src="assets/images/4.jpg" alt="userimg" class="avatar-60 rounded-circle img-fluid">
                                </div>
                                <form class="post-text ml-3 w-100" action="#">
                                   <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;" [(ngModel)]="this.newA.comment" [ngModelOptions]="{standalone: true}" >
@@ -115,53 +115,11 @@
                    </div>
                 </div>
              </div>
-             <div class="card">
-                <div class="card-body">
-                   <div class="post-item">
-                      <div class="user-post-data pb-3">
-                         <div class="d-flex justify-content-between">
-                            <div class="me-3">
-                               <img class="rounded-circle img-fluid" src="assets/images/user/04.jpg" alt="">
-                            </div>
-                       <div class="w-100">
-                         <div class="d-flex justify-content-between">
-                            <div class="">
-                               <h5 class="mb-0 d-inline-block"><a href="#" class="">Paige Turner</a></h5>
-                               <p class="mb-0">8 hour ago</p>
-                            </div>
-                            <div class="card-post-toolbar">
-                               <div class="dropdown">
-                                  <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                  <i class="ri-more-fill"></i>
-                                  </span>
-                                  <div class="dropdown-menu m-0 p-0">
-                                    
-                                     
-                                     <a class="dropdown-item p-3" href="#">
-                                        <div class="d-flex align-items-top">
-                                           <div class="icon font-size-20"><i class="ri-delete-bin-7-line"></i></div>
-                                           <div class="data ml-2">
-                                              <h6>Delete</h6>
-                                              <p class="mb-0">Remove thids Post on Timeline</p>
-                                           </div>
-                                        </div>
-                                     </a>
-                                     
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="user-post">
-                         <a href="#"><img src="assets/images/page-img/52.jpg" alt="post-image" class="img-fluid w-100" /></a>
-                      </div>
-                      
-                   </div>
-                   
-                </div>
-             </div>
-          </div>
-       </div>
+            <app-comment [event]="oneEvent"></app-comment> 
     </div>
     </div>
 </div>
+</div>
+</div>
+
+

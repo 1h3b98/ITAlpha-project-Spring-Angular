@@ -1,0 +1,47 @@
+<div class="card" >
+    <div class="card-body" >
+       <div class="post-item" *ngFor="let comment of comments">
+          <div class="user-post-data pb-3" >
+             <div class="d-flex justify-content-between">
+                <div class="me-3">
+                   <img class="rounded-circle img-fluid" src="assets/images/4.jpg" alt="">
+                </div>
+           <div class="w-100">
+             <div class="d-flex justify-content-between">
+                <div class="">
+                   <h5 class="mb-0 d-inline-block"><a href="#" class="">just name</a></h5>
+                   
+                </div>
+                <div class="card-post-toolbar">
+                   <div class="dropdown">
+                      <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                      <i class="ri-more-fill"></i>
+                      </span>
+                      <div class="dropdown-menu m-0 p-0">
+                        
+                         
+                         <a class="dropdown-item p-3" href="#">
+                            <div class="d-flex align-items-top">
+                               <div class="icon font-size-20"><i class="ri-delete-bin-7-line"></i></div>
+                               <div class="data ml-2" (click)="deleteComment(comment.actionId)">
+                                  <h6>Delete</h6>
+                                  <p class="mb-0">Remove thids Post on Timeline</p>
+                               </div>
+                            </div>
+                         </a>
+                         
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="comment-area mt-3">
+             <h4 >{{comment.comment}}</h4>
+          </div>
+          
+       </div>
+       
+    </div>
+ </div>
+</div>
+</div>

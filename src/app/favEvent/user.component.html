@@ -9,7 +9,7 @@
                                
                                 <div class="header-for-bg">
                                     <div class="background-header position-relative">
-                                       <img src="assets/images/favorite.jpg" class="img-fluid w-100 rounded rounded" alt="profile-bg">
+                                       <img style="width: 1000px;height: 400px;" src="assets/images/favorite.jpg" class=" rounded rounded" alt="profile-bg">
                                        <div class="title-on-header">
                                           <div class="data-block">
                                              <h2>Your Favorite Event</h2>
@@ -28,17 +28,37 @@
                                            <li>{{event.eventReward}}</li>-->
                                         <div class="" *ngFor="let event of eventList">
                                              <div class="card rounded  mb-0">
-                                                <app-favorite  [event]="event"></app-favorite>
-                                                <div class="event-images">
-                                                  
-                                                   <a href="#">
-                                                   <img src="assets/images/page-img/51.jpg" class="img-fluid" alt="Responsive image">
-                                                   </a>
-                                                   
+                                                <app-favorite class="d-grid" [event]="event"></app-favorite>
+                                                
+                                                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                                   <div class="carousel-indicators">
+                                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+                                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
+                                                   </div>
+                                                   <div class="carousel-inner">
+                                                      <div class="carousel-item">
+                                                         <img src="../assets/images/1.jpg" class="d-block w-100">
+                                                      </div>
+                                                      <div class="carousel-item">
+                                                         <img src="../assets/images/2.jpg" class="d-block w-100">
+                                                      </div>
+                                                      <div class="carousel-item active">
+                                                         <img src="../assets/images/3.jpg" class="d-block w-100">
+                                                      </div>
+                                                   </div>
+                                                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                      <span class="visually-hidden">Previous</span>
+                                                   </button>
+                                                   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                      <span class="visually-hidden">Next</span>
+                                                   </button>
                                                 </div>
                                                 <div class="card-body">
                                                    <div class="d-flex">
-                                                      <div class="date-of-event">
+                                                      <div class="date-of-event col-sm-2">
                                                          <span>{{event.startTime | date: "MMM"}}</span>
                                                          <h5>{{event.startTime | date: "dd"}}</h5>
                                                       </div>
@@ -51,31 +71,15 @@
                                                          
                         
                                                          <div class="event-member">
-                                                            <div class="iq-media-group">
-                                                               <a href="#" class="iq-media">
-                                                               <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/05.jpg" alt="">
-                                                               </a>
-                                                               <a href="#" class="iq-media">
-                                                               <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/06.jpg" alt="">
-                                                               </a>
-                                                               <a href="#" class="iq-media">
-                                                               <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/07.jpg" alt="">
-                                                               </a>
-                                                               <a href="#" class="iq-media">
-                                                               <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/08.jpg" alt="">
-                                                               </a>
-                                                               <a href="#" class="iq-media">
-                                                               <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/09.jpg" alt="">
-                                                               </a>
-                                                            </div>
+                                                           <app-members [event]="event"></app-members>
                                                          </div>
                                                       </div>
                                                       
                                                    </div>
                                                    <div class="row justify-content-around mb-3">
                                                        
-                                                      <app-join  [event]="event"></app-join>
-                                                      <app-like  [event]="event"></app-like>
+                                                      <app-join class="d-grid" [event]="event"></app-join>
+                                                      <app-like class="d-grid" [event]="event"></app-like>
                                                    </div>
                                                 </div>
                                              </div>

@@ -1,192 +1,127 @@
-<div class="wrapper">
-   <div class="header-for-bg">
-      <div class="background-header position-relative">
-         <img src="assets/images/page-img/profile-bg6.jpg" class="img-fluid w-100 rounded rounded" alt="profile-bg">
-         <div class="title-on-header">
-            <div class="data-block">
-               <h2>Event details</h2>
-            </div>
-         </div>
-      </div>
+<div class="header-for-bg">
+   <div class="background-header position-relative">
+       <img style="width: 1000px;height: 400px;" src="../assets/images/3.jpg"  alt="header-bg">
+       <div class="title-on-header">
+           <div class="data-block">
+               <h2>Events Details</h2>
+           </div>
+       </div>
    </div>
-
-
-   
-    <div id="content-page" class="content-page">
-    <div class="container">
-       <div class="row" >
-          <div class="col-lg-12" >
-            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
+   </div>
+   <!-- Page Content  -->       <div id="content-page" class="content-page">
+<div class="container">
+   <div class="row">
+       <div class="col-lg-12">
+           <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
                <div class="group-info d-flex align-items-center">
                    <div class="me-3">
-                       <img class="rounded-circle img-fluid avatar-100" src="../assets/images/page-img/gi-1.jpg" alt="">
+                       <img class="rounded-circle img-fluid avatar-100" src="../assets/images/1.jpg" alt="">
                    </div>
                    <div class="info">
-                       <h4>{{oneEvent.title}}</h4>
-                       <p class="mb-0">{{oneEvent.joinnbr}} members</p>
-                   </div>
+                     <h4>{{oneEvent.title}}</h4>
+                     <p class="mb-0">{{oneEvent.joinnbr}} members</p>
+                 </div>
                </div>
                <div class="group-member d-flex align-items-center  mt-md-0 mt-2">
                    <div class="iq-media-group me-3">
-                       <a href="#" class="iq-media">
-                       <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/05.jpg" alt="">
-                       </a>
-                       <a href="#" class="iq-media">
-                       <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/06.jpg" alt="">
-                       </a>
-                       <a href="#" class="iq-media">
-                       <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/07.jpg" alt="">
-                       </a>
-                       <a href="#" class="iq-media">
-                       <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/08.jpg" alt="">
-                       </a>
-                       <a href="#" class="iq-media">
-                       <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/09.jpg" alt="">
-                       </a>
-                       <a href="#" class="iq-media">
-                       <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/10.jpg" alt="">
-                       </a>
-                       <a href="#" class="iq-media">
-                       <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/11.jpg" alt="">
-                       </a>
-                       <a href="#" class="iq-media">
-                       <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/12.jpg" alt="">
-                       </a>
+                     
+                     <app-members [event]="oneEvent"></app-members>
                    </div>
-                   <button type="submit" class="btn btn-primary mb-2"><i class="ri-add-line"></i>Invite</button>
-                   <button type="submit" class="btn btn-primary mb-2"><i class="ri-add-line"></i>Add Quiz</button>
+                   <button type="submit" class="btn btn-primary mb-2 ml-9"><i class="ri-add-line"></i>Invite</button>
+                   <button type="submit" class="btn btn-primary mb-2 ml-2"><i class="ri-add-line"></i>Add Quiz</button>
                </div>
            </div>
-             
-          </div>
-          <div class="col-lg-4">
-             <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                   <div class="header-title">
-                      <h4 class="card-title">About Event</h4>
-                   </div>
-                   
-                </div>
-                <div class="card-body">
-                   <ul class="list-inline p-0 m-0">
-                     <li class="mb-3 d-flex align-items-center">
-                        <div class="mr-2"><i class=" ri-arrow-right-fill h4"></i></div>
-                       <h6 class="mb-0"> {{oneEvent.about }}</h6>
-                    </li>
-                      <li class="mb-3 d-flex align-items-center">
-                          <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
-                         <h6 class="mb-0">Start date : {{oneEvent.startTime | date: "dd/MM/yyyy"}}</h6>
-                      </li>
-                      <li class="mb-3 d-flex align-items-center">
-                         <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
-                         <h6 class="mb-0">End Date : {{oneEvent.endTime | date: "dd/MM/yyyy"}}</h6>
-                      </li>
-                      <li class="mb-3 d-flex align-items-center">
-                         <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
-                         <h6 class="mb-0">Likes : {{oneEvent.likenbr}}</h6>
-                      </li>
-                      <li class="mb-3 d-flex align-items-center">
-                         <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
-                         <h6 class="mb-0">Joins : {{oneEvent.joinnbr}}</h6>
-                      </li>
-                      <li class="mb-3 d-flex align-items-center">
-                         <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
-                         <h6 class="mb-0">Event reward : {{oneEvent.eventReward}}</h6>
-                      </li>
-                   </ul>
-                </div>
-             </div>
-            
-          </div>
-          <div class="col-lg-8">
-             <div id="post-modal-data" class="card">
-                <div class="card-header d-flex justify-content-between">
-                   <div class="iq-header-title">
-                      <h4 class="card-title">comments</h4>
-                   </div>
-                </div>
-                <div class="card-body" data-ds-toggle="modal" data-bs-target="#post-modal">
-                   <div class="d-flex align-items-center">
-                      <div class="user-img">
-                         <img src="assets/images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle">
-                      </div>
-                      <form class="post-text ml-3 w-100" data-bs-toggle="modal" data-bs-target="#post-modal" action="#">
-                         <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;">
-                      </form>
-                   </div>
-                   <hr>
-                   
-                </div>
-                <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modalLabel" aria-hidden="true" style="display: none;">
-                   <div class="modal-dialog modal-lg" >
-                      <div class="modal-content">
-                         <div class="modal-header">
-                            <h5 class="modal-title" id="post-modalLabel">Add comment</h5>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ri-close-fill"></i></button>
-                         </div>
-                         <div class="modal-body">
-                            <div class="d-flex align-items-center">
-                               <div class="user-img">
-                                  <img src="assets/images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle img-fluid">
-                               </div>
-                               <form class="post-text ml-3 w-100" action="#">
-                                  <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;" [(ngModel)]="this.newA.comment" [ngModelOptions]="{standalone: true}" >
-                               </form>
-                            </div>
-                            <button type="submit" class="btn btn-primary d-block w-100 mt-3" (click)="postComment(1,oneEvent.eventId)" data-bs-dismiss="modal">Post comment</button>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="card">
-                <div class="card-body">
-                   <div class="post-item">
-                      <div class="user-post-data pb-3">
-                         <div class="d-flex justify-content-between">
-                            <div class="me-3">
-                               <img class="rounded-circle img-fluid" src="assets/images/user/04.jpg" alt="">
-                            </div>
-                       <div class="w-100">
-                         <div class="d-flex justify-content-between">
-                            <div class="">
-                               <h5 class="mb-0 d-inline-block"><a href="#" class="">Paige Turner</a></h5>
-                               <p class="mb-0">8 hour ago</p>
-                            </div>
-                            <div class="card-post-toolbar">
-                               <div class="dropdown">
-                                  <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                  <i class="ri-more-fill"></i>
-                                  </span>
-                                  <div class="dropdown-menu m-0 p-0">
-                                    
-                                     
-                                     <a class="dropdown-item p-3" href="#">
-                                        <div class="d-flex align-items-top">
-                                           <div class="icon font-size-20"><i class="ri-delete-bin-7-line"></i></div>
-                                           <div class="data ml-2">
-                                              <h6>Delete</h6>
-                                              <p class="mb-0">Remove thids Post on Timeline</p>
-                                           </div>
-                                        </div>
-                                     </a>
-                                     
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="user-post">
-                         <a href="#"><img src="assets/images/page-img/52.jpg" alt="post-image" class="img-fluid w-100" /></a>
-                      </div>
-                      
-                   </div>
-                   
-                </div>
-             </div>
-          </div>
        </div>
-    </div>
-    </div>
+       <div class="col-lg-4">
+         <div class="card">
+            <div class="card-header d-flex justify-content-between">
+               <div class="header-title">
+                  <h4 class="card-title">About Event</h4>
+               </div>
+               
+            </div>
+            <div class="card-body">
+               <ul class="list-inline p-0 m-0">
+                 <li class="mb-3 d-flex align-items-center">
+                    <div class="mr-2"><i class=" ri-arrow-right-fill h4"></i></div>
+                   <h6 class="mb-0"> {{oneEvent.about }}</h6>
+                </li>
+                  <li class="mb-3 d-flex align-items-center">
+                      <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
+                     <h6 class="mb-0">Start date : {{oneEvent.startTime | date: "dd/MM/yyyy"}}</h6>
+                  </li>
+                  <li class="mb-3 d-flex align-items-center">
+                     <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
+                     <h6 class="mb-0">End Date : {{oneEvent.endTime | date: "dd/MM/yyyy"}}</h6>
+                  </li>
+                  <li class="mb-3 d-flex align-items-center">
+                     <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
+                     <h6 class="mb-0">Likes : {{oneEvent.likenbr}}</h6>
+                  </li>
+                  <li class="mb-3 d-flex align-items-center">
+                     <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
+                     <h6 class="mb-0">Joins : {{oneEvent.joinnbr}}</h6>
+                  </li>
+                  <li class="mb-3 d-flex align-items-center">
+                     <div class="mr-2"><i class="ri-arrow-right-fill h4"></i></div>
+                     <h6 class="mb-0">Event reward : {{oneEvent.eventReward}}</h6>
+                  </li>
+               </ul>
+            </div>
+         </div>
+        
+      </div>
+       <div class="col-lg-8">
+         <div id="post-modal-data" class="card">
+            <div class="card-header d-flex justify-content-between">
+               <div class="iq-header-title">
+                  <h4 class="card-title">comments</h4>
+               </div>
+            </div>
+            <div class="card-body" data-ds-toggle="modal" data-bs-target="#post-modal">
+               <div class="d-flex align-items-center">
+                  <div class="user-img">
+                     <img src="assets/images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle">
+                  </div>
+                  <form class="post-text ml-3 w-100" data-bs-toggle="modal" data-bs-target="#post-modal" action="#">
+                     <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;">
+                  </form>
+               </div>
+               <hr>
+               
+            </div>
+            <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modalLabel" aria-hidden="true" style="display: none;">
+               <div class="modal-dialog modal-lg" >
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="post-modalLabel">Add comment</h5>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ri-close-fill"></i></button>
+                     </div>
+                     <div class="modal-body">
+                        <div class="d-flex align-items-center">
+                           <div class="user-img">
+                              <img src="assets/images/3.jpg" alt="userimg" class="avatar-60 rounded-circle img-fluid">
+                           </div>
+                           <form class="post-text ml-3 w-100" action="#">
+                              <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;" [(ngModel)]="this.newA.comment" [ngModelOptions]="{standalone: true}" >
+                           </form>
+                        </div>
+                        <button type="submit" class="btn btn-primary d-block w-100 mt-3" (click)="postComment(1,oneEvent.eventId)" data-bs-dismiss="modal">Post comment</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <app-comment [event]="oneEvent"></app-comment>
 </div>
+   </div>
+</div> 
+</div>
+
+
+
+
+
+
+
 
