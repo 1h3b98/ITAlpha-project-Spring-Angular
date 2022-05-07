@@ -1,0 +1,198 @@
+
+   <div class="sidebar-main-active right-column-fixed">
+      
+    
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+       
+      
+      
+       <div class="header-for-bg">
+          <div class="background-header position-relative">
+             <img src="assets/images/page-img/profile-bg6.jpg" class="img-fluid w-100 rounded rounded" alt="profile-bg">
+             <div class="title-on-header">
+                <div class="data-block">
+                   <h2>Your Events</h2>
+                </div>
+             </div>
+          </div>
+       </div>
+      
+       <!-- Page Content  -->
+       <div id="content-page" class="content-page">
+         <!--add button-->
+       <div class="row justify-content-end mb-3">
+         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target=".bd-example-modal-lg">Add Event <i class="las la-plus"></i></button></div>
+         <div id="1" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title">Add Event</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">×</span>
+                   </button>
+                </div>
+                   
+                <div class="iq-card-body">
+                   <p>please fill the event formulaire</p>
+                   <div><form >
+                     <div class="form-group">
+                        <div class="custom-file">
+                           <input type="file" class="custom-file-input" id="customFile">
+                           <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label for="exampleInputText1">Event Title </label>
+                        <input type="text" class="form-control"  value="" placeholder="Name your Event" >
+                     </div>
+                     <div class="form-group">
+                        <label for="exampleFormControlTextarea1">About</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                     </div>
+                     
+                     <div class="form-group">
+                        <label for="exampleInputNumber1">Event reward</label>
+                        <input type="number" class="form-control" id="exampleInputNumber1" value="0">
+                     </div>
+                     <div class="form-group">
+                        <label for="exampleInputdate">Starts At</label>
+                        <input type="date" class="form-control" id="exampleInputdate" value="" >
+                     </div>
+                     <div class="form-group">
+                        <label for="exampleInputdate">Ends At</label>
+                        <input type="date" class="form-control" id="exampleInputdate" value="">
+                     </div>
+                   
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                       <button type="button" class="btn btn-primary"  data-dismiss="modal">Save</button>
+                    </div>
+                  </form></div>
+                </div>
+                   
+                
+                
+             </div>
+          </div>
+       </div>
+        <!--end of button-->
+          <div class="container" >
+            
+             <div class="row" >
+                <!--<li>{{event.title}}</li>
+                 <li></li>
+                 <li>{{event.endTime}}</li>
+                 <li>{{event.joinnbr}}</li>
+                 <li>{{event.likenbr}}</li>
+                 <li>{{event.eventReward}}</li>-->
+              <div class="col-md-6 col-lg-4" *ngFor="let ofre of offre" >
+                   <div class="iq-card rounded iq-card-block iq-card-stretch iq-card-height">
+                      <div class="event-images">
+                         <a href="#">
+                         <img src="assets/images/page-img/51.jpg" class="img-fluid" alt="Responsive image">
+                         </a>
+                      </div>
+                      <div class="iq-card-body">
+                         <div class="d-flex">
+                            <div class="date-of-event">
+                               <span>{{ofre.titre}}</span>
+                               <h5>{{ofre.mail}}</h5>
+                            </div>
+                            <div class="events-detail ml-3">
+                               <h5><a ></a></h5>
+                               <p></p>
+                               
+                               
+
+                               <div class="event-member">
+                                  <div class="iq-media-group">
+                                     <a href="#" class="iq-media">
+                                     <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/05.jpg" alt="">
+                                     </a>
+                                     <a href="#" class="iq-media">
+                                     <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/06.jpg" alt="">
+                                     </a>
+                                     <a href="#" class="iq-media">
+                                     <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/07.jpg" alt="">
+                                     </a>
+                                     <a href="#" class="iq-media">
+                                     <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/08.jpg" alt="">
+                                     </a>
+                                     <a href="#" class="iq-media">
+                                     <img class="img-fluid avatar-40 rounded-circle" src="assets/images/user/09.jpg" alt="">
+                                     </a>
+                                  </div>
+                               </div>
+                            </div>
+                            
+                         </div>
+                         <div class="row justify-content-around mb-3">
+                            <button type="button" class="btn btn-outline-primary rounded-pill mb-3" data-toggle="modal" data-target="#exampleModal" >Update</button>
+                           <!--model-->
+                           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                       <h5 class="modal-title" id="exampleModalLabel">Update Event</h5>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">×</span>
+                                       </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <div class="iq-card-body">
+                                          <p>please update the event information</p>
+                                          <div><form >
+                                            <div class="form-group">
+                                               <div class="custom-file">
+                                                  <input type="file" class="custom-file-input" id="customFile">
+                                                  <label class="custom-file-label" for="customFile">Choose file</label>
+                                               </div>
+                                            </div>
+                                            <div class="form-group">
+                                               <label for="exampleInputText1">Event Title </label>
+                                               <input type="text" class="form-control"    >
+                                            </div>
+                                            <div class="form-group">
+                                               <label for="exampleFormControlTextarea1">About</label>
+                                               <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" ></textarea>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                               <label for="exampleInputNumber1">Event reward</label>
+                                               <input type="number" class="form-control" id="exampleInputNumber1" value="0" >
+                                            </div>
+                                            <div class="form-group">
+                                               <label for="exampleInputdate">Starts At</label>
+                                               <input type="date" class="form-control" id="exampleInputdate" value=""  >
+                                            </div>
+                                            <div class="form-group">
+                                               <label for="exampleInputdate">Ends At</label>
+                                               <input type="date" class="form-control" id="exampleInputdate" value="" >
+                                            </div>
+                                          
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                                           </div>
+                                         </form></div>
+                                    </div>
+                                    
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                            <button type="button" class="btn btn-outline-danger rounded-pill mb-3" >  Delete <i class="ion-heart">  </i></button>
+                         </div>
+                      </div>
+                   </div>
+                  
+              </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <!-- Wrapper END -->
+  
+
+   </div>
