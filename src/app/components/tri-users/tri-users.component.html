@@ -1,0 +1,64 @@
+
+<table class="table table-hover" id="myTable"  >
+  <thead>
+    <tr>
+      <th scope="col">rank</th>
+      <th scope="col">username</th>
+      <th scope="col">badge</th>
+      <th scope="col">date</th>
+      <th scope="col">points</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+<tr *ngFor="let u of listUB ;let indexOfelement=index;"  [ngClass]="{'bg-soft-primary': checkuserCONNECTED(u)}" >
+
+<td>{{indexOfelement+1}}</td>
+  <td >{{u.username}}</td>
+  
+  <td ><svg class="badge" *ngIf="gold(u)"  xmlns="http://www.w3.org/2000/svg" height="50" width="50" viewBox="-40 -40 440 440">
+    <circle class="outer" fill="#F9D535" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/>
+    <circle class="inner" fill="#DFB828" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
+    <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#CAA61F" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <g class="star">
+            <path fill="#F9D535" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="180" cy="107.8" r="4.4"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="223.7" cy="244.2" r="4.4"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="135.5" cy="244.2" r="4.4"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="108.3" cy="160.4" r="4.4"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="251.7" cy="160.4" r="4.4"/>
+        </g>	
+  </svg>
+  <svg class="badge" *ngIf="bronze(u)" xmlns="http://www.w3.org/2000/svg" height="50" width="50" viewBox="-40 -40 440 440">
+    <circle class="outer" fill="#CD7F32" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/>
+    <circle class="inner" fill="#CD7F32" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
+    <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#CAA61F" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <g class="star">
+            <path fill="#F9D535" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="180" cy="107.8" r="4.4"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="223.7" cy="244.2" r="4.4"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="135.5" cy="244.2" r="4.4"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="108.3" cy="160.4" r="4.4"/>
+            <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="251.7" cy="160.4" r="4.4"/>
+        </g>	
+  </svg>
+  <svg class="badge" *ngIf="silver(u)" xmlns="http://www.w3.org/2000/svg" height="50" width="50" viewBox="-40 -40 440 440">
+    <circle class="outer" fill="#A9A9A9" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/>
+    <circle class="inner" fill="#71797E" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
+    <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#CAA61F" stroke-width="7" stroke-linecap="round" fill="none"/>
+        <g class="star">
+            <path fill="#FFC300" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/>
+            <circle fill="#FFC300" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="180" cy="107.8" r="4.4"/>
+            <circle fill="#FFC300" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="223.7" cy="244.2" r="4.4"/>
+            <circle fill="#FFC300" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="135.5" cy="244.2" r="4.4"/>
+            <circle fill="#FFC300" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="108.3" cy="160.4" r="4.4"/>
+            <circle fill="#FFC300" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="251.7" cy="160.4" r="4.4"/>
+        </g>	
+  </svg></td>
+  <td>{{u.dateBadge}}</td>
+  <td>{{u.points}}</td>
+</tr>
+  </tbody>
+</table>
+
+

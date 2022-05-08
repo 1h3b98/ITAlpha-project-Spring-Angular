@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Events } from '../model/events';
 import { env } from 'src/app/environments/env';
-import { User } from '../model/user';
+import { user } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class EventService {
     return this.http.get<Events[]>(env.baseUrl+env.GetAllEventUrl);
    }
 
-   getFavEvent(u:User):Observable<Events[]>{
-    return this.http.get<Events[]>(env.baseUrl+env.GetFavEventUrl+u.userId);
+   getFavEvent(u:user):Observable<Events[]>{
+    return this.http.get<Events[]>(env.baseUrl+env.GetFavEventUrl+u.id);
    }
 }

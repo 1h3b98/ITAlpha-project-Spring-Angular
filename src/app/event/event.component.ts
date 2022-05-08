@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Events } from '../model/events';
 import { EventService } from '../service/event.service';
 import { ActionService } from '../service/action.service';
-import { User } from '../model/user';
+import { user } from '../model/user';
 import { Actions } from '../model/action';
 
 
@@ -24,36 +24,7 @@ export class EventComponent implements OnInit {
   bStatus:boolean;
   
   eventList : Events[] = [];
-  user : User={userId : 1 , 
-    firstname: "iheb",
-	  lastname : "saad",
-	  role: "admin"};
-  users : User[] = [
-    {userId : 1 , 
-    firstname: "iheb",
-	  lastname : "saad",
-	  role: "admin"},
-    
-    {userId : 2 , 
-    firstname: "bessem",
-    lastname : "azizi",
-    role: "user"},
-    
-    {userId : 3 , 
-    firstname: "haifa",
-    lastname : "berneg",
-    role: "user"},
-    
-    {userId : 4 , 
-    firstname: "amine",
-    lastname : "boujouna",
-    role: "user"},
-    
-    {userId : 5 , 
-    firstname: "majd",
-    lastname : "hmila",
-    role: "user"},
-  ];
+  
 
   constructor(private eventService:  EventService,private actionService:  ActionService,private httpClient: HttpClient, private _router: Router) {}
 

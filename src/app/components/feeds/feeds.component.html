@@ -1,0 +1,128 @@
+
+
+    <div  id="exampleModalCenteredScrollable" class="modal fade  " tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
+           <div class="modal-content ">
+              <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalCenteredScrollableTitle"><i class="ri-pencil-fill"></i> Compose Feedback</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                 </button>
+              </div>
+              <div class="modal-body">
+                <form class="email-form">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">To:</label>
+                        <div class="col-md-10">
+
+                        <input type="text"  name="content" class="form-control" [(ngModel)]="id">
+                        </div>
+                    </div>
+                   
+                    
+                    <div class="form-group row">
+                        <label for="subject" class="col-sm-2 col-form-label">Your Feedback:</label>
+                        <div class="col-md-10">
+                            <input type="text"  name="content" class="form-control" [(ngModel)]="feedback.content">
+             
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-10">
+
+                        <input type="radio" id="huey" name="Ftype" value="true"  [(ngModel)]="feedback.status">
+                        <label for="huey"> Nonymous</label>
+                        <input type="radio" id="dewey" name="Ftype" value="false"  [(ngModel)]="feedback.status">
+                        <label for="dewey">  Anonymous</label>
+                      </div>
+                    </div>
+
+                      
+                      <div class="form-group row">
+                        <div class="col-md-10">
+
+                        
+                      </div>
+                    </div>
+
+                    </form>  </div>
+              <div class="modal-footer">
+                 <div class="form-group d-flex flex-wrap align-items-center justify-content-between mb-0">
+                    <div class="d-flex flex-wrap flex-grow-1 align-items-center">
+                        <div class="send-btn pl-3 mb-2">
+                          <button class="btn btn-primary"   (click)="save()"> send </button>
+                        </div>
+                        
+                    </div>
+                   
+                </div>
+              </div>
+           </div>
+        </div>
+     </div>
+
+     <div class="container relative ">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card rounded ">
+                    <div class="card-body">
+                    <div class="">
+                        <div class="iq-email-list">
+                            <div class="iq-email-ui nav flex-column nav-pills">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+                                    <i class="ri-send-plane-line me-2 "></i>New Message
+                                    </button>    
+                                <a (click)="feedsRecieved()"class="nav-link" role="button" data-bs-toggle="pill" href="#mail-inbox"><div class="d-flex align-items-center justify-content-between"><span><i class="ri-mail-line"></i>Inbox</span><span class="badge bg-primary ms-2">{{nb}}</span></div></a>
+                                
+                            </div>
+                            <div class="iq-email-ui nav flex-column nav-pills">
+    
+                                <a (click)="feedsSend()" class="nav-link "  role="button" data-bs-toggle="pill" href="#mail-inbox"><div class="d-flex align-items-center justify-content-between"><span><i class="ri-mail-line" ></i>Feeds Sent</span><span class="badge bg-primary ms-2">{{nbs}}</span></div></a>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 mail-box-detail">
+                <div class="card">
+                    <div class="card-body p-0">
+                    <div class="">
+                        <div class="iq-email-to-list p-3">
+                            <div class="iq-email-to-list-detail d-flex justify-content-between">
+                                <div class="iq-email-search d-flex">
+                                  
+                                    <form class="me-2 position-relative searchbox">
+                                        <div class="form-group mb-0">
+                                            <input type="text" class="form-control "  [(ngModel)]="filteredString"  [(ngModel)]="filteredString1" name="first">
+                                            <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                                        </div>
+                                    </form>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iq-email-listbox">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active"  role="tabpanel" [hidden]="hide">
+                               
+                                    <app-listfeeds *ngFor="let t of Listf | filterFeedback:filteredString" [Feed]="t" (update)="getfeedsrecieved()">
+                                       
+                                    </app-listfeeds>
+                                                     
+                                </div>
+                                <div class="tab-pane fade show active"  role="tabpanel" [hidden]="!hide">
+                                    <app-feedssent *ngFor="let t of Listfs | filterFeedback:filteredString1" [Feedsent]="t" (update)="getfeedsent()" ></app-feedssent>                                         
+
+                                </div>
+                           
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </div>

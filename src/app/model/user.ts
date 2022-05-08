@@ -1,6 +1,7 @@
-export class User {
-	'userId': number 
-    'firstname': string;
-	'lastname' : string;
-	'role': string;
+export class user{
+    id : number  ;
+    userId : number;
+    username : string;
+    fname : string;
+    lname : string;
 }

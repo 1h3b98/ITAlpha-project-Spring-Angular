@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="birthday-block">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between rounded border-bottom-0">
+                <div class="header-title">
+                    <h4 class="card-title">Today Birthday</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-lg-6 col-md-12" *ngFor="let i of ListUserbirthday">
+                <div class="card">
+                    <div class="card-body">
+                    <div class="iq-birthday-block">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <a href="#">
+                                <img [src]="i.photo" style="width: 90px;" alt="profile-img" class="img-fluid">
+                                </a>
+                                <div class="friend-info ms-0 ms-md-3 mt-md-0 mt-2">
+                                <h5>{{i.fname}}</h5>
+                                <p class="mb-0">{{i.age}} ans </p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">Create Card</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</div>
